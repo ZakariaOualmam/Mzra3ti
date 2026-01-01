@@ -230,7 +230,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                           builder: (context, userSnapshot) {
                             final user = userSnapshot.data;
                             final userName = user?['name'] ?? l10n.guest;
-                            final userEmail = user?['email'] ?? '';
+                            final userEmail = user?['emailOrPhone'] ?? '';
                             
                             return _buildDrawerItem(
                               icon: Icons.account_circle,
@@ -239,22 +239,12 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                               iconColor: Theme.of(context).colorScheme.primary,
                               onTap: () {
                                 Navigator.of(context).pop();
-                                Navigator.of(context).pushNamed('/settings');
+                                Navigator.of(context).pushNamed('/profile');
                               },
                             );
                           },
                         );
                       }
-                    },
-                  ),
-                  _buildDrawerItem(
-                    icon: Icons.person_outline,
-                    title: l10n.profile,
-                    subtitle: l10n.dataSync,
-                    iconColor: Colors.green.shade600,
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pushNamed('/settings');
                     },
                   ),
                   
@@ -956,63 +946,140 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Professional welcome card
-                Container(
-                  padding: EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-                      width: 1,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
-                        blurRadius: 16,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(14),
+                // Professional welcome card - Shows user name when logged in
+                FutureBuilder<bool>(
+                  future: UserService().isLoggedIn(),
+                  builder: (context, authSnapshot) {
+                    final isLoggedIn = authSnapshot.data ?? false;
+                    
+                    if (!isLoggedIn) {
+                      // Guest welcome card
+                      return Container(
+                        padding: EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(14),
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                            width: 1,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
+                              blurRadius: 16,
+                              offset: Offset(0, 4),
+                              spreadRadius: 0,
+                            ),
+                          ],
                         ),
-                        child: Icon(
-                          Icons.wb_sunny_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 32,
-                        ),
-                      ),
-                      SizedBox(width: 18),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
                           children: [
-                            Text(
-                              'مرحبا بك',
-                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                                fontWeight: FontWeight.bold,
+                            Container(
+                              padding: EdgeInsets.all(14),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: Icon(
+                                Icons.wb_sunny_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 32,
                               ),
                             ),
-                            SizedBox(height: 4),
-                            Text(
-                              l10n.dashboardSubtitle,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.85),
+                            SizedBox(width: 18),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    l10n.welcome,
+                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Text(
+                                    l10n.dashboardSubtitle,
+                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.85),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
+                      );
+                    } else {
+                      // Logged-in user welcome card
+                      return FutureBuilder<Map<String, dynamic>?>(
+                        future: UserService().getCurrentUser(),
+                        builder: (context, userSnapshot) {
+                          final user = userSnapshot.data;
+                          final userName = user?['name'] ?? l10n.guest;
+                          
+                          return Container(
+                            padding: EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primaryContainer,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                                width: 1,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
+                                  blurRadius: 16,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(14),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  child: Icon(
+                                    Icons.wb_sunny_outlined,
+                                    color: Theme.of(context).colorScheme.primary,
+                                    size: 32,
+                                  ),
+                                ),
+                                SizedBox(width: 18),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${l10n.welcome}, $userName',
+                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 4),
+                                      Text(
+                                        l10n.dashboardSubtitle,
+                                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                          color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.85),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  },
                 ),
                 SizedBox(height: 24),
                 // Clean grid of dashboard cards

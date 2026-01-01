@@ -19,6 +19,7 @@ import 'features/journal/presentation/screens/journal_screen.dart';
 import 'features/reports/presentation/screens/reports_screen.dart';
 import 'features/weather/presentation/screens/weather_screen.dart';
 import 'features/settings/presentation/screens/settings_screen.dart';
+import 'features/profile/presentation/screens/profile_screen.dart';
 
 class Mzra3tiApp extends StatelessWidget {
   const Mzra3tiApp({Key? key}) : super(key: key);
@@ -63,6 +64,7 @@ class Mzra3tiApp extends StatelessWidget {
               '/onboarding': (ctx) => const OnboardingScreen(),
               '/login': (ctx) => const LoginScreen(),
               '/register': (ctx) => const RegisterScreen(),
+              '/profile': (ctx) => const ProfileScreen(),
               '/farms/add': (ctx) => const AddFarmScreen(),
               '/home': (ctx) => const Mzra3tiHomeScreen(),
               '/irrigations': (ctx) => const IrrigationScreen(),

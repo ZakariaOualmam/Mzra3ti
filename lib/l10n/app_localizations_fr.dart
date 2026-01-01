@@ -617,4 +617,74 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guest => 'ضيف';
+
+  @override
+  String get profileTitle => 'الملف الشخصي';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get personalInformation => 'المعلومات الشخصية';
+
+  @override
+  String get profilePicture => 'صورة الملف الشخصي';
+
+  @override
+  String get changePicture => 'تغيير الصورة';
+
+  @override
+  String get chooseFromGallery => 'اختر من المعرض';
+
+  @override
+  String get takePhoto => 'التقط صورة';
+
+  @override
+  String get removePhoto => 'إزالة الصورة';
+
+  @override
+  String get username => 'اسم المستخدم';
+
+  @override
+  String get editUsername => 'تعديل اسم المستخدم';
+
+  @override
+  String get enterNewUsername => 'أدخل اسم المستخدم الجديد';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get editPhone => 'تعديل رقم الهاتف';
+
+  @override
+  String get accountSettings => 'إعدادات الحساب';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get deleteAccount => 'حذف الحساب';
+
+  @override
+  String get deleteAccountWarning =>
+      'لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع بياناتك نهائياً.';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get update => 'تحديث';
+
+  @override
+  String get updateSuccess => 'تم التحديث بنجاح';
+
+  @override
+  String get updateError => 'فشل التحديث';
+
+  @override
+  String get backToDashboard => 'العودة إلى لوحة التحكم';
 }

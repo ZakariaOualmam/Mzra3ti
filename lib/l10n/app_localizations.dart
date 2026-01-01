@@ -1293,6 +1293,144 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ضيف'**
   String get guest;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف الشخصي'**
+  String get profileTitle;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل الملف الشخصي'**
+  String get editProfile;
+
+  /// No description provided for @personalInformation.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعلومات الشخصية'**
+  String get personalInformation;
+
+  /// No description provided for @profilePicture.
+  ///
+  /// In ar, this message translates to:
+  /// **'صورة الملف الشخصي'**
+  String get profilePicture;
+
+  /// No description provided for @changePicture.
+  ///
+  /// In ar, this message translates to:
+  /// **'تغيير الصورة'**
+  String get changePicture;
+
+  /// No description provided for @chooseFromGallery.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر من المعرض'**
+  String get chooseFromGallery;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقط صورة'**
+  String get takePhoto;
+
+  /// No description provided for @removePhoto.
+  ///
+  /// In ar, this message translates to:
+  /// **'إزالة الصورة'**
+  String get removePhoto;
+
+  /// No description provided for @username.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المستخدم'**
+  String get username;
+
+  /// No description provided for @editUsername.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل اسم المستخدم'**
+  String get editUsername;
+
+  /// No description provided for @enterNewUsername.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل اسم المستخدم الجديد'**
+  String get enterNewUsername;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In ar, this message translates to:
+  /// **'رقم الهاتف'**
+  String get phoneNumber;
+
+  /// No description provided for @editPhone.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل رقم الهاتف'**
+  String get editPhone;
+
+  /// No description provided for @accountSettings.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعدادات الحساب'**
+  String get accountSettings;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In ar, this message translates to:
+  /// **'تغيير كلمة المرور'**
+  String get changePassword;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الحساب'**
+  String get deleteAccount;
+
+  /// No description provided for @deleteAccountWarning.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع بياناتك نهائياً.'**
+  String get deleteAccountWarning;
+
+  /// No description provided for @cancel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
+  String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف'**
+  String get delete;
+
+  /// No description provided for @update.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديث'**
+  String get update;
+
+  /// No description provided for @updateSuccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم التحديث بنجاح'**
+  String get updateSuccess;
+
+  /// No description provided for @updateError.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشل التحديث'**
+  String get updateError;
+
+  /// No description provided for @backToDashboard.
+  ///
+  /// In ar, this message translates to:
+  /// **'العودة إلى لوحة التحكم'**
+  String get backToDashboard;
 }
 
 class _AppLocalizationsDelegate

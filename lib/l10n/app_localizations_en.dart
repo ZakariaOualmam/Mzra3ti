@@ -611,4 +611,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get guest => 'Guest';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get personalInformation => 'Personal Information';
+
+  @override
+  String get profilePicture => 'Profile Picture';
+
+  @override
+  String get changePicture => 'Change Picture';
+
+  @override
+  String get chooseFromGallery => 'Choose from Gallery';
+
+  @override
+  String get takePhoto => 'Take Photo';
+
+  @override
+  String get removePhoto => 'Remove Photo';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get editUsername => 'Edit Username';
+
+  @override
+  String get enterNewUsername => 'Enter new username';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get editPhone => 'Edit Phone Number';
+
+  @override
+  String get accountSettings => 'Account Settings';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get deleteAccountWarning =>
+      'This action cannot be undone. All your data will be permanently deleted.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get updateSuccess => 'Updated successfully';
+
+  @override
+  String get updateError => 'Failed to update';
+
+  @override
+  String get backToDashboard => 'Back to Dashboard';
 }

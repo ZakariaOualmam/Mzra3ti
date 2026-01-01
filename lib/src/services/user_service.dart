@@ -89,6 +89,32 @@ class UserService {
     await prefs.setBool(_isLoggedInKey, false);
   }
 
+  /// Update user profile data
+  Future<bool> updateUser(Map<String, dynamic> updatedData) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final userDataString = prefs.getString(_userKey);
+      
+      if (userDataString == null) {
+        return false;
+      }
+
+      final currentUser = json.decode(userDataString);
+      
+      // Merge updated data with existing data
+      final mergedData = {
+        ...currentUser,
+        ...updatedData,
+        'updatedAt': DateTime.now().toIso8601String(),
+      };
+
+      await prefs.setString(_userKey, json.encode(mergedData));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   /// Clear all user data
   Future<void> clearUserData() async {
     final prefs = await SharedPreferences.getInstance();
