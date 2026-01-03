@@ -78,7 +78,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get remindMe => 'فكرني';
 
   @override
-  String get noIrrigations => 'ما كاين حتى سقي مسجل.';
+  String get noIrrigations => 'لا توجد عمليات سقي';
 
   @override
   String get harvestTitle => 'تدبير الحصاد';
@@ -90,7 +90,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quantity => 'الكمية';
 
   @override
-  String get pricePerUnit => 'السعر';
+  String get pricePerUnit => 'السعر (DH)';
 
   @override
   String get harvestSummaryTitle => 'خلاصة الحصاد';
@@ -108,7 +108,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get totalExpenses => 'المصاريف';
 
   @override
-  String get noHarvests => 'ما كاين حتى حصاد مسجل.';
+  String get noHarvests => 'لا توجد عمليات حصاد';
 
   @override
   String get journalTitle => 'دفتر الفلاحة';
@@ -676,4 +676,205 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backToDashboard => 'العودة إلى لوحة التحكم';
+
+  @override
+  String get equipmentManagement => 'إدارة المعدات';
+
+  @override
+  String get equipmentSubtitle => 'معدات وآلات المزرعة';
+
+  @override
+  String get cropCalendar => 'التقويم الزراعي';
+
+  @override
+  String get cropCalendarSubtitle => 'مواعيد الزراعة والحصاد';
+
+  @override
+  String get notificationsMenu => 'التنبيهات';
+
+  @override
+  String get notificationsSubtitle => 'التذكيرات والإشعارات';
+
+  @override
+  String get analytics => 'التحليلات';
+
+  @override
+  String get analyticsSubtitle => 'رسوم بيانية وإحصائيات';
+
+  @override
+  String get sales => 'المبيعات';
+
+  @override
+  String get salesSubtitle => 'تتبع المبيعات والعملاء';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get financial => 'المالية';
+
+  @override
+  String get settings => 'إعدادات';
+
+  @override
+  String get quickActions => 'أزرار سريعة';
+
+  @override
+  String get calendar => 'التقويم';
+
+  @override
+  String get equipment => 'المعدات';
+
+  @override
+  String get notificationAlerts => 'ستظهر هنا التذكيرات والتنبيهات المهمة';
+
+  @override
+  String get addNewExpense => 'إضافة مصروف جديد';
+
+  @override
+  String get editExpense => 'تعديل المصروف';
+
+  @override
+  String get deleteExpense => 'حذف المصروف';
+
+  @override
+  String get confirmDeleteExpense => 'هل تريد حذف هذا المصروف؟';
+
+  @override
+  String get addNewIrrigation => 'إضافة سقي جديد';
+
+  @override
+  String get editIrrigation => 'تعديل السقي';
+
+  @override
+  String get confirmDeleteIrrigation => 'هل تريد حذف هذه العملية؟';
+
+  @override
+  String get addNewHarvest => 'إضافة حصاد جديد';
+
+  @override
+  String get editHarvest => 'تعديل الحصاد';
+
+  @override
+  String get deleteHarvest => 'حذف الحصاد';
+
+  @override
+  String get confirmDeleteHarvest => 'هل أنت متأكد من حذف هذا الحصاد؟';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get addNewEquipment => 'إضافة معدة جديدة';
+
+  @override
+  String get editEquipment => 'تعديل المعدة';
+
+  @override
+  String get deleteEquipment => 'حذف المعدة';
+
+  @override
+  String get confirmDeleteEquipment => 'هل تريد حذف هذه المعدة؟';
+
+  @override
+  String get addNewCrop => 'إضافة محصول جديد';
+
+  @override
+  String get editCrop => 'تعديل المحصول';
+
+  @override
+  String get deleteCrop => 'حذف المحصول';
+
+  @override
+  String get confirmDeleteCrop => 'هل تريد حذف هذا المحصول من التقويم؟';
+
+  @override
+  String get addNewSale => 'إضافة بيع جديد';
+
+  @override
+  String get editSale => 'تعديل البيع';
+
+  @override
+  String get deleteSale => 'حذف البيع';
+
+  @override
+  String get confirmDeleteSale => 'هل تريد حذف هذا البيع؟';
+
+  @override
+  String get categories => 'الفئات';
+
+  @override
+  String get totalAmount => 'المبلغ الإجمالي';
+
+  @override
+  String get expenseDate => 'تاريخ المصروف';
+
+  @override
+  String get enterAmount => 'أدخل قيمة المصروف';
+
+  @override
+  String get noData => 'لا توجد بيانات';
+
+  @override
+  String get noMonthlyData => 'لا توجد بيانات شهرية';
+
+  @override
+  String get noExpensesData => 'لا توجد مصاريف';
+
+  @override
+  String get customerInfo => 'معلومات العميل';
+
+  @override
+  String get customerName => 'اسم العميل';
+
+  @override
+  String get productInfo => 'معلومات المنتج';
+
+  @override
+  String get product => 'المنتج';
+
+  @override
+  String get paymentAndStatus => 'الدفع والحالة';
+
+  @override
+  String get dateLabel => 'التاريخ';
+
+  @override
+  String get noSales => 'لا توجد مبيعات';
+
+  @override
+  String get notesLabel => 'ملاحظات';
+
+  @override
+  String get noEquipment => 'لا توجد معدات';
+
+  @override
+  String get noCrops => 'لا توجد محاصيل';
+
+  @override
+  String get addCropsToTrack => 'أضف محاصيلك لتتبع مواعيد الحصاد';
+
+  @override
+  String get noReadyCrops => 'لا توجد محاصيل جاهزة';
+
+  @override
+  String get noNotificationsData => 'لا توجد تنبيهات';
+
+  @override
+  String get quantityKg => 'الكمية (كلغ)';
+
+  @override
+  String get enterQuantityKg => 'أدخل الكمية بالكيلوغرام';
+
+  @override
+  String get priceDhKg => 'السعر (درهم/كلغ)';
+
+  @override
+  String get totalQuantityLabel => 'الكمية الإجمالية';
+
+  @override
+  String get quantityLabel => 'الكمية';
+
+  @override
+  String get priceLabel => 'السعر';
 }

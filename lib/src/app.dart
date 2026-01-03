@@ -19,7 +19,12 @@ import 'features/journal/presentation/screens/journal_screen.dart';
 import 'features/reports/presentation/screens/reports_screen.dart';
 import 'features/weather/presentation/screens/weather_screen.dart';
 import 'features/settings/presentation/screens/settings_screen.dart';
-import 'features/profile/presentation/screens/profile_screen.dart';
+import 'features/settings/presentation/screens/farm_settings_screen.dart';import 'features/settings/presentation/screens/farm_settings_screen.dart';import 'features/profile/presentation/screens/profile_screen.dart';
+import 'features/analytics/presentation/screens/analytics_screen.dart';
+import 'features/sales/presentation/screens/sales_screen.dart';
+import 'features/equipment/presentation/screens/equipment_screen.dart';
+import 'features/crop_calendar/presentation/screens/crop_calendar_screen.dart';
+import 'features/notifications/presentation/screens/notifications_screen.dart';
 
 class Mzra3tiApp extends StatelessWidget {
   const Mzra3tiApp({Key? key}) : super(key: key);
@@ -74,6 +79,12 @@ class Mzra3tiApp extends StatelessWidget {
               '/reports': (ctx) => const ReportsScreen(),
               '/weather': (ctx) => const WeatherScreen(),
               '/settings': (ctx) => const SettingsScreen(),
+              '/farm-settings': (ctx) => const FarmSettingsScreen(),
+              '/analytics': (ctx) => const AnalyticsScreen(),
+              '/sales': (ctx) => const SalesScreen(),
+              '/equipment': (ctx) => const EquipmentScreen(),
+              '/crop-calendar': (ctx) => const CropCalendarScreen(),
+              '/notifications': (ctx) => const NotificationsScreen(),
             },
           );
         },

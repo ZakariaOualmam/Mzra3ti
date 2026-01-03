@@ -19,14 +19,14 @@ class ThemeService extends ChangeNotifier {
   bool get isSystemMode => _themeMode == ThemeMode.system;
   
   /// Initialize and load saved theme preference
+  /// Default: Light mode on first launch
   Future<void> initialize() async {
-    final savedMode = await _repo.get<String>('themeMode', 'system');
-    _themeMode = _themeModeFromString(savedMode ?? 'system');
+    final savedMode = await _repo.get<String>('themeMode', 'light');
+    _themeMode = _themeModeFromString(savedMode ?? 'light');
     notifyListeners();
   }
   
   /// Toggle between light and dark mode
-  /// If currently in system mode, switches to opposite of current system theme
   Future<void> toggleTheme() async {
     if (_themeMode == ThemeMode.light) {
       await setThemeMode(ThemeMode.dark);

@@ -241,7 +241,7 @@ abstract class AppLocalizations {
   /// No description provided for @noIrrigations.
   ///
   /// In ar, this message translates to:
-  /// **'ما كاين حتى سقي مسجل.'**
+  /// **'لا توجد عمليات سقي'**
   String get noIrrigations;
 
   /// No description provided for @harvestTitle.
@@ -265,7 +265,7 @@ abstract class AppLocalizations {
   /// No description provided for @pricePerUnit.
   ///
   /// In ar, this message translates to:
-  /// **'السعر'**
+  /// **'السعر (DH)'**
   String get pricePerUnit;
 
   /// No description provided for @harvestSummaryTitle.
@@ -301,7 +301,7 @@ abstract class AppLocalizations {
   /// No description provided for @noHarvests.
   ///
   /// In ar, this message translates to:
-  /// **'ما كاين حتى حصاد مسجل.'**
+  /// **'لا توجد عمليات حصاد'**
   String get noHarvests;
 
   /// No description provided for @journalTitle.
@@ -1431,6 +1431,408 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'العودة إلى لوحة التحكم'**
   String get backToDashboard;
+
+  /// No description provided for @equipmentManagement.
+  ///
+  /// In ar, this message translates to:
+  /// **'إدارة المعدات'**
+  String get equipmentManagement;
+
+  /// No description provided for @equipmentSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'معدات وآلات المزرعة'**
+  String get equipmentSubtitle;
+
+  /// No description provided for @cropCalendar.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقويم الزراعي'**
+  String get cropCalendar;
+
+  /// No description provided for @cropCalendarSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مواعيد الزراعة والحصاد'**
+  String get cropCalendarSubtitle;
+
+  /// No description provided for @notificationsMenu.
+  ///
+  /// In ar, this message translates to:
+  /// **'التنبيهات'**
+  String get notificationsMenu;
+
+  /// No description provided for @notificationsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التذكيرات والإشعارات'**
+  String get notificationsSubtitle;
+
+  /// No description provided for @analytics.
+  ///
+  /// In ar, this message translates to:
+  /// **'التحليلات'**
+  String get analytics;
+
+  /// No description provided for @analyticsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'رسوم بيانية وإحصائيات'**
+  String get analyticsSubtitle;
+
+  /// No description provided for @sales.
+  ///
+  /// In ar, this message translates to:
+  /// **'المبيعات'**
+  String get sales;
+
+  /// No description provided for @salesSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'تتبع المبيعات والعملاء'**
+  String get salesSubtitle;
+
+  /// No description provided for @home.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
+  String get home;
+
+  /// No description provided for @financial.
+  ///
+  /// In ar, this message translates to:
+  /// **'المالية'**
+  String get financial;
+
+  /// No description provided for @settings.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعدادات'**
+  String get settings;
+
+  /// No description provided for @quickActions.
+  ///
+  /// In ar, this message translates to:
+  /// **'أزرار سريعة'**
+  String get quickActions;
+
+  /// No description provided for @calendar.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقويم'**
+  String get calendar;
+
+  /// No description provided for @equipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعدات'**
+  String get equipment;
+
+  /// No description provided for @notificationAlerts.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستظهر هنا التذكيرات والتنبيهات المهمة'**
+  String get notificationAlerts;
+
+  /// No description provided for @addNewExpense.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة مصروف جديد'**
+  String get addNewExpense;
+
+  /// No description provided for @editExpense.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل المصروف'**
+  String get editExpense;
+
+  /// No description provided for @deleteExpense.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف المصروف'**
+  String get deleteExpense;
+
+  /// No description provided for @confirmDeleteExpense.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذا المصروف؟'**
+  String get confirmDeleteExpense;
+
+  /// No description provided for @addNewIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة سقي جديد'**
+  String get addNewIrrigation;
+
+  /// No description provided for @editIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل السقي'**
+  String get editIrrigation;
+
+  /// No description provided for @confirmDeleteIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذه العملية؟'**
+  String get confirmDeleteIrrigation;
+
+  /// No description provided for @addNewHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة حصاد جديد'**
+  String get addNewHarvest;
+
+  /// No description provided for @editHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل الحصاد'**
+  String get editHarvest;
+
+  /// No description provided for @deleteHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الحصاد'**
+  String get deleteHarvest;
+
+  /// No description provided for @confirmDeleteHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد من حذف هذا الحصاد؟'**
+  String get confirmDeleteHarvest;
+
+  /// No description provided for @edit.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل'**
+  String get edit;
+
+  /// No description provided for @addNewEquipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة معدة جديدة'**
+  String get addNewEquipment;
+
+  /// No description provided for @editEquipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل المعدة'**
+  String get editEquipment;
+
+  /// No description provided for @deleteEquipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف المعدة'**
+  String get deleteEquipment;
+
+  /// No description provided for @confirmDeleteEquipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذه المعدة؟'**
+  String get confirmDeleteEquipment;
+
+  /// No description provided for @addNewCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة محصول جديد'**
+  String get addNewCrop;
+
+  /// No description provided for @editCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل المحصول'**
+  String get editCrop;
+
+  /// No description provided for @deleteCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف المحصول'**
+  String get deleteCrop;
+
+  /// No description provided for @confirmDeleteCrop.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذا المحصول من التقويم؟'**
+  String get confirmDeleteCrop;
+
+  /// No description provided for @addNewSale.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة بيع جديد'**
+  String get addNewSale;
+
+  /// No description provided for @editSale.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل البيع'**
+  String get editSale;
+
+  /// No description provided for @deleteSale.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف البيع'**
+  String get deleteSale;
+
+  /// No description provided for @confirmDeleteSale.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل تريد حذف هذا البيع؟'**
+  String get confirmDeleteSale;
+
+  /// No description provided for @categories.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفئات'**
+  String get categories;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In ar, this message translates to:
+  /// **'المبلغ الإجمالي'**
+  String get totalAmount;
+
+  /// No description provided for @expenseDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ المصروف'**
+  String get expenseDate;
+
+  /// No description provided for @enterAmount.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل قيمة المصروف'**
+  String get enterAmount;
+
+  /// No description provided for @noData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات'**
+  String get noData;
+
+  /// No description provided for @noMonthlyData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد بيانات شهرية'**
+  String get noMonthlyData;
+
+  /// No description provided for @noExpensesData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد مصاريف'**
+  String get noExpensesData;
+
+  /// No description provided for @customerInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات العميل'**
+  String get customerInfo;
+
+  /// No description provided for @customerName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم العميل'**
+  String get customerName;
+
+  /// No description provided for @productInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات المنتج'**
+  String get productInfo;
+
+  /// No description provided for @product.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنتج'**
+  String get product;
+
+  /// No description provided for @paymentAndStatus.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدفع والحالة'**
+  String get paymentAndStatus;
+
+  /// No description provided for @dateLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'التاريخ'**
+  String get dateLabel;
+
+  /// No description provided for @noSales.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد مبيعات'**
+  String get noSales;
+
+  /// No description provided for @notesLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات'**
+  String get notesLabel;
+
+  /// No description provided for @noEquipment.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد معدات'**
+  String get noEquipment;
+
+  /// No description provided for @noCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محاصيل'**
+  String get noCrops;
+
+  /// No description provided for @addCropsToTrack.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف محاصيلك لتتبع مواعيد الحصاد'**
+  String get addCropsToTrack;
+
+  /// No description provided for @noReadyCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محاصيل جاهزة'**
+  String get noReadyCrops;
+
+  /// No description provided for @noNotificationsData.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد تنبيهات'**
+  String get noNotificationsData;
+
+  /// No description provided for @quantityKg.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية (كلغ)'**
+  String get quantityKg;
+
+  /// No description provided for @enterQuantityKg.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل الكمية بالكيلوغرام'**
+  String get enterQuantityKg;
+
+  /// No description provided for @priceDhKg.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر (درهم/كلغ)'**
+  String get priceDhKg;
+
+  /// No description provided for @totalQuantityLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية الإجمالية'**
+  String get totalQuantityLabel;
+
+  /// No description provided for @quantityLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكمية'**
+  String get quantityLabel;
+
+  /// No description provided for @priceLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر'**
+  String get priceLabel;
 }
 
 class _AppLocalizationsDelegate

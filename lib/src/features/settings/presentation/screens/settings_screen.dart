@@ -36,7 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final voice = await _repo.get<bool>('voiceFeedback', false);
 
     setState(() {
-      _offlineMode = offline ?? false;
+      _offlineMode = offline ?? true;
       _largeText = large ?? true;
       _highContrast = contrast ?? false;
       _voiceFeedback = voice ?? false;
@@ -258,6 +258,69 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       subtitle: Text(l10n.lastSynced, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                       trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                       onTap: () {},
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              // Farm Information Section
+              _buildSectionHeader('معلومات المزرعة', Icons.agriculture, theme),
+              SizedBox(height: 8),
+              _buildCard(
+                theme,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.green.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(Icons.landscape, color: Colors.green),
+                      ),
+                      title: Text('بيانات المزرعة', style: theme.textTheme.bodyLarge),
+                      subtitle: Text('الاسم، المساحة، الموقع، نوع التربة', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/farm-settings');
+                      },
+                    ),
+                    Divider(height: 1),
+                    ListTile(
+                      leading: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.brown.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(Icons.terrain, color: Colors.brown),
+                      ),
+                      title: Text('الأراضي والقطع', style: theme.textTheme.bodyLarge),
+                      subtitle: Text('تقسيم المزرعة إلى قطع وإدارتها', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/land-management');
+                      },
+                    ),
+                    Divider(height: 1),
+                    ListTile(
+                      leading: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.amber.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(Icons.water, color: Colors.amber.shade700),
+                      ),
+                      title: Text('مصادر المياه', style: theme.textTheme.bodyLarge),
+                      subtitle: Text('الآبار، الخزانات، أنظمة الري', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/water-sources');
+                      },
                     ),
                   ],
                 ),

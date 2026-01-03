@@ -78,7 +78,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get remindMe => 'Remind Me';
 
   @override
-  String get noIrrigations => 'No irrigations recorded.';
+  String get noIrrigations => 'No irrigations';
 
   @override
   String get harvestTitle => 'Harvest Management';
@@ -90,7 +90,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quantity => 'Quantity';
 
   @override
-  String get pricePerUnit => 'Price';
+  String get pricePerUnit => 'Price (DH)';
 
   @override
   String get harvestSummaryTitle => 'Harvest Summary';
@@ -108,7 +108,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalExpenses => 'Expenses';
 
   @override
-  String get noHarvests => 'No harvests recorded.';
+  String get noHarvests => 'No harvests';
 
   @override
   String get journalTitle => 'Farm Journal';
@@ -681,4 +681,208 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backToDashboard => 'Back to Dashboard';
+
+  @override
+  String get equipmentManagement => 'Equipment Management';
+
+  @override
+  String get equipmentSubtitle => 'Farm equipment and machinery';
+
+  @override
+  String get cropCalendar => 'Crop Calendar';
+
+  @override
+  String get cropCalendarSubtitle => 'Planting and harvest schedules';
+
+  @override
+  String get notificationsMenu => 'Notifications';
+
+  @override
+  String get notificationsSubtitle => 'Reminders and alerts';
+
+  @override
+  String get analytics => 'Analytics';
+
+  @override
+  String get analyticsSubtitle => 'Charts and statistics';
+
+  @override
+  String get sales => 'Sales';
+
+  @override
+  String get salesSubtitle => 'Track sales and customers';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get financial => 'Financial';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get quickActions => 'Quick Actions';
+
+  @override
+  String get calendar => 'Calendar';
+
+  @override
+  String get equipment => 'Equipment';
+
+  @override
+  String get notificationAlerts =>
+      'Important reminders and alerts will appear here';
+
+  @override
+  String get addNewExpense => 'Add New Expense';
+
+  @override
+  String get editExpense => 'Edit Expense';
+
+  @override
+  String get deleteExpense => 'Delete Expense';
+
+  @override
+  String get confirmDeleteExpense => 'Do you want to delete this expense?';
+
+  @override
+  String get addNewIrrigation => 'Add New Irrigation';
+
+  @override
+  String get editIrrigation => 'Edit Irrigation';
+
+  @override
+  String get confirmDeleteIrrigation => 'Do you want to delete this operation?';
+
+  @override
+  String get addNewHarvest => 'Add New Harvest';
+
+  @override
+  String get editHarvest => 'Edit Harvest';
+
+  @override
+  String get deleteHarvest => 'Delete Harvest';
+
+  @override
+  String get confirmDeleteHarvest =>
+      'Are you sure you want to delete this harvest?';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get addNewEquipment => 'Add New Equipment';
+
+  @override
+  String get editEquipment => 'Edit Equipment';
+
+  @override
+  String get deleteEquipment => 'Delete Equipment';
+
+  @override
+  String get confirmDeleteEquipment => 'Do you want to delete this equipment?';
+
+  @override
+  String get addNewCrop => 'Add New Crop';
+
+  @override
+  String get editCrop => 'Edit Crop';
+
+  @override
+  String get deleteCrop => 'Delete Crop';
+
+  @override
+  String get confirmDeleteCrop =>
+      'Do you want to remove this crop from calendar?';
+
+  @override
+  String get addNewSale => 'Add New Sale';
+
+  @override
+  String get editSale => 'Edit Sale';
+
+  @override
+  String get deleteSale => 'Delete Sale';
+
+  @override
+  String get confirmDeleteSale => 'Do you want to delete this sale?';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get totalAmount => 'Total Amount';
+
+  @override
+  String get expenseDate => 'Expense Date';
+
+  @override
+  String get enterAmount => 'Enter expense amount';
+
+  @override
+  String get noData => 'No data available';
+
+  @override
+  String get noMonthlyData => 'No monthly data';
+
+  @override
+  String get noExpensesData => 'No expenses';
+
+  @override
+  String get customerInfo => 'Customer Information';
+
+  @override
+  String get customerName => 'Customer Name';
+
+  @override
+  String get productInfo => 'Product Information';
+
+  @override
+  String get product => 'Product';
+
+  @override
+  String get paymentAndStatus => 'Payment & Status';
+
+  @override
+  String get dateLabel => 'Date';
+
+  @override
+  String get noSales => 'No sales';
+
+  @override
+  String get notesLabel => 'Notes';
+
+  @override
+  String get noEquipment => 'No equipment';
+
+  @override
+  String get noCrops => 'No crops';
+
+  @override
+  String get addCropsToTrack => 'Add your crops to track harvest dates';
+
+  @override
+  String get noReadyCrops => 'No ready crops';
+
+  @override
+  String get noNotificationsData => 'No notifications';
+
+  @override
+  String get quantityKg => 'Quantity (kg)';
+
+  @override
+  String get enterQuantityKg => 'Enter quantity in kilograms';
+
+  @override
+  String get priceDhKg => 'Price (DH/kg)';
+
+  @override
+  String get totalQuantityLabel => 'Total Quantity';
+
+  @override
+  String get quantityLabel => 'Quantity';
+
+  @override
+  String get priceLabel => 'Price';
 }
