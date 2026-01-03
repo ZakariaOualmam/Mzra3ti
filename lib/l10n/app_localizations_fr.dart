@@ -180,7 +180,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get addFarmTitle => 'Ajouter Ferme';
 
   @override
-  String get farmName => 'Nom';
+  String get farmName => 'Nom de la ferme';
 
   @override
   String get farmLocation => 'Emplacement';
@@ -411,7 +411,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get price => 'Prix';
 
   @override
-  String get revenue => 'Revenu';
+  String get revenue => 'Revenus';
 
   @override
   String get date => 'Date';
@@ -652,7 +652,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get enterNewUsername => 'أدخل اسم المستخدم الجديد';
 
   @override
-  String get phoneNumber => 'رقم الهاتف';
+  String get phoneNumber => 'Numéro de téléphone';
 
   @override
   String get editPhone => 'تعديل رقم الهاتف';
@@ -893,4 +893,314 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get priceLabel => 'Prix';
+
+  @override
+  String get equipmentName => 'Nom de l\'équipement';
+
+  @override
+  String get purchaseDate => 'Date d\'achat';
+
+  @override
+  String get cropName => 'Nom de la culture';
+
+  @override
+  String get season => 'Saison';
+
+  @override
+  String get plantingDate => 'Date de plantation';
+
+  @override
+  String get expectedHarvestDate => 'Date de récolte prévue';
+
+  @override
+  String get enableReminders => 'Activer les rappels';
+
+  @override
+  String get sendReminderBeforeHarvest => 'Envoyer un rappel avant la récolte';
+
+  @override
+  String get pending => 'En attente';
+
+  @override
+  String get managerName => 'Nom du responsable';
+
+  @override
+  String get irrigationDate => 'Date d\'irrigation';
+
+  @override
+  String get enableReminder => 'Activer le rappel';
+
+  @override
+  String get sendIrrigationReminder => 'Envoyer un rappel d\'irrigation';
+
+  @override
+  String get reminder => 'Rappel';
+
+  @override
+  String get harvestDate => 'Date de récolte';
+
+  @override
+  String get farmInfo => 'Nom/Superficie/Emplacement/Type de sol';
+
+  @override
+  String get farmInformation => 'Informations sur la ferme';
+
+  @override
+  String get farmData => 'Données de la ferme';
+
+  @override
+  String get landAndPlots => 'Terres et parcelles';
+
+  @override
+  String get divideFarmIntoPlots =>
+      'Diviser la ferme en parcelles et les gérer';
+
+  @override
+  String get waterSources => 'Sources d\'eau';
+
+  @override
+  String get wellsTanksIrrigation =>
+      'Puits, réservoirs, systèmes d\'irrigation';
+
+  @override
+  String get harvestManagement => 'Gestion des cultures et récoltes';
+
+  @override
+  String get harvestSummary => 'Résumé de la récolte';
+
+  @override
+  String get harvestOperations => 'opération de récolte';
+
+  @override
+  String get netProfit => 'Bénéfice net';
+
+  @override
+  String get harvestLog => 'Journal de récolte';
+
+  @override
+  String get clickToAddHarvest => 'Cliquez + pour ajouter une nouvelle récolte';
+
+  @override
+  String get clickToAddExpense => 'Cliquez + pour ajouter une nouvelle dépense';
+
+  @override
+  String get clickToAddIrrigation =>
+      'Cliquez + pour ajouter une nouvelle irrigation';
+
+  @override
+  String get popularCrops => 'Cultures populaires :';
+
+  @override
+  String get customers => 'Clients';
+
+  @override
+  String get cash => 'Espèces';
+
+  @override
+  String get paid => 'Payé';
+
+  @override
+  String get partiallyPaid => 'Partiellement payé';
+
+  @override
+  String get noCustomers => 'Aucun client';
+
+  @override
+  String get readyForHarvest => 'Prêt pour la récolte';
+
+  @override
+  String get allCrops => 'Toutes les cultures';
+
+  @override
+  String get grains => 'Céréales';
+
+  @override
+  String get fruits => 'Fruits';
+
+  @override
+  String get other => 'Autre';
+
+  @override
+  String get spring => 'Printemps';
+
+  @override
+  String get summer => 'Été';
+
+  @override
+  String get autumn => 'Automne';
+
+  @override
+  String get winter => 'Hiver';
+
+  @override
+  String get daysCount => 'Nombre de jours (si nécessaire)';
+
+  @override
+  String get averageDaysToHarvest => 'Jours moyens jusqu\'à la récolte';
+
+  @override
+  String get irrigationTime => 'Heure d\'irrigation';
+
+  @override
+  String get additionalIrrigationInfo =>
+      'Informations supplémentaires sur l\'irrigation';
+
+  @override
+  String get fullIrrigationTime => 'Horaire d\'irrigation complet';
+
+  @override
+  String get tractor => 'Tracteur';
+
+  @override
+  String get purchasePrice => 'Prix d\'achat (DH)';
+
+  @override
+  String get active => 'Actif';
+
+  @override
+  String get maintenance => 'Maintenance';
+
+  @override
+  String get inMaintenance => 'En maintenance';
+
+  @override
+  String get needsMaintenance => 'Nécessite une maintenance';
+
+  @override
+  String get dates => 'Dates';
+
+  @override
+  String get lastMaintenance => 'Dernière maintenance';
+
+  @override
+  String get notDoneYet => 'Pas encore effectué';
+
+  @override
+  String get nextMaintenance => 'Prochaine maintenance';
+
+  @override
+  String get notSpecified => 'Non spécifié';
+
+  @override
+  String get expectedRevenue => 'Revenus prévus';
+
+  @override
+  String get upcomingMaintenance => 'Maintenance à venir';
+
+  @override
+  String get categoryFarming => 'Agriculture';
+
+  @override
+  String get categoryTractor => 'Tracteur';
+
+  @override
+  String get categoryIrrigation => 'Irrigation';
+
+  @override
+  String get categoryLabor => 'Main d\'oeuvre';
+
+  @override
+  String get categoryAccessories => 'Accessoires';
+
+  @override
+  String get categoryOther => 'Autre';
+
+  @override
+  String get equipmentTractor => 'Tracteur';
+
+  @override
+  String get equipmentWaterPump => 'Pompe à eau';
+
+  @override
+  String get equipmentHandTools => 'Outils manuels';
+
+  @override
+  String get equipmentFarmMachinery => 'Machines agricoles';
+
+  @override
+  String get equipmentIrrigationSystem => 'Système d\'irrigation';
+
+  @override
+  String get equipmentOther => 'Autre';
+
+  @override
+  String get cropWheat => 'Blé';
+
+  @override
+  String get cropPotatoes => 'Pommes de terre';
+
+  @override
+  String get cropCucumber => 'Concombre';
+
+  @override
+  String get cropTomatoes => 'Tomates';
+
+  @override
+  String get cropOnion => 'Oignon';
+
+  @override
+  String get cropCarrot => 'Carotte';
+
+  @override
+  String get cropPepper => 'Poivron';
+
+  @override
+  String get cropWatermelon => 'Pastèque';
+
+  @override
+  String get cropStrawberry => 'Fraise';
+
+  @override
+  String get cropCorn => 'Maïs';
+
+  @override
+  String get totalExpensesTitle => 'Total des dépenses';
+
+  @override
+  String get totalQuantityKg => 'kg';
+
+  @override
+  String get dailyAverage => 'Moyenne quotidienne';
+
+  @override
+  String get last7Days => '7 derniers jours';
+
+  @override
+  String get monthSummary => 'Résumé';
+
+  @override
+  String get daySaturday => 'Samedi';
+
+  @override
+  String get dayFriday => 'Vendredi';
+
+  @override
+  String get dayThursday => 'Jeudi';
+
+  @override
+  String get dayWednesday => 'Mercredi';
+
+  @override
+  String get dayTuesday => 'Mardi';
+
+  @override
+  String get dayMonday => 'Lundi';
+
+  @override
+  String get daySunday => 'Dimanche';
+
+  @override
+  String get totalProfitTitle => 'Bénéfice total';
+
+  @override
+  String get expenseBreakdown => 'Répartition des dépenses';
+
+  @override
+  String get expensesChart => 'Dépenses';
+
+  @override
+  String get broken => 'En panne';
+
+  @override
+  String get purchasedOn => 'Acheté';
 }

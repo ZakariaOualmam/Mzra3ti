@@ -26,12 +26,12 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
 
     // Category templates with emojis
     final categoryTemplates = [
-      {'name': 'زراعة', 'icon': '🌾', 'key': 'Zra3a'},
-      {'name': 'تراكتور', 'icon': '🚜', 'key': 'Traktour'},
-      {'name': 'سقي', 'icon': '💧', 'key': 'S9iya'},
-      {'name': 'عمال', 'icon': '👷', 'key': '3amal'},
-      {'name': 'ملحقات', 'icon': '🔧', 'key': 'Mlli7at'},
-      {'name': 'أخرى', 'icon': '📦', 'key': 'Okhr'},
+      {'name': l10n.categoryFarming, 'icon': '🌾', 'key': 'Zra3a'},
+      {'name': l10n.categoryTractor, 'icon': '🚜', 'key': 'Traktour'},
+      {'name': l10n.categoryIrrigation, 'icon': '💧', 'key': 'S9iya'},
+      {'name': l10n.categoryLabor, 'icon': '👷', 'key': '3amal'},
+      {'name': l10n.categoryAccessories, 'icon': '🔧', 'key': 'Mlli7at'},
+      {'name': l10n.categoryOther, 'icon': '📦', 'key': 'Okhr'},
     ];
 
     await showModalBottomSheet(
@@ -268,7 +268,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                 children: [
                   CircularProgressIndicator(color: green),
                   SizedBox(height: 16),
-                  Text('جاري التحميل...', style: TextStyle(color: Colors.grey)),
+                  Text(l10n.noData, style: TextStyle(color: Colors.grey)),
                 ],
               ),
             );
@@ -317,7 +317,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'إجمالي المصاريف',
+                                l10n.totalExpensesTitle,
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   fontSize: 14,
@@ -360,7 +360,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              'اضغط على + لإضافة مصروف جديد',
+                              AppLocalizations.of(context)!.clickToAddExpense,
                               style: TextStyle(fontSize: 14, color: Colors.grey.shade500),
                             ),
                           ],
@@ -374,12 +374,12 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                           
                           // Get category display name
                           final categoryMap = {
-                            'Zra3a': {'name': 'زراعة', 'icon': '🌾'},
-                            'Traktour': {'name': 'تراكتور', 'icon': '🚜'},
-                            'S9iya': {'name': 'سقي', 'icon': '💧'},
-                            '3amal': {'name': 'عمال', 'icon': '👷'},
-                            'Mlli7at': {'name': 'ملحقات', 'icon': '🔧'},
-                            'Okhr': {'name': 'أخرى', 'icon': '📦'},
+                            'Zra3a': {'name': l10n.categoryFarming, 'icon': '🌾'},
+                            'Traktour': {'name': l10n.categoryTractor, 'icon': '🚜'},
+                            'S9iya': {'name': l10n.categoryIrrigation, 'icon': '💧'},
+                            '3amal': {'name': l10n.categoryLabor, 'icon': '👷'},
+                            'Mlli7at': {'name': l10n.categoryAccessories, 'icon': '🔧'},
+                            'Okhr': {'name': l10n.categoryOther, 'icon': '📦'},
                           };
                           
                           final catInfo = categoryMap[e.type] ?? {'name': e.type, 'icon': '📦'};

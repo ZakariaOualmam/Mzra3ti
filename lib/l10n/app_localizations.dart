@@ -445,7 +445,7 @@ abstract class AppLocalizations {
   /// No description provided for @farmName.
   ///
   /// In ar, this message translates to:
-  /// **'الاسم'**
+  /// **'اسم المزرعة'**
   String get farmName;
 
   /// No description provided for @farmLocation.
@@ -457,7 +457,7 @@ abstract class AppLocalizations {
   /// No description provided for @cropType.
   ///
   /// In ar, this message translates to:
-  /// **'نوع الزرع'**
+  /// **'نوع المحصول'**
   String get cropType;
 
   /// No description provided for @area.
@@ -775,7 +775,7 @@ abstract class AppLocalizations {
   /// No description provided for @vegetables.
   ///
   /// In ar, this message translates to:
-  /// **'خضرة'**
+  /// **'خضروات'**
   String get vegetables;
 
   /// No description provided for @olives.
@@ -895,7 +895,7 @@ abstract class AppLocalizations {
   /// No description provided for @revenue.
   ///
   /// In ar, this message translates to:
-  /// **'المداخيل'**
+  /// **'الإيرادات'**
   String get revenue;
 
   /// No description provided for @date.
@@ -1833,6 +1833,618 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'السعر'**
   String get priceLabel;
+
+  /// No description provided for @equipmentName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المعدة'**
+  String get equipmentName;
+
+  /// No description provided for @purchaseDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الشراء'**
+  String get purchaseDate;
+
+  /// No description provided for @cropName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المحصول'**
+  String get cropName;
+
+  /// No description provided for @season.
+  ///
+  /// In ar, this message translates to:
+  /// **'الموسم'**
+  String get season;
+
+  /// No description provided for @plantingDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الزراعة'**
+  String get plantingDate;
+
+  /// No description provided for @expectedHarvestDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحصاد المتوقع'**
+  String get expectedHarvestDate;
+
+  /// No description provided for @enableReminders.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفعيل التذكيرات'**
+  String get enableReminders;
+
+  /// No description provided for @sendReminderBeforeHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال تذكير قبل موعد الحصاد'**
+  String get sendReminderBeforeHarvest;
+
+  /// No description provided for @pending.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلق'**
+  String get pending;
+
+  /// No description provided for @managerName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المسؤول'**
+  String get managerName;
+
+  /// No description provided for @irrigationDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ السقي'**
+  String get irrigationDate;
+
+  /// No description provided for @enableReminder.
+  ///
+  /// In ar, this message translates to:
+  /// **'تفعيل التذكير'**
+  String get enableReminder;
+
+  /// No description provided for @sendIrrigationReminder.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال تذكير لموعد السقي'**
+  String get sendIrrigationReminder;
+
+  /// No description provided for @reminder.
+  ///
+  /// In ar, this message translates to:
+  /// **'تذكير'**
+  String get reminder;
+
+  /// No description provided for @harvestDate.
+  ///
+  /// In ar, this message translates to:
+  /// **'تاريخ الحصاد'**
+  String get harvestDate;
+
+  /// No description provided for @farmInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم، المساحة، الموقع، نوع التربة'**
+  String get farmInfo;
+
+  /// No description provided for @farmInformation.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات المزرعة'**
+  String get farmInformation;
+
+  /// No description provided for @farmData.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيانات المزرعة'**
+  String get farmData;
+
+  /// No description provided for @landAndPlots.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأراضي والقطع'**
+  String get landAndPlots;
+
+  /// No description provided for @divideFarmIntoPlots.
+  ///
+  /// In ar, this message translates to:
+  /// **'تقسيم المزرعة إلى قطع وإدارتها'**
+  String get divideFarmIntoPlots;
+
+  /// No description provided for @waterSources.
+  ///
+  /// In ar, this message translates to:
+  /// **'مصادر المياه'**
+  String get waterSources;
+
+  /// No description provided for @wellsTanksIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'الآبار، الخزانات، أنظمة الري'**
+  String get wellsTanksIrrigation;
+
+  /// No description provided for @harvestManagement.
+  ///
+  /// In ar, this message translates to:
+  /// **'إدارة المحاصيل والحصاد'**
+  String get harvestManagement;
+
+  /// No description provided for @harvestSummary.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص الحصاد'**
+  String get harvestSummary;
+
+  /// No description provided for @harvestOperations.
+  ///
+  /// In ar, this message translates to:
+  /// **'عملية حصاد'**
+  String get harvestOperations;
+
+  /// No description provided for @netProfit.
+  ///
+  /// In ar, this message translates to:
+  /// **'صافي الربح'**
+  String get netProfit;
+
+  /// No description provided for @harvestLog.
+  ///
+  /// In ar, this message translates to:
+  /// **'سجل الحصاد'**
+  String get harvestLog;
+
+  /// No description provided for @clickToAddHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط على + لإضافة حصاد جديد'**
+  String get clickToAddHarvest;
+
+  /// No description provided for @clickToAddExpense.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط على + لإضافة مصروف جديد'**
+  String get clickToAddExpense;
+
+  /// No description provided for @clickToAddIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط على + لإضافة سقي جديد'**
+  String get clickToAddIrrigation;
+
+  /// No description provided for @popularCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'محاصيل شائعة:'**
+  String get popularCrops;
+
+  /// No description provided for @customers.
+  ///
+  /// In ar, this message translates to:
+  /// **'العملاء'**
+  String get customers;
+
+  /// No description provided for @cash.
+  ///
+  /// In ar, this message translates to:
+  /// **'نقدي'**
+  String get cash;
+
+  /// No description provided for @paid.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدفوع'**
+  String get paid;
+
+  /// No description provided for @partiallyPaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدفوع جزئياً'**
+  String get partiallyPaid;
+
+  /// No description provided for @noCustomers.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد عملاء'**
+  String get noCustomers;
+
+  /// No description provided for @readyForHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاهز للحصاد'**
+  String get readyForHarvest;
+
+  /// No description provided for @allCrops.
+  ///
+  /// In ar, this message translates to:
+  /// **'جميع المحاصيل'**
+  String get allCrops;
+
+  /// No description provided for @grains.
+  ///
+  /// In ar, this message translates to:
+  /// **'حبوب'**
+  String get grains;
+
+  /// No description provided for @fruits.
+  ///
+  /// In ar, this message translates to:
+  /// **'فواكه'**
+  String get fruits;
+
+  /// No description provided for @other.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get other;
+
+  /// No description provided for @spring.
+  ///
+  /// In ar, this message translates to:
+  /// **'الربيع'**
+  String get spring;
+
+  /// No description provided for @summer.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصيف'**
+  String get summer;
+
+  /// No description provided for @autumn.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخريف'**
+  String get autumn;
+
+  /// No description provided for @winter.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشتاء'**
+  String get winter;
+
+  /// No description provided for @daysCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'عدد الأيام (إذا لازم)'**
+  String get daysCount;
+
+  /// No description provided for @averageDaysToHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسط الأيام حتى الحصاد'**
+  String get averageDaysToHarvest;
+
+  /// No description provided for @irrigationTime.
+  ///
+  /// In ar, this message translates to:
+  /// **'وقت السقي'**
+  String get irrigationTime;
+
+  /// No description provided for @additionalIrrigationInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات إضافية عن السقي'**
+  String get additionalIrrigationInfo;
+
+  /// No description provided for @fullIrrigationTime.
+  ///
+  /// In ar, this message translates to:
+  /// **'موعد السقي الكامل'**
+  String get fullIrrigationTime;
+
+  /// No description provided for @tractor.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرار'**
+  String get tractor;
+
+  /// No description provided for @purchasePrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'سعر الشراء (DH)'**
+  String get purchasePrice;
+
+  /// No description provided for @active.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشط'**
+  String get active;
+
+  /// No description provided for @maintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'صيانة'**
+  String get maintenance;
+
+  /// No description provided for @inMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيد الصيانة'**
+  String get inMaintenance;
+
+  /// No description provided for @needsMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحتاج صيانة'**
+  String get needsMaintenance;
+
+  /// No description provided for @dates.
+  ///
+  /// In ar, this message translates to:
+  /// **'التواريخ'**
+  String get dates;
+
+  /// No description provided for @lastMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر صيانة'**
+  String get lastMaintenance;
+
+  /// No description provided for @notDoneYet.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم تتم بعد'**
+  String get notDoneYet;
+
+  /// No description provided for @nextMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصيانة القادمة'**
+  String get nextMaintenance;
+
+  /// No description provided for @notSpecified.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير محددة'**
+  String get notSpecified;
+
+  /// No description provided for @expectedRevenue.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإيرادات المتوقعة'**
+  String get expectedRevenue;
+
+  /// No description provided for @upcomingMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'صيانة قادمة'**
+  String get upcomingMaintenance;
+
+  /// No description provided for @categoryFarming.
+  ///
+  /// In ar, this message translates to:
+  /// **'زراعة'**
+  String get categoryFarming;
+
+  /// No description provided for @categoryTractor.
+  ///
+  /// In ar, this message translates to:
+  /// **'تراكتور'**
+  String get categoryTractor;
+
+  /// No description provided for @categoryIrrigation.
+  ///
+  /// In ar, this message translates to:
+  /// **'سقي'**
+  String get categoryIrrigation;
+
+  /// No description provided for @categoryLabor.
+  ///
+  /// In ar, this message translates to:
+  /// **'عمال'**
+  String get categoryLabor;
+
+  /// No description provided for @categoryAccessories.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملحقات'**
+  String get categoryAccessories;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get categoryOther;
+
+  /// No description provided for @equipmentTractor.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرار'**
+  String get equipmentTractor;
+
+  /// No description provided for @equipmentWaterPump.
+  ///
+  /// In ar, this message translates to:
+  /// **'مضخة ماء'**
+  String get equipmentWaterPump;
+
+  /// No description provided for @equipmentHandTools.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدوات يدوية'**
+  String get equipmentHandTools;
+
+  /// No description provided for @equipmentFarmMachinery.
+  ///
+  /// In ar, this message translates to:
+  /// **'آلات زراعية'**
+  String get equipmentFarmMachinery;
+
+  /// No description provided for @equipmentIrrigationSystem.
+  ///
+  /// In ar, this message translates to:
+  /// **'نظام ري'**
+  String get equipmentIrrigationSystem;
+
+  /// No description provided for @equipmentOther.
+  ///
+  /// In ar, this message translates to:
+  /// **'أخرى'**
+  String get equipmentOther;
+
+  /// No description provided for @cropWheat.
+  ///
+  /// In ar, this message translates to:
+  /// **'قمح'**
+  String get cropWheat;
+
+  /// No description provided for @cropPotatoes.
+  ///
+  /// In ar, this message translates to:
+  /// **'بطاطس'**
+  String get cropPotatoes;
+
+  /// No description provided for @cropCucumber.
+  ///
+  /// In ar, this message translates to:
+  /// **'خيار'**
+  String get cropCucumber;
+
+  /// No description provided for @cropTomatoes.
+  ///
+  /// In ar, this message translates to:
+  /// **'طماطم'**
+  String get cropTomatoes;
+
+  /// No description provided for @cropOnion.
+  ///
+  /// In ar, this message translates to:
+  /// **'بصل'**
+  String get cropOnion;
+
+  /// No description provided for @cropCarrot.
+  ///
+  /// In ar, this message translates to:
+  /// **'جزر'**
+  String get cropCarrot;
+
+  /// No description provided for @cropPepper.
+  ///
+  /// In ar, this message translates to:
+  /// **'فلفل'**
+  String get cropPepper;
+
+  /// No description provided for @cropWatermelon.
+  ///
+  /// In ar, this message translates to:
+  /// **'بطيخ'**
+  String get cropWatermelon;
+
+  /// No description provided for @cropStrawberry.
+  ///
+  /// In ar, this message translates to:
+  /// **'فراولة'**
+  String get cropStrawberry;
+
+  /// No description provided for @cropCorn.
+  ///
+  /// In ar, this message translates to:
+  /// **'ذرة'**
+  String get cropCorn;
+
+  /// No description provided for @totalExpensesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجمالي المصاريف'**
+  String get totalExpensesTitle;
+
+  /// No description provided for @totalQuantityKg.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلغ'**
+  String get totalQuantityKg;
+
+  /// No description provided for @dailyAverage.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوسط يومي'**
+  String get dailyAverage;
+
+  /// No description provided for @last7Days.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر 7 أيام'**
+  String get last7Days;
+
+  /// No description provided for @monthSummary.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص 6 أشهر'**
+  String get monthSummary;
+
+  /// No description provided for @daySaturday.
+  ///
+  /// In ar, this message translates to:
+  /// **'السبت'**
+  String get daySaturday;
+
+  /// No description provided for @dayFriday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الجمعة'**
+  String get dayFriday;
+
+  /// No description provided for @dayThursday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخميس'**
+  String get dayThursday;
+
+  /// No description provided for @dayWednesday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأربعاء'**
+  String get dayWednesday;
+
+  /// No description provided for @dayTuesday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الثلاثاء'**
+  String get dayTuesday;
+
+  /// No description provided for @dayMonday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإثنين'**
+  String get dayMonday;
+
+  /// No description provided for @daySunday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأحد'**
+  String get daySunday;
+
+  /// No description provided for @totalProfitTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجمالي الأرباح'**
+  String get totalProfitTitle;
+
+  /// No description provided for @expenseBreakdown.
+  ///
+  /// In ar, this message translates to:
+  /// **'توزيع المصاريف'**
+  String get expenseBreakdown;
+
+  /// No description provided for @expensesChart.
+  ///
+  /// In ar, this message translates to:
+  /// **'المصاريف'**
+  String get expensesChart;
+
+  /// No description provided for @broken.
+  ///
+  /// In ar, this message translates to:
+  /// **'معطل'**
+  String get broken;
+
+  /// No description provided for @purchasedOn.
+  ///
+  /// In ar, this message translates to:
+  /// **'شراء'**
+  String get purchasedOn;
 }
 
 class _AppLocalizationsDelegate

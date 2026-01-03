@@ -180,7 +180,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addFarmTitle => 'Add Farm';
 
   @override
-  String get farmName => 'Name';
+  String get farmName => 'Farm Name';
 
   @override
   String get farmLocation => 'Location';
@@ -885,4 +885,311 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get priceLabel => 'Price';
+
+  @override
+  String get equipmentName => 'Equipment Name';
+
+  @override
+  String get purchaseDate => 'Purchase Date';
+
+  @override
+  String get cropName => 'Crop Name';
+
+  @override
+  String get season => 'Season';
+
+  @override
+  String get plantingDate => 'Planting Date';
+
+  @override
+  String get expectedHarvestDate => 'Expected Harvest Date';
+
+  @override
+  String get enableReminders => 'Enable Reminders';
+
+  @override
+  String get sendReminderBeforeHarvest => 'Send reminder before harvest';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get managerName => 'Manager Name';
+
+  @override
+  String get irrigationDate => 'Irrigation Date';
+
+  @override
+  String get enableReminder => 'Enable Reminder';
+
+  @override
+  String get sendIrrigationReminder => 'Send irrigation reminder';
+
+  @override
+  String get reminder => 'Reminder';
+
+  @override
+  String get harvestDate => 'Harvest Date';
+
+  @override
+  String get farmInfo => 'Name/Area/Location/Soil Type';
+
+  @override
+  String get farmInformation => 'Farm Information';
+
+  @override
+  String get farmData => 'Farm Data';
+
+  @override
+  String get landAndPlots => 'Land and Plots';
+
+  @override
+  String get divideFarmIntoPlots =>
+      'Divide the farm into plots and manage them';
+
+  @override
+  String get waterSources => 'Water Sources';
+
+  @override
+  String get wellsTanksIrrigation => 'Wells, Tanks, Irrigation Systems';
+
+  @override
+  String get harvestManagement => 'Crops and Harvest Management';
+
+  @override
+  String get harvestSummary => 'Harvest Summary';
+
+  @override
+  String get harvestOperations => 'harvest operation';
+
+  @override
+  String get netProfit => 'Net Profit';
+
+  @override
+  String get harvestLog => 'Harvest Log';
+
+  @override
+  String get clickToAddHarvest => 'Click + to add new harvest';
+
+  @override
+  String get clickToAddExpense => 'Click + to add new expense';
+
+  @override
+  String get clickToAddIrrigation => 'Click + to add new irrigation';
+
+  @override
+  String get popularCrops => 'Popular Crops:';
+
+  @override
+  String get customers => 'Customers';
+
+  @override
+  String get cash => 'Cash';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get partiallyPaid => 'Partially Paid';
+
+  @override
+  String get noCustomers => 'No customers';
+
+  @override
+  String get readyForHarvest => 'Ready for Harvest';
+
+  @override
+  String get allCrops => 'All Crops';
+
+  @override
+  String get grains => 'Grains';
+
+  @override
+  String get fruits => 'Fruits';
+
+  @override
+  String get other => 'Other';
+
+  @override
+  String get spring => 'Spring';
+
+  @override
+  String get summer => 'Summer';
+
+  @override
+  String get autumn => 'Autumn';
+
+  @override
+  String get winter => 'Winter';
+
+  @override
+  String get daysCount => 'Days count (if needed)';
+
+  @override
+  String get averageDaysToHarvest => 'Average days to harvest';
+
+  @override
+  String get irrigationTime => 'Irrigation Time';
+
+  @override
+  String get additionalIrrigationInfo => 'Additional irrigation information';
+
+  @override
+  String get fullIrrigationTime => 'Full irrigation schedule';
+
+  @override
+  String get tractor => 'Tractor';
+
+  @override
+  String get purchasePrice => 'Purchase Price (DH)';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get maintenance => 'Maintenance';
+
+  @override
+  String get inMaintenance => 'In Maintenance';
+
+  @override
+  String get needsMaintenance => 'Needs Maintenance';
+
+  @override
+  String get dates => 'Dates';
+
+  @override
+  String get lastMaintenance => 'Last Maintenance';
+
+  @override
+  String get notDoneYet => 'Not done yet';
+
+  @override
+  String get nextMaintenance => 'Next Maintenance';
+
+  @override
+  String get notSpecified => 'Not specified';
+
+  @override
+  String get expectedRevenue => 'Expected Revenue';
+
+  @override
+  String get upcomingMaintenance => 'Upcoming maintenance';
+
+  @override
+  String get categoryFarming => 'Farming';
+
+  @override
+  String get categoryTractor => 'Tractor';
+
+  @override
+  String get categoryIrrigation => 'Irrigation';
+
+  @override
+  String get categoryLabor => 'Labor';
+
+  @override
+  String get categoryAccessories => 'Accessories';
+
+  @override
+  String get categoryOther => 'Other';
+
+  @override
+  String get equipmentTractor => 'Tractor';
+
+  @override
+  String get equipmentWaterPump => 'Water Pump';
+
+  @override
+  String get equipmentHandTools => 'Hand Tools';
+
+  @override
+  String get equipmentFarmMachinery => 'Farm Machinery';
+
+  @override
+  String get equipmentIrrigationSystem => 'Irrigation System';
+
+  @override
+  String get equipmentOther => 'Other';
+
+  @override
+  String get cropWheat => 'Wheat';
+
+  @override
+  String get cropPotatoes => 'Potatoes';
+
+  @override
+  String get cropCucumber => 'Cucumber';
+
+  @override
+  String get cropTomatoes => 'Tomatoes';
+
+  @override
+  String get cropOnion => 'Onion';
+
+  @override
+  String get cropCarrot => 'Carrot';
+
+  @override
+  String get cropPepper => 'Pepper';
+
+  @override
+  String get cropWatermelon => 'Watermelon';
+
+  @override
+  String get cropStrawberry => 'Strawberry';
+
+  @override
+  String get cropCorn => 'Corn';
+
+  @override
+  String get totalExpensesTitle => 'Total Expenses';
+
+  @override
+  String get totalQuantityKg => 'kg';
+
+  @override
+  String get dailyAverage => 'Daily Average';
+
+  @override
+  String get last7Days => 'Last 7 Days';
+
+  @override
+  String get monthSummary => 'Summary';
+
+  @override
+  String get daySaturday => 'Saturday';
+
+  @override
+  String get dayFriday => 'Friday';
+
+  @override
+  String get dayThursday => 'Thursday';
+
+  @override
+  String get dayWednesday => 'Wednesday';
+
+  @override
+  String get dayTuesday => 'Tuesday';
+
+  @override
+  String get dayMonday => 'Monday';
+
+  @override
+  String get daySunday => 'Sunday';
+
+  @override
+  String get totalProfitTitle => 'Total Profit';
+
+  @override
+  String get expenseBreakdown => 'Expense Breakdown';
+
+  @override
+  String get expensesChart => 'Expenses';
+
+  @override
+  String get broken => 'Broken';
+
+  @override
+  String get purchasedOn => 'Purchased';
 }

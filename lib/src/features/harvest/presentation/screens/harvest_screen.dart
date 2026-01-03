@@ -31,15 +31,15 @@ class _HarvestScreenState extends State<HarvestScreen> {
 
     // Common crop templates with emojis
     final commonCrops = [
-      {'name': 'قمح', 'icon': '🌾'},
-      {'name': 'بطاطس', 'icon': '🥔'},
-      {'name': 'خيار', 'icon': '🥒'},
-      {'name': 'طماطم', 'icon': '🍅'},
-      {'name': 'بصل', 'icon': '🧅'},
-      {'name': 'جزر', 'icon': '🥕'},
-      {'name': 'فلفل', 'icon': '🌶️'},
-      {'name': 'بطيخ', 'icon': '🍉'},
-      {'name': 'فراولة', 'icon': '🍓'},
+      {'name': l10n.cropWheat, 'icon': '🌾'},
+      {'name': l10n.cropPotatoes, 'icon': '🥔'},
+      {'name': l10n.cropCucumber, 'icon': '🥒'},
+      {'name': l10n.cropTomatoes, 'icon': '🍅'},
+      {'name': l10n.cropOnion, 'icon': '🧅'},
+      {'name': l10n.cropCarrot, 'icon': '🥕'},
+      {'name': l10n.cropPepper, 'icon': '🌶️'},
+      {'name': l10n.cropWatermelon, 'icon': '🍉'},
+      {'name': l10n.cropStrawberry, 'icon': '🍓'},
     ];
 
     await showModalBottomSheet(
@@ -86,7 +86,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                         children: [
                           // Quick crop templates
                           if (existing == null) ...[
-                            Text('محاصيل شائعة:', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                            Text(AppLocalizations.of(context)!.popularCrops, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                             SizedBox(height: 8),
                             Wrap(
                               spacing: 8,
@@ -122,7 +122,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                           TextField(
                             controller: cropController,
                             decoration: InputDecoration(
-                              labelText: 'نوع المحصول',
+                              labelText: AppLocalizations.of(context)!.cropType,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.grass),
                             ),
@@ -150,7 +150,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                               labelText: AppLocalizations.of(context)!.priceDhKg,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.attach_money),
-                              helperText: 'سعر الكيلوغرام الواحد',
+                              helperText: l10n.pricePerUnit,
                             ),
                           ),
                           SizedBox(height: 12),
@@ -162,7 +162,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
                             leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
-                            title: Text('تاريخ الحصاد'),
+                            title: Text(AppLocalizations.of(context)!.harvestDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(date)),
                             onTap: () async {
                               final picked = await showDatePicker(
@@ -192,7 +192,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('الإيرادات المتوقعة', style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
+                                      Text(AppLocalizations.of(context)!.expectedRevenue, style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
                                       SizedBox(height: 4),
                                       Text(
                                         '${((double.tryParse(qtyController.text) ?? 0) * (double.tryParse(priceController.text) ?? 0)).toStringAsFixed(2)} DH',
@@ -220,7 +220,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                       onPressed: () async {
                         if (cropController.text.isEmpty || qtyController.text.isEmpty || priceController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('الرجاء ملء جميع الحقول')),
+                            SnackBar(content: Text(l10n.fieldRequired)),
                           );
                           return;
                         }
@@ -230,7 +230,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                         
                         if (qty <= 0 || price <= 0) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('الرجاء إدخال قيم صحيحة')),
+                            SnackBar(content: Text(l10n.fieldRequired)),
                           );
                           return;
                         }
@@ -277,7 +277,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
         shadowColor: green.withOpacity(0.3),
         centerTitle: true,
         title: Text(
-          'إدارة المحاصيل والحصاد',
+          AppLocalizations.of(context)!.harvestManagement,
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -413,7 +413,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'ملخص الحصاد',
+                                          AppLocalizations.of(context)!.harvestSummary,
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18,
@@ -422,7 +422,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                         ),
                                         SizedBox(height: 4),
                                         Text(
-                                          '${list.length} عملية حصاد',
+                                          '${list.length} ${AppLocalizations.of(context)!.harvestOperations}',
                                           style: TextStyle(
                                             color: Colors.white.withOpacity(0.9),
                                             fontSize: 14,
@@ -448,7 +448,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                   Expanded(
                                     child: _buildStatItem(
                                       icon: Icons.monetization_on,
-                                      label: 'الإيرادات',
+                                      label: AppLocalizations.of(context)!.revenue,
                                       value: '${rev.toStringAsFixed(0)} DH',
                                       color: Colors.white,
                                     ),
@@ -492,7 +492,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'صافي الربح',
+                                      AppLocalizations.of(context)!.netProfit,
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.grey.shade700,
@@ -530,7 +530,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                     Icon(Icons.list_alt, color: green, size: 24),
                     SizedBox(width: 8),
                     Text(
-                      'سجل الحصاد',
+                      AppLocalizations.of(context)!.harvestLog,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -581,7 +581,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'اضغط على + لإضافة حصاد جديد',
+                          AppLocalizations.of(context)!.clickToAddHarvest,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey.shade500,

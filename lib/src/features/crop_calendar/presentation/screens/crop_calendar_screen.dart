@@ -18,13 +18,30 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
   final _repo = CropCalendarRepository();
   late TabController _tabController;
   
-  final List<String> _seasons = ['الربيع', 'الصيف', 'الخريف', 'الشتاء'];
-  final List<String> _cropTypes = ['خضروات', 'حبوب', 'فواكه', 'أخرى'];
+  List<String> _seasons = [];
+  List<String> _cropTypes = [];
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _seasons = [
+      AppLocalizations.of(context)!.spring,
+      AppLocalizations.of(context)!.summer,
+      AppLocalizations.of(context)!.autumn,
+      AppLocalizations.of(context)!.winter,
+    ];
+    _cropTypes = [
+      AppLocalizations.of(context)!.vegetables,
+      AppLocalizations.of(context)!.grains,
+      AppLocalizations.of(context)!.fruits,
+      AppLocalizations.of(context)!.other,
+    ];
   }
 
   @override
@@ -88,7 +105,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                         children: [
                           // Quick Templates
                           if (existing == null) ...[
-                            Text('محاصيل شائعة:', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                            Text(AppLocalizations.of(context)!.popularCrops, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                             SizedBox(height: 8),
                             Wrap(
                               spacing: 8,
@@ -125,7 +142,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                           TextField(
                             controller: nameController,
                             decoration: InputDecoration(
-                              labelText: 'اسم المحصول',
+                              labelText: AppLocalizations.of(context)!.cropName,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.grass),
                             ),
@@ -142,7 +159,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               child: DropdownButton<String>(
                                 value: cropType,
                                 isExpanded: true,
-                                hint: Text('نوع المحصول'),
+                                hint: Text(AppLocalizations.of(context)!.cropType),
                                 items: _cropTypes.map((type) {
                                   return DropdownMenuItem(value: type, child: Text(type));
                                 }).toList(),
@@ -162,7 +179,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               child: DropdownButton<String>(
                                 value: season,
                                 isExpanded: true,
-                                hint: Text('الموسم'),
+                                hint: Text(AppLocalizations.of(context)!.season),
                                 items: _seasons.map((s) {
                                   return DropdownMenuItem(
                                     value: s,
@@ -187,7 +204,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               labelText: 'مدة النمو (بالأيام)',
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.timelapse),
-                              helperText: 'متوسط الأيام حتى الحصاد',
+                              helperText: AppLocalizations.of(context)!.averageDaysToHarvest,
                             ),
                             keyboardType: TextInputType.number,
                           ),
@@ -199,7 +216,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
                             leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
-                            title: Text('تاريخ الزراعة'),
+                            title: Text(AppLocalizations.of(context)!.plantingDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(plantingDate)),
                             onTap: () async {
                               final picked = await showDatePicker(
@@ -229,7 +246,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('تاريخ الحصاد المتوقع', style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
+                                      Text(AppLocalizations.of(context)!.expectedHarvestDate, style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
                                       SizedBox(height: 4),
                                       Text(
                                         DateFormat('yyyy-MM-dd').format(
@@ -250,8 +267,8 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            title: Text('تفعيل التذكيرات'),
-                            subtitle: Text('إرسال تذكير قبل موعد الحصاد'),
+                            title: Text(AppLocalizations.of(context)!.enableReminders),
+                            subtitle: Text(AppLocalizations.of(context)!.sendReminderBeforeHarvest),
                             value: reminderEnabled,
                             onChanged: (val) => setDialogState(() => reminderEnabled = val),
                           ),
@@ -322,30 +339,26 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
 
   String _getCurrentSeason() {
     final month = DateTime.now().month;
-    if (month >= 3 && month <= 5) return 'الربيع';
-    if (month >= 6 && month <= 8) return 'الصيف';
-    if (month >= 9 && month <= 11) return 'الخريف';
-    return 'الشتاء';
+    if (month >= 3 && month <= 5) return AppLocalizations.of(context)!.spring;
+    if (month >= 6 && month <= 8) return AppLocalizations.of(context)!.summer;
+    if (month >= 9 && month <= 11) return AppLocalizations.of(context)!.autumn;
+    return AppLocalizations.of(context)!.winter;
   }
 
   IconData _getSeasonIcon(String season) {
-    switch (season) {
-      case 'الربيع': return Icons.local_florist;
-      case 'الصيف': return Icons.wb_sunny;
-      case 'الخريف': return Icons.nature;
-      case 'الشتاء': return Icons.ac_unit;
-      default: return Icons.calendar_today;
-    }
+    if (season == AppLocalizations.of(context)!.spring) return Icons.local_florist;
+    if (season == AppLocalizations.of(context)!.summer) return Icons.wb_sunny;
+    if (season == AppLocalizations.of(context)!.autumn) return Icons.nature;
+    if (season == AppLocalizations.of(context)!.winter) return Icons.ac_unit;
+    return Icons.calendar_today;
   }
 
   Color _getSeasonColor(String season) {
-    switch (season) {
-      case 'الربيع': return Colors.pink;
-      case 'الصيف': return Colors.orange;
-      case 'الخريف': return Colors.brown;
-      case 'الشتاء': return Colors.blue;
-      default: return Colors.grey;
-    }
+    if (season == AppLocalizations.of(context)!.spring) return Colors.pink;
+    if (season == AppLocalizations.of(context)!.summer) return Colors.orange;
+    if (season == AppLocalizations.of(context)!.autumn) return Colors.brown;
+    if (season == AppLocalizations.of(context)!.winter) return Colors.blue;
+    return Colors.grey;
   }
 
   @override
@@ -379,8 +392,8 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
           labelColor: AppStyles.brandWhite,
           unselectedLabelColor: AppStyles.brandWhite.withOpacity(0.7),
           tabs: [
-            Tab(text: 'جميع المحاصيل'),
-            Tab(text: 'جاهز للحصاد'),
+            Tab(text: AppLocalizations.of(context)!.allCrops),
+            Tab(text: AppLocalizations.of(context)!.readyForHarvest),
           ],
         ),
       ),

@@ -88,23 +88,23 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Overall Stats Cards
-                    _buildStatsCards(),
+                    _buildStatsCards(l10n),
                     SizedBox(height: 24),
 
                     // Weekly Trend Chart
-                    _buildSectionTitle('آخر 7 أيام', Icons.trending_up),
+                    _buildSectionTitle(l10n.last7Days, Icons.trending_up),
                     SizedBox(height: 12),
                     _buildWeeklyChart(),
                     SizedBox(height: 24),
 
                     // Monthly Summary
-                    _buildSectionTitle('ملخص 6 أشهر', Icons.calendar_month),
+                    _buildSectionTitle(l10n.monthSummary, Icons.calendar_month),
                     SizedBox(height: 12),
                     _buildMonthlyBars(),
                     SizedBox(height: 24),
 
                     // Expense Breakdown
-                    _buildSectionTitle('توزيع المصاريف', Icons.pie_chart),
+                    _buildSectionTitle(l10n.expenseBreakdown, Icons.pie_chart),
                     SizedBox(height: 12),
                     _buildExpenseBreakdown(),
                     SizedBox(height: 80),
@@ -115,12 +115,12 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
     );
   }
 
-  Widget _buildStatsCards() {
+  Widget _buildStatsCards(AppLocalizations l10n) {
     return Row(
       children: [
         Expanded(
           child: _buildStatCard(
-            'إجمالي الأرباح',
+            l10n.totalProfitTitle,
             '${_stats['totalProfit']?.toStringAsFixed(0) ?? '0'} DH',
             Icons.attach_money,
             Colors.green,
@@ -129,7 +129,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         SizedBox(width: 12),
         Expanded(
           child: _buildStatCard(
-            'متوسط يومي',
+            l10n.dailyAverage,
             '${_stats['avgDailyRevenue']?.toStringAsFixed(0) ?? '0'} DH',
             Icons.trending_up,
             Colors.blue,
@@ -230,7 +230,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                       children: [
                         // Revenue Bar
                         Tooltip(
-                          message: 'الإيرادات: ${data.revenue.toStringAsFixed(0)} DH',
+                          message: '${AppLocalizations.of(context)!.revenue}: ${data.revenue.toStringAsFixed(0)} DH',
                           child: Container(
                             width: double.infinity,
                             height: maxValue > 0 ? (data.revenue / maxValue * 150) : 0,
@@ -243,7 +243,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                         SizedBox(height: 4),
                         // Expense Bar
                         Tooltip(
-                          message: 'المصاريف: ${data.expenses.toStringAsFixed(0)} DH',
+                          message: '${AppLocalizations.of(context)!.expensesChart}: ${data.expenses.toStringAsFixed(0)} DH',
                           child: Container(
                             width: double.infinity,
                             height: maxValue > 0 ? (data.expenses / maxValue * 150) : 0,
@@ -275,9 +275,9 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildLegendItem('الإيرادات', Colors.green),
+              _buildLegendItem(AppLocalizations.of(context)!.revenue, Colors.green),
               SizedBox(width: 16),
-              _buildLegendItem('المصاريف', Colors.red),
+              _buildLegendItem(AppLocalizations.of(context)!.expensesChart, Colors.red),
             ],
           ),
         ],

@@ -123,7 +123,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                           TextField(
                             controller: phoneController,
                             decoration: InputDecoration(
-                              labelText: 'رقم الهاتف',
+                              labelText: AppLocalizations.of(context)!.phoneNumber,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -203,7 +203,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'المجموع',
+                                  AppLocalizations.of(context)!.total,
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -403,7 +403,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
   String _getPaymentText(String method) {
     switch (method) {
       case 'Cash':
-        return 'نقدي';
+        return AppLocalizations.of(context)!.cash;
       case 'Bank Transfer':
         return 'تحويل بنكي';
       case 'Check':
@@ -442,11 +442,11 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
   String _getStatusText(String status) {
     switch (status) {
       case 'Paid':
-        return 'مدفوع';
+        return AppLocalizations.of(context)!.paid;
       case 'Pending':
-        return 'معلق';
+        return AppLocalizations.of(context)!.pending;
       case 'Partial':
-        return 'مدفوع جزئياً';
+        return AppLocalizations.of(context)!.partiallyPaid;
       default:
         return status;
     }
@@ -492,7 +492,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
           unselectedLabelColor: AppStyles.brandWhite.withOpacity(0.7),
           tabs: [
             Tab(text: AppLocalizations.of(context)!.sales),
-            Tab(text: 'العملاء'),
+            Tab(text: AppLocalizations.of(context)!.customers),
           ],
         ),
       ),
@@ -564,8 +564,8 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _buildStatItem('إجمالي', '${stats['totalSales'].toStringAsFixed(0)} DH', Icons.attach_money),
-                      _buildStatItem('مدفوع', '${stats['paidAmount'].toStringAsFixed(0)} DH', Icons.check_circle),
-                      _buildStatItem('معلق', '${stats['pendingAmount'].toStringAsFixed(0)} DH', Icons.pending),
+                      _buildStatItem(AppLocalizations.of(context)!.paid, '${stats['paidAmount'].toStringAsFixed(0)} DH', Icons.check_circle),
+                      _buildStatItem(AppLocalizations.of(context)!.pending, '${stats['pendingAmount'].toStringAsFixed(0)} DH', Icons.pending),
                     ],
                   ),
                 );
@@ -688,7 +688,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
               children: [
                 Icon(Icons.people_outline, size: 64, color: Colors.grey.shade300),
                 SizedBox(height: 16),
-                Text('لا يوجد عملاء', style: TextStyle(color: Colors.grey)),
+                Text(AppLocalizations.of(context)!.noCustomers, style: TextStyle(color: Colors.grey)),
               ],
             ),
           );

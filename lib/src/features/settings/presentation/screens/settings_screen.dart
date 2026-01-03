@@ -266,7 +266,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(height: 20),
 
               // Farm Information Section
-              _buildSectionHeader('معلومات المزرعة', Icons.agriculture, theme),
+              _buildSectionHeader(AppLocalizations.of(context)!.farmInformation, Icons.agriculture, theme),
               SizedBox(height: 8),
               _buildCard(
                 theme,
@@ -281,8 +281,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         child: Icon(Icons.landscape, color: Colors.green),
                       ),
-                      title: Text('بيانات المزرعة', style: theme.textTheme.bodyLarge),
-                      subtitle: Text('الاسم، المساحة، الموقع، نوع التربة', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      title: Text(AppLocalizations.of(context)!.farmData, style: theme.textTheme.bodyLarge),
+                      subtitle: Text(AppLocalizations.of(context)!.farmInfo, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                       trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                       onTap: () {
                         Navigator.of(context).pushNamed('/farm-settings');
@@ -298,8 +298,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         child: Icon(Icons.terrain, color: Colors.brown),
                       ),
-                      title: Text('الأراضي والقطع', style: theme.textTheme.bodyLarge),
-                      subtitle: Text('تقسيم المزرعة إلى قطع وإدارتها', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      title: Text(AppLocalizations.of(context)!.landAndPlots, style: theme.textTheme.bodyLarge),
+                      subtitle: Text(AppLocalizations.of(context)!.divideFarmIntoPlots, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                       trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                       onTap: () {
                         Navigator.of(context).pushNamed('/land-management');
@@ -315,8 +315,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         child: Icon(Icons.water, color: Colors.amber.shade700),
                       ),
-                      title: Text('مصادر المياه', style: theme.textTheme.bodyLarge),
-                      subtitle: Text('الآبار، الخزانات، أنظمة الري', style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                      title: Text(AppLocalizations.of(context)!.waterSources, style: theme.textTheme.bodyLarge),
+                      subtitle: Text(AppLocalizations.of(context)!.wellsTanksIrrigation, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
                       trailing: Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                       onTap: () {
                         Navigator.of(context).pushNamed('/water-sources');

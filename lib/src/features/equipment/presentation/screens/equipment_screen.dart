@@ -17,16 +17,21 @@ class EquipmentScreen extends StatefulWidget {
 class _EquipmentScreenState extends State<EquipmentScreen> {
   final _repo = EquipmentRepository();
   
-  final List<String> _types = [
-    'جرار', // Tractor
-    'مضخة ماء', // Pump
-    'أدوات يدوية', // Hand Tools
-    'آلات زراعية', // Farm Machinery
-    'نظام ري', // Irrigation System
-    'أخرى', // Other
-  ];
+  List<String> _getTypes(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.equipmentTractor,
+      l10n.equipmentWaterPump,
+      l10n.equipmentHandTools,
+      l10n.equipmentFarmMachinery,
+      l10n.equipmentIrrigationSystem,
+      l10n.equipmentOther,
+    ];
+  }
 
   Future<void> _showAddDialog([Equipment? existing]) async {
+    final l10n = AppLocalizations.of(context)!;
+    final _types = _getTypes(context);
     final nameController = TextEditingController(text: existing?.name ?? '');
     final priceController = TextEditingController(text: existing?.purchasePrice.toString() ?? '');
     final notesController = TextEditingController(text: existing?.notes ?? '');
@@ -82,7 +87,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                           TextField(
                             controller: nameController,
                             decoration: InputDecoration(
-                              labelText: 'اسم المعدة',
+                              labelText: AppLocalizations.of(context)!.equipmentName,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.build),
                             ),
@@ -111,7 +116,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                           TextField(
                             controller: priceController,
                             decoration: InputDecoration(
-                              labelText: 'سعر الشراء (DH)',
+                              labelText: AppLocalizations.of(context)!.purchasePrice,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.attach_money),
                             ),
@@ -147,7 +152,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                           ),
                           SizedBox(height: 20),
                           
-                          Text('التواريخ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppStyles.primaryGreen)),
+                          Text(AppLocalizations.of(context)!.dates, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppStyles.primaryGreen)),
                           SizedBox(height: 12),
                           
                           ListTile(
@@ -156,7 +161,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
                             leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
-                            title: Text('تاريخ الشراء'),
+                            title: Text(AppLocalizations.of(context)!.purchaseDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(purchaseDate)),
                             onTap: () async {
                               final picked = await showDatePicker(
@@ -176,10 +181,10 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
                             leading: Icon(Icons.build_circle, color: Colors.orange),
-                            title: Text('آخر صيانة'),
-                            subtitle: Text(lastMaintenance != null 
+                            title: Text(AppLocalizations.of(context)!.lastMaintenance),
+                            subtitle: Text(lastMaintenance != null
                                 ? DateFormat('yyyy-MM-dd').format(lastMaintenance!)
-                                : 'لم تتم بعد'),
+                                : AppLocalizations.of(context)!.notDoneYet),
                             trailing: lastMaintenance != null 
                                 ? IconButton(
                                     icon: Icon(Icons.clear, size: 20),
@@ -204,10 +209,10 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
                             leading: Icon(Icons.schedule, color: Colors.blue),
-                            title: Text('الصيانة القادمة'),
-                            subtitle: Text(nextMaintenance != null 
+                            title: Text(AppLocalizations.of(context)!.nextMaintenance),
+                            subtitle: Text(nextMaintenance != null
                                 ? DateFormat('yyyy-MM-dd').format(nextMaintenance!)
-                                : 'غير محددة'),
+                                : AppLocalizations.of(context)!.notSpecified),
                             trailing: nextMaintenance != null 
                                 ? IconButton(
                                     icon: Icon(Icons.clear, size: 20),
@@ -251,7 +256,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                       onPressed: () async {
                         if (nameController.text.isEmpty || priceController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('الرجاء ملء الحقول المطلوبة')),
+                            SnackBar(content: Text(l10n.fieldRequired)),
                           );
                           return;
                         }
@@ -310,9 +315,9 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
 
   String _getStatusText(String status) {
     switch (status) {
-      case 'Active': return 'نشط';
-      case 'Maintenance': return 'قيد الصيانة';
-      case 'Broken': return 'معطل';
+      case 'Active': return AppLocalizations.of(context)!.active;
+      case 'Maintenance': return AppLocalizations.of(context)!.inMaintenance;
+      case 'Broken': return AppLocalizations.of(context)!.broken;
       default: return status;
     }
   }
@@ -380,10 +385,10 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildStatItem('المجموع', '${stats['total']}', Icons.build),
-                        _buildStatItem('نشط', '${stats['active']}', Icons.check_circle),
-                        _buildStatItem('صيانة', '${stats['maintenance']}', Icons.build_circle),
-                        _buildStatItem('تحتاج صيانة', '${stats['needsMaintenance']}', Icons.warning),
+                        _buildStatItem(AppLocalizations.of(context)!.total, '${stats['total']}', Icons.build),
+                        _buildStatItem(AppLocalizations.of(context)!.active, '${stats['active']}', Icons.check_circle),
+                        _buildStatItem(AppLocalizations.of(context)!.maintenance, '${stats['maintenance']}', Icons.build_circle),
+                        _buildStatItem(AppLocalizations.of(context)!.needsMaintenance, '${stats['needsMaintenance']}', Icons.warning),
                       ],
                     ),
                   );
@@ -437,12 +442,12 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                                   Text(item.type),
                                   SizedBox(height: 2),
                                   Text(
-                                    'شراء: ${DateFormat('yyyy-MM-dd').format(item.purchaseDate)}',
+                                    '${AppLocalizations.of(context)!.purchasedOn}: ${DateFormat('yyyy-MM-dd').format(item.purchaseDate)}',
                                     style: TextStyle(fontSize: 11, color: Colors.grey),
                                   ),
                                   if (item.nextMaintenance != null)
                                     Text(
-                                      'صيانة قادمة: ${DateFormat('yyyy-MM-dd').format(item.nextMaintenance!)}',
+                                      '${AppLocalizations.of(context)!.upcomingMaintenance}: ${DateFormat('yyyy-MM-dd').format(item.nextMaintenance!)}',
                                       style: TextStyle(
                                         fontSize: 11,
                                         color: needsMaintenance ? Colors.red : Colors.blue,
@@ -505,7 +510,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Text(
-                                    'تحتاج صيانة!',
+                                      '${AppLocalizations.of(context)!.needsMaintenance}!',
                                     style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
                                   ),
                                 ),

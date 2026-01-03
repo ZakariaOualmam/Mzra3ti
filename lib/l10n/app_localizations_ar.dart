@@ -180,13 +180,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addFarmTitle => 'زيد مزرعة';
 
   @override
-  String get farmName => 'الاسم';
+  String get farmName => 'اسم المزرعة';
 
   @override
   String get farmLocation => 'المكان';
 
   @override
-  String get cropType => 'نوع الزرع';
+  String get cropType => 'نوع المحصول';
 
   @override
   String get area => 'المساحة';
@@ -346,7 +346,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get corn => 'دورة';
 
   @override
-  String get vegetables => 'خضرة';
+  String get vegetables => 'خضروات';
 
   @override
   String get olives => 'زيتون';
@@ -406,7 +406,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get price => 'السعر';
 
   @override
-  String get revenue => 'المداخيل';
+  String get revenue => 'الإيرادات';
 
   @override
   String get date => 'التاريخ';
@@ -877,4 +877,310 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get priceLabel => 'السعر';
+
+  @override
+  String get equipmentName => 'اسم المعدة';
+
+  @override
+  String get purchaseDate => 'تاريخ الشراء';
+
+  @override
+  String get cropName => 'اسم المحصول';
+
+  @override
+  String get season => 'الموسم';
+
+  @override
+  String get plantingDate => 'تاريخ الزراعة';
+
+  @override
+  String get expectedHarvestDate => 'تاريخ الحصاد المتوقع';
+
+  @override
+  String get enableReminders => 'تفعيل التذكيرات';
+
+  @override
+  String get sendReminderBeforeHarvest => 'إرسال تذكير قبل موعد الحصاد';
+
+  @override
+  String get pending => 'معلق';
+
+  @override
+  String get managerName => 'اسم المسؤول';
+
+  @override
+  String get irrigationDate => 'تاريخ السقي';
+
+  @override
+  String get enableReminder => 'تفعيل التذكير';
+
+  @override
+  String get sendIrrigationReminder => 'إرسال تذكير لموعد السقي';
+
+  @override
+  String get reminder => 'تذكير';
+
+  @override
+  String get harvestDate => 'تاريخ الحصاد';
+
+  @override
+  String get farmInfo => 'الاسم، المساحة، الموقع، نوع التربة';
+
+  @override
+  String get farmInformation => 'معلومات المزرعة';
+
+  @override
+  String get farmData => 'بيانات المزرعة';
+
+  @override
+  String get landAndPlots => 'الأراضي والقطع';
+
+  @override
+  String get divideFarmIntoPlots => 'تقسيم المزرعة إلى قطع وإدارتها';
+
+  @override
+  String get waterSources => 'مصادر المياه';
+
+  @override
+  String get wellsTanksIrrigation => 'الآبار، الخزانات، أنظمة الري';
+
+  @override
+  String get harvestManagement => 'إدارة المحاصيل والحصاد';
+
+  @override
+  String get harvestSummary => 'ملخص الحصاد';
+
+  @override
+  String get harvestOperations => 'عملية حصاد';
+
+  @override
+  String get netProfit => 'صافي الربح';
+
+  @override
+  String get harvestLog => 'سجل الحصاد';
+
+  @override
+  String get clickToAddHarvest => 'اضغط على + لإضافة حصاد جديد';
+
+  @override
+  String get clickToAddExpense => 'اضغط على + لإضافة مصروف جديد';
+
+  @override
+  String get clickToAddIrrigation => 'اضغط على + لإضافة سقي جديد';
+
+  @override
+  String get popularCrops => 'محاصيل شائعة:';
+
+  @override
+  String get customers => 'العملاء';
+
+  @override
+  String get cash => 'نقدي';
+
+  @override
+  String get paid => 'مدفوع';
+
+  @override
+  String get partiallyPaid => 'مدفوع جزئياً';
+
+  @override
+  String get noCustomers => 'لا يوجد عملاء';
+
+  @override
+  String get readyForHarvest => 'جاهز للحصاد';
+
+  @override
+  String get allCrops => 'جميع المحاصيل';
+
+  @override
+  String get grains => 'حبوب';
+
+  @override
+  String get fruits => 'فواكه';
+
+  @override
+  String get other => 'أخرى';
+
+  @override
+  String get spring => 'الربيع';
+
+  @override
+  String get summer => 'الصيف';
+
+  @override
+  String get autumn => 'الخريف';
+
+  @override
+  String get winter => 'الشتاء';
+
+  @override
+  String get daysCount => 'عدد الأيام (إذا لازم)';
+
+  @override
+  String get averageDaysToHarvest => 'متوسط الأيام حتى الحصاد';
+
+  @override
+  String get irrigationTime => 'وقت السقي';
+
+  @override
+  String get additionalIrrigationInfo => 'معلومات إضافية عن السقي';
+
+  @override
+  String get fullIrrigationTime => 'موعد السقي الكامل';
+
+  @override
+  String get tractor => 'جرار';
+
+  @override
+  String get purchasePrice => 'سعر الشراء (DH)';
+
+  @override
+  String get active => 'نشط';
+
+  @override
+  String get maintenance => 'صيانة';
+
+  @override
+  String get inMaintenance => 'قيد الصيانة';
+
+  @override
+  String get needsMaintenance => 'تحتاج صيانة';
+
+  @override
+  String get dates => 'التواريخ';
+
+  @override
+  String get lastMaintenance => 'آخر صيانة';
+
+  @override
+  String get notDoneYet => 'لم تتم بعد';
+
+  @override
+  String get nextMaintenance => 'الصيانة القادمة';
+
+  @override
+  String get notSpecified => 'غير محددة';
+
+  @override
+  String get expectedRevenue => 'الإيرادات المتوقعة';
+
+  @override
+  String get upcomingMaintenance => 'صيانة قادمة';
+
+  @override
+  String get categoryFarming => 'زراعة';
+
+  @override
+  String get categoryTractor => 'تراكتور';
+
+  @override
+  String get categoryIrrigation => 'سقي';
+
+  @override
+  String get categoryLabor => 'عمال';
+
+  @override
+  String get categoryAccessories => 'ملحقات';
+
+  @override
+  String get categoryOther => 'أخرى';
+
+  @override
+  String get equipmentTractor => 'جرار';
+
+  @override
+  String get equipmentWaterPump => 'مضخة ماء';
+
+  @override
+  String get equipmentHandTools => 'أدوات يدوية';
+
+  @override
+  String get equipmentFarmMachinery => 'آلات زراعية';
+
+  @override
+  String get equipmentIrrigationSystem => 'نظام ري';
+
+  @override
+  String get equipmentOther => 'أخرى';
+
+  @override
+  String get cropWheat => 'قمح';
+
+  @override
+  String get cropPotatoes => 'بطاطس';
+
+  @override
+  String get cropCucumber => 'خيار';
+
+  @override
+  String get cropTomatoes => 'طماطم';
+
+  @override
+  String get cropOnion => 'بصل';
+
+  @override
+  String get cropCarrot => 'جزر';
+
+  @override
+  String get cropPepper => 'فلفل';
+
+  @override
+  String get cropWatermelon => 'بطيخ';
+
+  @override
+  String get cropStrawberry => 'فراولة';
+
+  @override
+  String get cropCorn => 'ذرة';
+
+  @override
+  String get totalExpensesTitle => 'إجمالي المصاريف';
+
+  @override
+  String get totalQuantityKg => 'كلغ';
+
+  @override
+  String get dailyAverage => 'متوسط يومي';
+
+  @override
+  String get last7Days => 'آخر 7 أيام';
+
+  @override
+  String get monthSummary => 'ملخص 6 أشهر';
+
+  @override
+  String get daySaturday => 'السبت';
+
+  @override
+  String get dayFriday => 'الجمعة';
+
+  @override
+  String get dayThursday => 'الخميس';
+
+  @override
+  String get dayWednesday => 'الأربعاء';
+
+  @override
+  String get dayTuesday => 'الثلاثاء';
+
+  @override
+  String get dayMonday => 'الإثنين';
+
+  @override
+  String get daySunday => 'الأحد';
+
+  @override
+  String get totalProfitTitle => 'إجمالي الأرباح';
+
+  @override
+  String get expenseBreakdown => 'توزيع المصاريف';
+
+  @override
+  String get expensesChart => 'المصاريف';
+
+  @override
+  String get broken => 'معطل';
+
+  @override
+  String get purchasedOn => 'شراء';
 }

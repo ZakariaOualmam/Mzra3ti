@@ -73,7 +73,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                             side: BorderSide(color: Colors.grey.shade300),
                           ),
                           leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
-                          title: Text('تاريخ السقي'),
+                          title: Text(AppLocalizations.of(context)!.irrigationDate),
                           subtitle: Text(DateFormat('yyyy-MM-dd').format(selectedDate)),
                           onTap: () async {
                             final d = await showDatePicker(
@@ -96,7 +96,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                             side: BorderSide(color: Colors.grey.shade300),
                           ),
                           leading: Icon(Icons.access_time, color: AppStyles.primaryGreen),
-                          title: Text('وقت السقي'),
+                          title: Text(AppLocalizations.of(context)!.irrigationTime),
                           subtitle: Text(selectedTime.format(context)),
                           onTap: () async {
                             final t = await showTimePicker(
@@ -120,7 +120,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                             labelText: AppLocalizations.of(context)!.notesLabel,
                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                             prefixIcon: Icon(Icons.note),
-                            helperText: 'معلومات إضافية عن السقي',
+                            helperText: AppLocalizations.of(context)!.additionalIrrigationInfo,
                           ),
                           maxLines: 3,
                         ),
@@ -133,8 +133,8 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: SwitchListTile(
-                            title: Text('تفعيل التذكير'),
-                            subtitle: Text('إرسال تذكير لموعد السقي'),
+                            title: Text(AppLocalizations.of(context)!.enableReminder),
+                            subtitle: Text(AppLocalizations.of(context)!.sendIrrigationReminder),
                             value: remind,
                             onChanged: (v) => setModalState(() => remind = v),
                             secondary: Icon(
@@ -162,7 +162,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'موعد السقي الكامل',
+                                      AppLocalizations.of(context)!.fullIrrigationTime,
                                       style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
                                     ),
                                     SizedBox(height: 4),
@@ -302,7 +302,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'اضغط على + لإضافة سقي جديد',
+                    AppLocalizations.of(context)!.clickToAddIrrigation,
                     style: TextStyle(fontSize: 14, color: Colors.grey.shade500),
                   ),
                 ],
@@ -368,7 +368,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                                               Icon(Icons.notifications_active, size: 14, color: Colors.orange.shade700),
                                               SizedBox(width: 4),
                                               Text(
-                                                'تذكير',
+                                                AppLocalizations.of(context)!.reminder,
                                                 style: TextStyle(
                                                   fontSize: 10,
                                                   color: Colors.orange.shade700,

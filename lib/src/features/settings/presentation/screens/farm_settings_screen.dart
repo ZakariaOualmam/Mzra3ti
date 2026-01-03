@@ -118,7 +118,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                   child: Column(
                     children: [
                       _buildTextField(
-                        label: 'اسم المزرعة',
+                        label: AppLocalizations.of(context)!.farmName,
                         icon: Icons.landscape,
                         initialValue: _farmName,
                         onSaved: (value) => _farmName = value ?? '',
@@ -182,14 +182,14 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                   child: Column(
                     children: [
                       _buildTextField(
-                        label: 'اسم المسؤول',
+                        label: AppLocalizations.of(context)!.managerName,
                         icon: Icons.person,
                         initialValue: _contactPerson,
                         onSaved: (value) => _contactPerson = value ?? '',
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: 'رقم الهاتف',
+                        label: AppLocalizations.of(context)!.phoneNumber,
                         icon: Icons.phone,
                         initialValue: _phoneNumber,
                         keyboardType: TextInputType.phone,
