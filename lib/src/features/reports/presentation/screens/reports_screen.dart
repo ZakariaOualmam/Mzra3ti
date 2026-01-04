@@ -238,18 +238,33 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: _exportPdf,
-                      icon: Icon(Icons.picture_as_pdf),
-                      label: Text(l10n.exportPdf),
-                      style: ElevatedButton.styleFrom(backgroundColor: AppStyles.primaryGreen),
+                      icon: Icon(Icons.picture_as_pdf, size: 16),
+                      label: Text(
+                        l10n.exportPdf,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppStyles.primaryGreen,
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                      ),
                     ),
                   ),
                   SizedBox(width: 12),
                   Expanded(
                     child: OutlinedButton.icon(
                       onPressed: _shareWhatsapp,
-                      icon: Icon(Icons.share, color: Colors.green),
-                      label: Text(l10n.shareWhatsapp),
-                      style: OutlinedButton.styleFrom(),
+                      icon: Icon(Icons.share, color: Colors.green, size: 16),
+                      label: Text(
+                        l10n.shareWhatsapp,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                      ),
                     ),
                   ),
                 ],

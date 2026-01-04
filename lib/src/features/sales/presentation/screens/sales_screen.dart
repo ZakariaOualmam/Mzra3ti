@@ -301,7 +301,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                            leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                             title: Text(AppLocalizations.of(context)!.dateLabel),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(date)),
                             onTap: () async {
@@ -420,7 +420,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
       case 'Pending':
         return Icons.pending;
       case 'Partial':
-        return Icons.payments;
+        return Icons.account_balance_wallet_rounded;
       default:
         return Icons.info;
     }

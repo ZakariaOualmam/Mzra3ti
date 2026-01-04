@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Centralized icon set to guarantee consistent iconography across the app.
 class AppIcons {
-  static const IconData irrigation = Icons.water_drop;
+  static const IconData irrigation = Icons.water_drop_rounded;
   static const IconData expenses = Icons.monetization_on; // coin/money
   static const IconData profit = Icons.trending_up;
   static const IconData loss = Icons.trending_down;

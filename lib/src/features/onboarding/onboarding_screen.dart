@@ -73,7 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         text: l10n.onboardingExpensesText,
       ),
       _OnboardingPageData(
-        icon: Icons.analytics,
+        icon: Icons.bar_chart_rounded,
         title: l10n.onboardingProfitTitle,
         text: l10n.onboardingProfitText,
       ),

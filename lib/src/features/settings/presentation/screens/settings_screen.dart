@@ -207,7 +207,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       theme,
                       title: l10n.irrigationReminders,
                       subtitle: l10n.irrigationRemindersSubtitle,
-                      icon: Icons.water_drop,
+                      icon: Icons.water_drop_rounded,
                       value: true,
                       onChanged: (v) {},
                     ),
@@ -216,7 +216,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       theme,
                       title: l10n.harvestAlerts,
                       subtitle: l10n.harvestAlertsSubtitle,
-                      icon: Icons.agriculture,
+                      icon: Icons.agriculture_rounded,
                       value: false,
                       onChanged: (v) {},
                     ),
@@ -266,7 +266,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(height: 20),
 
               // Farm Information Section
-              _buildSectionHeader(AppLocalizations.of(context)!.farmInformation, Icons.agriculture, theme),
+              _buildSectionHeader(AppLocalizations.of(context)!.farmInformation, Icons.agriculture_rounded, theme),
               SizedBox(height: 8),
               _buildCard(
                 theme,
@@ -421,7 +421,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: Colors.green.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Icon(Icons.agriculture, color: Colors.green),
+                        child: Icon(Icons.agriculture_rounded, color: Colors.green),
                       ),
                       title: Text(l10n.aboutApp, style: theme.textTheme.bodyLarge),
                       subtitle: Text(l10n.aboutAppSubtitle, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
@@ -432,7 +432,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           builder: (ctx) => AlertDialog(
                             title: Row(
                               children: [
-                                Icon(Icons.agriculture, color: theme.colorScheme.primary),
+                                Icon(Icons.agriculture_rounded, color: theme.colorScheme.primary),
                                 SizedBox(width: 8),
                                 Text(l10n.appNameAlt),
                               ],

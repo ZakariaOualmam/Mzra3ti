@@ -37,6 +37,31 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
   
   // Key to force rebuild of statistics
   Key _statsKey = UniqueKey();
+  
+  // Animation controller for smooth transitions
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize animation controller
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 600),
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    );
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   void didChangeDependencies() {
@@ -45,6 +70,9 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     setState(() {
       _statsKey = UniqueKey();
     });
+    // Restart animation
+    _animationController.reset();
+    _animationController.forward();
   }
 
   void _showAddMenu(BuildContext context) {
@@ -54,83 +82,141 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+      ),
       builder: (ctx) => Container(
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.grey.shade800 : Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          gradient: LinearGradient(
+            colors: isDarkMode
+                ? [Color(0xFF2C2C2E), Color(0xFF1C1C1E)]
+                : AppStyles.whiteGradient,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+          boxShadow: AppStyles.deepShadow,
         ),
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.only(
+          top: 12,
+          left: 24,
+          right: 24,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Handle bar
             Container(
               width: 50,
-              height: 4,
+              height: 5,
               decoration: BoxDecoration(
                 color: Colors.grey.shade400,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(3),
               ),
             ),
-            SizedBox(height: 16),
-            Text(l10n.addShort, style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: isDarkMode ? Colors.white : Colors.black)),
-            SizedBox(height: 20),
+            SizedBox(height: 24),
+            Text(
+              l10n.addShort,
+              style: TextStyle(
+                fontSize: 28, // Larger
+                fontWeight: FontWeight.w900,
+                color: isDarkMode ? Colors.white : Colors.black87,
+                letterSpacing: 0.5,
+              ),
+            ),
+            SizedBox(height: 24),
 
-            // Large rounded add buttons with icons and one-word labels
+            // Premium large buttons with gradients
             _buildAddButton(
               ctx,
-              icon: Icons.water_drop,
+              icon: Icons.water_drop_rounded,
               label: l10n.irrigationShort,
-              color: Colors.blue.shade600,
+              gradient: AppStyles.blueGradient,
               onPressed: () => Navigator.of(ctx).pushNamed('/irrigations'),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 16),
             _buildAddButton(
               ctx,
               icon: Icons.attach_money,
               label: l10n.expensesShort,
-              color: Colors.orange.shade700,
+              gradient: [
+                Color(0xFFF59E0B), // Amber 500
+                Color(0xFFD97706), // Amber 600
+                Color(0xFFB45309), // Amber 700
+              ],
               onPressed: () => Navigator.of(ctx).pushNamed('/expenses'),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 16),
             _buildAddButton(
               ctx,
               icon: Icons.trending_up,
               label: l10n.profitShort,
-              color: Colors.teal.shade600,
+              gradient: AppStyles.greenGradient,
               onPressed: () => Navigator.of(ctx).pushNamed('/harvests'),
             ),
+            SizedBox(height: 8),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildAddButton(BuildContext context, {
+  Widget _buildAddButton(
+    BuildContext context, {
     required IconData icon,
     required String label,
-    required Color color,
+    required List<Color> gradient,
     required VoidCallback onPressed,
   }) {
     return Container(
       width: double.infinity,
-      height: 60,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: Colors.white,
-          elevation: 3,
-          shadowColor: color.withOpacity(0.5),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      height: 72, // Larger touch target
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 28),
-            SizedBox(width: 12),
-            Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-          ],
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: AppStyles.premiumCardShadow,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.25),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(
+                    icon,
+                    size: 32, // Larger
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(width: 16),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 20, // Larger
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -142,10 +228,20 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     
     return Drawer(
-      backgroundColor: isDarkMode ? Colors.grey.shade900 : Colors.white,
-      child: SafeArea(
-        child: Column(
-          children: [
+      backgroundColor: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: isDarkMode
+                ? [Color(0xFF1C1C1E), Color(0xFF2C2C2E)]
+                : AppStyles.whiteGradient,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            children: [
             // Header with profile/account section
             FutureBuilder<Map<String, dynamic>?>(
               future: UserService().getCurrentUser(),
@@ -157,39 +253,41 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
 
                 return Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(24),
+                  padding: EdgeInsets.all(28),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [green, green.withOpacity(0.8)],
+                      colors: AppStyles.greenGradient,
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: green.withOpacity(0.3),
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
+                    boxShadow: AppStyles.deepShadow,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(12),
+                        padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withOpacity(0.25),
                           shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 8,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
-                        child: Icon(Icons.person, color: Colors.white, size: 40),
+                        child: Icon(Icons.person, color: Colors.white, size: 48), // Larger
                       ),
                       SizedBox(height: 16),
                       Text(
                         userName,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 24, // Larger
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.5,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -198,8 +296,9 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                       Text(
                         isLoggedIn ? userEmail : l10n.guest,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
-                          fontSize: 14,
+                          color: Colors.white.withOpacity(0.95),
+                          fontSize: 16, // Larger
+                          fontWeight: FontWeight.w500,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -303,7 +402,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                     onTap: () => _showLanguageDialog(context),
                   ),
                   _buildDrawerItem(
-                    icon: Icons.build,
+                    icon: Icons.build_rounded,
                     title: l10n.equipmentManagement,
                     subtitle: l10n.equipmentSubtitle,
                     iconColor: Colors.brown.shade600,
@@ -313,7 +412,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                     },
                   ),
                   _buildDrawerItem(
-                    icon: Icons.calendar_month,
+                    icon: Icons.event_rounded,
                     title: l10n.cropCalendar,
                     subtitle: l10n.cropCalendarSubtitle,
                     iconColor: Colors.green.shade700,
@@ -349,7 +448,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                     ),
                   ),
                   _buildDrawerItem(
-                    icon: Icons.analytics,
+                    icon: Icons.bar_chart_rounded,
                     title: l10n.analytics,
                     subtitle: l10n.analyticsSubtitle,
                     iconColor: Colors.purple.shade600,
@@ -398,7 +497,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                         builder: (ctx) => AlertDialog(
                           title: Row(
                             children: [
-                              Icon(Icons.agriculture, color: AppStyles.primaryGreen),
+                              Icon(Icons.agriculture_rounded, color: AppStyles.primaryGreen),
                               SizedBox(width: 8),
                               Text(dialogL10n.appNameAlt),
                             ],
@@ -493,6 +592,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -866,7 +966,7 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
         'title': l10n.newIrrigationNotification,
         'message': l10n.irrigationNotificationDesc,
         'type': 'irrigation',
-        'icon': Icons.water_drop,
+        'icon': Icons.water_drop_rounded,
         'color': Colors.blue,
         'time': '1h',
       },
@@ -898,76 +998,38 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).colorScheme.background,
-      endDrawer: _buildModernDrawer(context),
+      drawer: _buildModernDrawer(context),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Color(0xFF059669),
         elevation: 0,
-        scrolledUnderElevation: 2,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Brand icon with intentional white color
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppStyles.brandIconBg,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(
-                Icons.agriculture,
-                color: AppStyles.brandWhite,
-                size: 24,
-              ),
-            ),
-            SizedBox(width: 12),
-            // Brand text "Mzra3ti" - intentionally white for brand identity
-            Text(
-              l10n.appName,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: AppStyles.brandWhite,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 0.5,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Stack(
+        leading: Padding(
+          padding: EdgeInsets.only(top: 6),
+          child: Stack(
             children: [
-              Container(
-                margin: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: AppStyles.brandIconBg,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.notifications_outlined,
-                    color: AppStyles.brandWhite,
-                  ),
-                  onPressed: () => _showNotificationsDrawer(),
-                  tooltip: l10n.notificationsTooltip,
-                ),
+              IconButton(
+                icon: Icon(Icons.notifications, color: Colors.white, size: 26),
+                onPressed: () => _showNotificationsDrawer(),
+                tooltip: l10n.notifications,
               ),
               if (_visibleNotifications.isNotEmpty)
                 Positioned(
-                  right: 12,
-                  top: 12,
+                  right: 0,
+                  top: 0,
                   child: Container(
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.error,
+                      color: Colors.red,
                       shape: BoxShape.circle,
                     ),
-                    constraints: BoxConstraints(minWidth: 18, minHeight: 18),
+                    constraints: BoxConstraints(
+                      minWidth: 20,
+                      minHeight: 20,
+                    ),
                     child: Text(
                       '${_visibleNotifications.length}',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.onError,
-                        fontSize: 10,
+                        color: Colors.white,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.center,
@@ -976,244 +1038,180 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                 ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: AppStyles.brandIconBg,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 4,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            ),
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: AppStyles.brandWhite,
-                size: 24,
-              ),
-              onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
-              tooltip: l10n.menuTooltip,
-            ),
+        ),
+        title: Text(
+          l10n.appName,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
           ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu, color: Colors.white, size: 26),
+            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+          ),
+          SizedBox(width: 8),
         ],
       ),
-      body: SafeArea(
-        child: Container(
-          color: Theme.of(context).colorScheme.background,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: isDarkMode
+                ? [Color(0xFF1C1C1E), Color(0xFF2C2C2E)]
+                : AppStyles.whiteGradient,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SafeArea(
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 90),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Professional welcome card - Shows user name when logged in
-                FutureBuilder<bool>(
-                  future: UserService().isLoggedIn(),
-                  builder: (context, authSnapshot) {
-                    final isLoggedIn = authSnapshot.data ?? false;
-                    
-                    if (!isLoggedIn) {
-                      // Guest welcome card
-                      return Container(
-                        padding: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                              Theme.of(context).colorScheme.primaryContainer,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                            width: 1.5,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(context).colorScheme.primary.withOpacity(0.12),
-                              blurRadius: 20,
-                              offset: Offset(0, 6),
-                              spreadRadius: 0,
-                            ),
-                          ],
-                        ),
-                        child: Row(
+            padding: EdgeInsets.only(
+              left: 20,
+              top: 16,
+              right: 20,
+              bottom: MediaQuery.of(context).padding.bottom + 90, // Account for FAB + bottom nav
+            ),
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF2F8F4),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(14),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                              child: Icon(
-                                Icons.wb_sunny_outlined,
-                                color: Theme.of(context).colorScheme.primary,
-                                size: 32,
+                            GestureDetector(
+                              onTap: () => Navigator.of(context).pushNamed('/weather'),
+                              child: Container(
+                                padding: EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFD4EDE0),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(
+                                  Icons.wb_sunny_rounded,
+                                  color: Color(0xFF10B981),
+                                  size: 28,
+                                ),
                               ),
                             ),
-                            SizedBox(width: 18),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    l10n.welcome,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    l10n.dashboardSubtitle,
-                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.85),
-                                    ),
-                                  ),
-                                ],
+                            SizedBox(height: 4),
+                            Text(
+                              '29°☀️',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF1F2937),
+                                height: 1.0,
                               ),
+                            ),
+                            SizedBox(height: 0),
+                            Text(
+                              'الطقس مشمس اليوم',
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF9CA3AF),
+                                height: 1.0,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
-                      );
-                    } else {
-                      // Logged-in user welcome card
-                      return FutureBuilder<Map<String, dynamic>?>(
-                        future: UserService().getCurrentUser(),
-                        builder: (context, userSnapshot) {
-                          final user = userSnapshot.data;
-                          final userName = user?['name'] ?? l10n.guest;
-                          
-                          return Container(
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                  Theme.of(context).colorScheme.primaryContainer,
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              borderRadius: BorderRadius.circular(24),
-                              border: Border.all(
-                                color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                                width: 1.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Theme.of(context).colorScheme.primary.withOpacity(0.12),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 6),
-                                  spreadRadius: 0,
-                                ),
-                              ],
-                            ),
-                            child: Row(
+                        SizedBox(width: 12),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 8),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(14),
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.primary.withOpacity(0.15),
-                                    borderRadius: BorderRadius.circular(14),
-                                  ),
-                                  child: Icon(
-                                    Icons.wb_sunny_outlined,
-                                    color: Theme.of(context).colorScheme.primary,
-                                    size: 32,
+                                Text(
+                                  'مرحبا 👋',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFF1F2937),
+                                    height: 1.0,
                                   ),
                                 ),
-                                SizedBox(width: 18),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${l10n.welcome}, $userName',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                          color: Theme.of(context).colorScheme.onPrimaryContainer,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 4),
-                                      Text(
-                                        l10n.dashboardSubtitle,
-                                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                          color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.85),
-                                        ),
-                                      ),
-                                    ],
+                                SizedBox(height: 4),
+                                Text(
+                                  'نظرة سريعة على مزرعتك اليوم',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xFF6B7280),
+                                    height: 1.2,
                                   ),
                                 ),
                               ],
                             ),
-                          );
-                        },
-                      );
-                    }
-                  },
-                ),
-                SizedBox(height: 24),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 16),
                 
                 // Statistics Cards Grid - احترافي ونظيف
-                GridView.count(
-                  key: _statsKey,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 14,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  childAspectRatio: 1.35,
-                  children: [
-                    FutureBuilder<int>(
-                      future: irrigationRepo.getAll().then((list) => list.length),
-                      builder: (context, snapshot) {
-                        final count = snapshot.data ?? 0;
-                        return _buildStatCard(
-                          title: l10n.irrigation,
-                          value: '$count',
-                          icon: Icons.water_drop,
-                          color: Colors.blue,
-                          onTap: () async {
-                            await Navigator.of(context).pushNamed('/irrigations');
-                            setState(() => _statsKey = UniqueKey());
-                          },
-                        );
-                      },
-                    ),
-                    FutureBuilder<double>(
-                      future: expenseRepo.total(),
-                      builder: (context, snapshot) {
-                        final total = snapshot.data ?? 0.0;
-                        return _buildStatCard(
-                          title: l10n.expenses,
-                          value: '${total.toStringAsFixed(0)} DH',
-                          icon: Icons.payments,
-                          color: Colors.orange,
-                          onTap: () async {
-                            await Navigator.of(context).pushNamed('/expenses');
-                            setState(() => _statsKey = UniqueKey());
-                          },
-                        );
-                      },
-                    ),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    // Responsive grid: 2 columns on mobile, 3 on tablet, 4 on desktop
+                    final crossAxisCount = constraints.maxWidth > 1024
+                        ? 4
+                        : constraints.maxWidth > 768
+                            ? 3
+                            : 2;
+                    return GridView.count(
+                      key: _statsKey,
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      childAspectRatio: 1.15,
+                      children: [
                     FutureBuilder<double>(
                       future: harvestRepo.totalRevenue(),
                       builder: (context, snapshot) {
                         final total = snapshot.data ?? 0.0;
                         return _buildStatCard(
                           title: l10n.harvestTitle,
-                          value: '${total.toStringAsFixed(0)} DH',
-                          icon: Icons.agriculture,
-                          color: Colors.green,
+                          value: 'DH ${total.toStringAsFixed(0)}',
+                          icon: Icons.agriculture_rounded,
+                          color: Color(0xFF66BB6A),
                           onTap: () async {
                             await Navigator.of(context).pushNamed('/harvests');
+                            setState(() => _statsKey = UniqueKey());
+                          },
+                        );
+                      },
+                    ),
+                    FutureBuilder<int>(
+                      future: irrigationRepo.getAll().then((list) => list.length),
+                      builder: (context, snapshot) {
+                        final count = snapshot.data ?? 0;
+                        return _buildStatCard(
+                          title: l10n.irrigation,
+                          value: 'DH $count',
+                          icon: Icons.water_drop_rounded,
+                          color: Color(0xFF2196F3),
+                          onTap: () async {
+                            await Navigator.of(context).pushNamed('/irrigations');
                             setState(() => _statsKey = UniqueKey());
                           },
                         );
@@ -1225,9 +1223,9 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                         final total = snapshot.data ?? 0.0;
                         return _buildStatCard(
                           title: l10n.sales,
-                          value: '${total.toStringAsFixed(0)} DH',
-                          icon: Icons.shopping_bag,
-                          color: Colors.purple,
+                          value: 'DH ${total.toStringAsFixed(0)}',
+                          icon: Icons.shopping_bag_rounded,
+                          color: Color(0xFF66BB6A),
                           onTap: () async {
                             await Navigator.of(context).pushNamed('/sales');
                             setState(() => _statsKey = UniqueKey());
@@ -1235,37 +1233,55 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                         );
                       },
                     ),
+                    FutureBuilder<double>(
+                      future: expenseRepo.total(),
+                      builder: (context, snapshot) {
+                        final total = snapshot.data ?? 0.0;
+                        return _buildStatCard(
+                          title: l10n.expenses,
+                          value: 'DH ${total.toStringAsFixed(0)}',
+                          icon: Icons.account_balance_wallet_rounded,
+                          color: Color(0xFFFFA726),
+                          onTap: () async {
+                            await Navigator.of(context).pushNamed('/expenses');
+                            setState(() => _statsKey = UniqueKey());
+                          },
+                        );
+                      },
+                    ),
                   ],
+                    );
+                  },
                 ),
 
-                SizedBox(height: 24),
+                SizedBox(height: 16),
                 
                 // Quick Actions - أزرار سريعة
                 Row(
                   children: [
                     Expanded(
                       child: _buildQuickAction(
-                        icon: Icons.analytics_outlined,
+                        icon: Icons.bar_chart,
                         label: l10n.analytics,
-                        color: Colors.deepPurple,
+                        color: Color(0xFF3F7F57),
                         onTap: () => Navigator.of(context).pushNamed('/analytics'),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 12),
                     Expanded(
                       child: _buildQuickAction(
-                        icon: Icons.calendar_today,
+                        icon: Icons.calendar_month_rounded,
                         label: l10n.calendar,
-                        color: Colors.teal,
+                        color: Color(0xFF3F7F57),
                         onTap: () => Navigator.of(context).pushNamed('/crop-calendar'),
                       ),
                     ),
                     SizedBox(width: 12),
                     Expanded(
                       child: _buildQuickAction(
-                        icon: Icons.build,
+                        icon: Icons.build_rounded,
                         label: l10n.equipment,
-                        color: Colors.indigo,
+                        color: Color(0xFF3F7F57),
                         onTap: () => Navigator.of(context).pushNamed('/equipment'),
                       ),
                     ),
@@ -1276,23 +1292,18 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
           ),
         ),
       ),
-      floatingActionButton: Container(
-        height: 70,
-        width: 70,
+    ),
+    floatingActionButton: Container(
+        height: 80, // Larger
+        width: 80, // Larger
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(
-            colors: [Colors.green.shade400, Colors.green.shade600],
+            colors: AppStyles.greenGradient,
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.green.withOpacity(0.4),
-              blurRadius: 12,
-              offset: Offset(0, 4),
-            ),
-          ],
+          boxShadow: AppStyles.deepShadow,
         ),
         child: FloatingActionButton(
           onPressed: () {
@@ -1301,55 +1312,58 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
           },
           backgroundColor: Colors.transparent,
           elevation: 0,
-          child: Text('➕', style: TextStyle(fontSize: 32)),
+          child: Icon(
+            Icons.add_rounded,
+            color: Colors.white,
+            size: 40, // Much larger
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.grey.shade900 : Colors.white,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 20,
-              offset: Offset(0, -5),
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              offset: Offset(0, -2),
             ),
           ],
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: SafeArea(
           child: BottomAppBar(
             shape: CircularNotchedRectangle(),
-            notchMargin: 10,
+            notchMargin: 12,
             elevation: 0,
             color: Colors.transparent,
-            height: 75,
+            height: 70,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _buildBottomNavItem(
-                    icon: Icons.home_rounded,
+                    icon: Icons.home,
                     label: l10n.home,
                     isSelected: true,
                     onTap: () {},
                   ),
                   _buildBottomNavItem(
-                    icon: Icons.water_drop_rounded,
+                    icon: Icons.water_drop,
                     label: l10n.irrigation,
                     isSelected: false,
                     onTap: () => Navigator.of(context).pushNamed('/irrigations'),
                   ),
-                  SizedBox(width: 56), // Space for FAB
+                  SizedBox(width: 64), // Space for FAB
                   _buildBottomNavItem(
-                    icon: Icons.payments_rounded,
-                    label: l10n.financial,
+                    icon: Icons.description,
+                    label: 'التقارير',
                     isSelected: false,
-                    onTap: () => Navigator.of(context).pushNamed('/expenses'),
+                    onTap: () => Navigator.of(context).pushNamed('/reports'),
                   ),
                   _buildBottomNavItem(
-                    icon: Icons.settings_rounded,
+                    icon: Icons.settings,
                     label: l10n.settings,
                     isSelected: false,
                     onTap: () => Navigator.of(context).pushNamed('/settings'),
@@ -1371,39 +1385,66 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
   }) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final primaryColor = theme.colorScheme.primary;
+    final emeraldGreen = Color(0xFF059669);
+    final blueColor = Color(0xFF2196F3);
+    final greenColor = Color(0xFF3F7F57);
+    
+    // Determine color based on label
+    Color itemColor;
+    if (label == AppLocalizations.of(context)!.irrigation) {
+      itemColor = blueColor;
+    } else {
+      itemColor = emeraldGreen;
+    }
     
     return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 4),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+            decoration: isSelected
+                ? BoxDecoration(
+                    color: itemColor.withOpacity(0.12),
+                    borderRadius: BorderRadius.circular(16),
+                  )
+                : null,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(
                   icon,
-                  size: 32,
-                  color: isSelected 
-                      ? primaryColor
-                      : (isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                  size: 24,
+                  color: label == AppLocalizations.of(context)!.irrigation
+                      ? blueColor
+                      : label == 'التقارير'
+                          ? greenColor
+                          : label == AppLocalizations.of(context)!.analytics
+                              ? emeraldGreen
+                              : label == AppLocalizations.of(context)!.settings
+                                  ? (isDark ? Colors.grey.shade300 : Colors.grey.shade700)
+                                  : (isSelected
+                                      ? emeraldGreen
+                                      : (isDark ? Colors.grey.shade300 : Colors.grey.shade700)),
                 ),
-                SizedBox(height: 4),
+                SizedBox(height: 1),
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                    color: isSelected 
-                        ? primaryColor
-                        : (isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                    fontSize: 11,
+                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                    color: isSelected
+                        ? emeraldGreen
+                        : (isDark ? Colors.grey.shade300 : Colors.grey.shade700),
+                    height: 1.0,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
@@ -1725,7 +1766,6 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     );
   }
 
-  // بطاقة إحصائيات احترافية
   Widget _buildStatCard({
     required String title,
     required String value,
@@ -1740,77 +1780,60 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Colors.grey.shade800 : Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: color.withOpacity(0.12),
-            width: 1.5,
-          ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.15),
-              blurRadius: 12,
-              offset: Offset(0, 4),
-              spreadRadius: 0,
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 8,
+              offset: Offset(0, 2),
             ),
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          color.withOpacity(0.12),
-                          color.withOpacity(0.18),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(icon, color: color, size: 24),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: color.withOpacity(0.08),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Icon(Icons.arrow_forward_ios, color: color.withOpacity(0.6), size: 12),
-                  ),
-                ],
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 26,
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    value,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : Colors.black87,
-                      letterSpacing: -0.5,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey.shade600,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+              SizedBox(height: 7),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF1F2937),
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.start,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              SizedBox(height: 8),
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF1F2937),
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.start,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
@@ -1819,7 +1842,6 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     );
   }
 
-  // زر سريع احترافي
   Widget _buildQuickAction({
     required IconData icon,
     required String label,
@@ -1829,46 +1851,32 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              color.withOpacity(0.08),
-              color.withOpacity(0.12),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          color: Color(0xFFDEF3E8),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color.withOpacity(0.25), width: 1.5),
-          boxShadow: [
-            BoxShadow(
-              color: color.withOpacity(0.12),
-              blurRadius: 8,
-              offset: Offset(0, 3),
-            ),
-          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(icon, color: color, size: 26),
+            Icon(
+              icon,
+              color: Color(0xFF3F7F57),
+              size: 28,
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 8),
             Text(
               label,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: color,
+                color: Color(0xFF2E2E2E),
               ),
               textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

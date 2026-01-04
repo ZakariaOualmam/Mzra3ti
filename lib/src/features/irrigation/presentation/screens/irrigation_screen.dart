@@ -72,7 +72,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                             borderRadius: BorderRadius.circular(12),
                             side: BorderSide(color: Colors.grey.shade300),
                           ),
-                          leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                          leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                           title: Text(AppLocalizations.of(context)!.irrigationDate),
                           subtitle: Text(DateFormat('yyyy-MM-dd').format(selectedDate)),
                           onTap: () async {
@@ -155,7 +155,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                           ),
                           child: Row(
                             children: [
-                              Icon(Icons.water_drop, color: Colors.blue.shade700),
+                              Icon(Icons.water_drop_rounded, color: Colors.blue.shade700),
                               SizedBox(width: 12),
                               Expanded(
                                 child: Column(
@@ -337,7 +337,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                                 color: Colors.blue.shade50,
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: Icon(Icons.water_drop, color: Colors.blue.shade700, size: 28),
+                              child: Icon(Icons.water_drop_rounded, color: Colors.blue.shade700, size: 28),
                             ),
                             SizedBox(width: 16),
                             Expanded(

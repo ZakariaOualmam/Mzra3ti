@@ -89,7 +89,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.equipmentName,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                              prefixIcon: Icon(Icons.build),
+                              prefixIcon: Icon(Icons.build_rounded),
                             ),
                           ),
                           SizedBox(height: 12),
@@ -160,7 +160,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                            leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                             title: Text(AppLocalizations.of(context)!.purchaseDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(purchaseDate)),
                             onTap: () async {
@@ -385,7 +385,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildStatItem(AppLocalizations.of(context)!.total, '${stats['total']}', Icons.build),
+                        _buildStatItem(AppLocalizations.of(context)!.total, '${stats['total']}', Icons.build_rounded),
                         _buildStatItem(AppLocalizations.of(context)!.active, '${stats['active']}', Icons.check_circle),
                         _buildStatItem(AppLocalizations.of(context)!.maintenance, '${stats['maintenance']}', Icons.build_circle),
                         _buildStatItem(AppLocalizations.of(context)!.needsMaintenance, '${stats['needsMaintenance']}', Icons.warning),

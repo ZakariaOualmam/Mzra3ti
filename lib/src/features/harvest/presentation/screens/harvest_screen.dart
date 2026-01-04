@@ -161,7 +161,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                            leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                             title: Text(AppLocalizations.of(context)!.harvestDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(date)),
                             onTap: () async {
@@ -402,7 +402,7 @@ class _HarvestScreenState extends State<HarvestScreen> {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Icon(
-                                      Icons.agriculture,
+                                      Icons.agriculture_rounded,
                                       color: Colors.white,
                                       size: 32,
                                     ),

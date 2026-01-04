@@ -171,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Icon(
-                      Icons.agriculture,
+                      Icons.agriculture_rounded,
                       size: 40,
                       color: theme.colorScheme.primary,
                     ),

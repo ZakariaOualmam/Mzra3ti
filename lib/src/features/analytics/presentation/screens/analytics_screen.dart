@@ -98,7 +98,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                     SizedBox(height: 24),
 
                     // Monthly Summary
-                    _buildSectionTitle(l10n.monthSummary, Icons.calendar_month),
+                    _buildSectionTitle(l10n.monthSummary, Icons.event_rounded),
                     SizedBox(height: 12),
                     _buildMonthlyBars(),
                     SizedBox(height: 24),
@@ -227,33 +227,34 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 4),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         // Revenue Bar
                         Tooltip(
                           message: '${AppLocalizations.of(context)!.revenue}: ${data.revenue.toStringAsFixed(0)} DH',
                           child: Container(
                             width: double.infinity,
-                            height: maxValue > 0 ? (data.revenue / maxValue * 150) : 0,
+                            height: maxValue > 0 ? (data.revenue / maxValue * 85) : 0,
                             decoration: BoxDecoration(
                               color: Colors.green.withOpacity(0.7),
                               borderRadius: BorderRadius.vertical(top: Radius.circular(4)),
                             ),
                           ),
                         ),
-                        SizedBox(height: 4),
+                        SizedBox(height: 2),
                         // Expense Bar
                         Tooltip(
                           message: '${AppLocalizations.of(context)!.expensesChart}: ${data.expenses.toStringAsFixed(0)} DH',
                           child: Container(
                             width: double.infinity,
-                            height: maxValue > 0 ? (data.expenses / maxValue * 150) : 0,
+                            height: maxValue > 0 ? (data.expenses / maxValue * 85) : 0,
                             decoration: BoxDecoration(
                               color: Colors.red.withOpacity(0.6),
                               borderRadius: BorderRadius.vertical(top: Radius.circular(4)),
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 5),
                         // Date Label
                         Text(
                           DateFormat('E', 'ar').format(data.date),

@@ -539,6 +539,75 @@ class AppStyles {
   static const Color brandIconBg = Color(0x26FFFFFF); // 15% white
   
   // ============================================================================
+  // MODERN GRADIENT COLORS - Premium Farming App Design
+  // ============================================================================
+  
+  /// Calm green gradient colors for farming theme
+  static const List<Color> greenGradient = [
+    Color(0xFF10B981), // Emerald 500
+    Color(0xFF059669), // Emerald 600
+    Color(0xFF047857), // Emerald 700
+  ];
+  
+  /// Calm blue gradient colors
+  static const List<Color> blueGradient = [
+    Color(0xFF3B82F6), // Blue 500
+    Color(0xFF2563EB), // Blue 600
+    Color(0xFF1D4ED8), // Blue 700
+  ];
+  
+  /// Emerald gradient (lighter green)
+  static const List<Color> emeraldGradient = [
+    Color(0xFF34D399), // Emerald 400
+    Color(0xFF10B981), // Emerald 500
+    Color(0xFF059669), // Emerald 600
+  ];
+  
+  /// White to light gradient
+  static const List<Color> whiteGradient = [
+    Color(0xFFFFFFFF),
+    Color(0xFFF9FAFB), // Gray 50
+    Color(0xFFF3F4F6), // Gray 100
+  ];
+  
+  /// Premium shadow for cards (deep, soft)
+  static List<BoxShadow> get premiumCardShadow => [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.08),
+      blurRadius: 20,
+      offset: Offset(0, 8),
+      spreadRadius: 0,
+    ),
+    BoxShadow(
+      color: Colors.black.withOpacity(0.04),
+      blurRadius: 6,
+      offset: Offset(0, 2),
+      spreadRadius: 0,
+    ),
+  ];
+  
+  /// Extra deep shadow for elevated elements
+  static List<BoxShadow> get deepShadow => [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.12),
+      blurRadius: 24,
+      offset: Offset(0, 12),
+      spreadRadius: 0,
+    ),
+    BoxShadow(
+      color: Colors.black.withOpacity(0.06),
+      blurRadius: 8,
+      offset: Offset(0, 4),
+      spreadRadius: 0,
+    ),
+  ];
+  
+  /// Status indicator colors
+  static const Color statusGood = Color(0xFF10B981); // Green
+  static const Color statusWarning = Color(0xFFF59E0B); // Yellow/Amber
+  static const Color statusAlert = Color(0xFFEF4444); // Red
+  
+  // ============================================================================
   // BACKWARD COMPATIBILITY & HELPER GETTERS
   // ============================================================================
   
@@ -555,13 +624,27 @@ class AppStyles {
   static final TextStyle cardLabel = TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
   static final TextStyle cardValue = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 
-  // Accessibility & icon-first UI
-  static const double largeIconSize = 72.0;
-  static final TextStyle bigValue = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
+  // Accessibility & icon-first UI - Enhanced for elderly users
+  static const double largeIconSize = 80.0; // Increased from 72
+  static const double extraLargeIconSize = 96.0; // For main features
+  static final TextStyle bigValue = TextStyle(
+    fontSize: 48, // Increased from 40
+    fontWeight: FontWeight.bold,
+    letterSpacing: -1,
+  );
+  static final TextStyle hugeValue = TextStyle(
+    fontSize: 64,
+    fontWeight: FontWeight.w900,
+    letterSpacing: -2,
+  );
   static final ButtonStyle largeRoundedButton = ElevatedButton.styleFrom(
-    minimumSize: Size.fromHeight(64),
+    minimumSize: Size.fromHeight(72), // Increased from 64
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
   );
+  
+  // Large touch targets for accessibility
+  static const double minTouchTarget = 48.0;
+  static const double preferredTouchTarget = 56.0;
 
   // Floating action button spacing
   static const double fabBottomOffset = 64.0;

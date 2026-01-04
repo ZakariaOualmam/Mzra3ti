@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     child: Icon(
-                      Icons.agriculture,
+                      Icons.agriculture_rounded,
                       size: 50,
                       color: theme.colorScheme.primary,
                     ),

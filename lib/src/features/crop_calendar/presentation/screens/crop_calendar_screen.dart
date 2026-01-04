@@ -215,7 +215,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                            leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                             title: Text(AppLocalizations.of(context)!.plantingDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(plantingDate)),
                             onTap: () async {
@@ -288,9 +288,10 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: ElevatedButton(
+                  SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(20, 8, 20, 12),
+                      child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppStyles.primaryGreen,
                         padding: EdgeInsets.symmetric(vertical: 16),
@@ -326,6 +327,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                         setState(() {});
                       },
                       child: Text(AppLocalizations.of(context)!.save, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                      ),
                     ),
                   ),
                 ],
@@ -350,7 +352,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
     if (season == AppLocalizations.of(context)!.summer) return Icons.wb_sunny;
     if (season == AppLocalizations.of(context)!.autumn) return Icons.nature;
     if (season == AppLocalizations.of(context)!.winter) return Icons.ac_unit;
-    return Icons.calendar_today;
+    return Icons.event_rounded;
   }
 
   Color _getSeasonColor(String season) {
@@ -494,136 +496,447 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
   Widget _buildCropCard(CropCalendarEntry crop, {bool showReadyBadge = false}) {
     final isReady = crop.isReadyToHarvest;
     final harvestSoon = crop.harvestSoon;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     
-    return Card(
-      margin: EdgeInsets.only(bottom: 12),
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: InkWell(
-        onTap: () => _showAddDialog(crop),
-        onLongPress: () async {
-          final confirm = await showDialog<bool>(
-            context: context,
-            builder: (ctx) => AlertDialog(
-              title: Text(AppLocalizations.of(context)!.deleteCrop),
-              content: Text(AppLocalizations.of(context)!.confirmDeleteCrop),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(ctx, false),
-                  child: Text(AppLocalizations.of(context)!.cancelButton),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(ctx, true),
-                  child: Text(AppLocalizations.of(context)!.delete, style: TextStyle(color: Colors.red)),
-                ),
-              ],
-            ),
-          );
-          if (confirm == true) {
-            await _repo.delete(crop.id!);
-            setState(() {});
-          }
-        },
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: _getSeasonColor(crop.season).withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(
-                  _getSeasonIcon(crop.season),
-                  color: _getSeasonColor(crop.season),
-                  size: 32,
-                ),
+    // Calculate progress percentage
+    final totalDays = crop.growthDaysEstimate;
+    final daysPassed = DateTime.now().difference(crop.plantingDate).inDays;
+    final progress = (daysPassed / totalDays).clamp(0.0, 1.0);
+    
+    // Get status color
+    Color statusColor;
+    String statusText;
+    if (isReady) {
+      statusColor = AppStyles.statusGood;
+      statusText = 'جاهز للحصاد!';
+    } else if (harvestSoon) {
+      statusColor = AppStyles.statusWarning;
+      statusText = 'قريباً';
+    } else {
+      statusColor = AppStyles.blueGradient[1];
+      statusText = 'في النمو';
+    }
+    
+    // Get crop emoji from template if available
+    final template = CropTemplates.templates.firstWhere(
+      (t) => t.name == crop.cropName,
+      orElse: () => CropTemplates.templates[0],
+    );
+    
+    return Container(
+      margin: EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: isDarkMode
+              ? [Color(0xFF2C2C2E), Color(0xFF1C1C1E)]
+              : [Colors.white, Color(0xFFF9FAFB)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(28),
+        border: Border.all(
+          color: statusColor.withOpacity(0.3),
+          width: 2,
+        ),
+        boxShadow: AppStyles.deepShadow,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => _showAddDialog(crop),
+          onLongPress: () async {
+            final confirm = await showDialog<bool>(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: Text(AppLocalizations.of(context)!.deleteCrop),
+                content: Text(AppLocalizations.of(context)!.confirmDeleteCrop),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(ctx, false),
+                    child: Text(AppLocalizations.of(context)!.cancelButton),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(ctx, true),
+                    child: Text(AppLocalizations.of(context)!.delete, style: TextStyle(color: Colors.red)),
+                  ),
+                ],
               ),
-              SizedBox(width: 16),
-              Expanded(
-                child: Column(
+            );
+            if (confirm == true) {
+              await _repo.delete(crop.id!);
+              setState(() {});
+            }
+          },
+          borderRadius: BorderRadius.circular(28),
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header Row with Crop Name and Status
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
+                    // Large Crop Emoji/Icon - Centered
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            statusColor.withOpacity(0.2),
+                            statusColor.withOpacity(0.1),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: statusColor.withOpacity(0.2),
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          template.icon,
+                          style: TextStyle(fontSize: 48),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
                             crop.cropName,
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                              color: isDarkMode ? Colors.white : Colors.black87,
+                              letterSpacing: 0.5,
+                              height: 1.2,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                        if (isReady)
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(8),
+                          SizedBox(height: 8),
+                          Text(
+                            '${crop.cropType} • ${crop.season}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: isDarkMode ? Colors.grey.shade400 : Colors.grey.shade600,
+                              fontWeight: FontWeight.w600,
+                              height: 1.3,
                             ),
-                            child: Text(
-                              'جاهز!',
-                              style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        else if (harvestSoon)
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: Colors.orange,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              'قريباً',
-                              style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                      ],
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      '${crop.cropType} • ${crop.season}',
-                      style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-                    ),
-                    SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Icon(Icons.calendar_today, size: 14, color: Colors.grey.shade500),
-                        SizedBox(width: 4),
-                        Text(
-                          'زراعة: ${DateFormat('yyyy-MM-dd').format(crop.plantingDate)}',
-                          style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
+                    SizedBox(width: 12),
+                    // Status Badge
+                    Flexible(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              statusColor,
+                              statusColor.withOpacity(0.8),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: statusColor.withOpacity(0.4),
+                              blurRadius: 8,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 4),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.event_available,
-                          size: 14,
-                          color: isReady ? Colors.green : (harvestSoon ? Colors.orange : Colors.blue),
-                        ),
-                        SizedBox(width: 4),
-                        Text(
-                          isReady
-                              ? 'حان موعد الحصاد!'
-                              : 'حصاد: ${DateFormat('yyyy-MM-dd').format(crop.calculatedHarvestDate)} (${crop.daysUntilHarvest} يوم)',
+                        child: Text(
+                          statusText,
                           style: TextStyle(
-                            fontSize: 11,
-                            color: isReady ? Colors.green : (harvestSoon ? Colors.orange : Colors.grey.shade600),
-                            fontWeight: isReady || harvestSoon ? FontWeight.bold : FontWeight.normal,
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w800,
+                            height: 1.2,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                SizedBox(height: 24),
+                
+                // Progress Bar
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            'نمو المحصول',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: isDarkMode ? Colors.white : Colors.black87,
+                              height: 1.2,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(width: 12),
+                        Text(
+                          '${(progress * 100).toStringAsFixed(0)}%',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: statusColor,
+                            height: 1.2,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Container(
+                          height: 16,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: isDarkMode ? Colors.grey.shade800 : Colors.grey.shade200,
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      statusColor,
+                                      statusColor.withOpacity(0.7),
+                                    ],
+                                  ),
+                                ),
+                                width: constraints.maxWidth * progress,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: 24),
+                
+                // Days Remaining - Large Display
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        statusColor.withOpacity(0.15),
+                        statusColor.withOpacity(0.08),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: statusColor.withOpacity(0.3),
+                      width: 2,
+                    ),
+                  ),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      // Responsive layout: stack on small screens, row on larger
+                      final isSmallScreen = constraints.maxWidth < 300;
+                      if (isSmallScreen) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _buildDateColumn(
+                              Icons.event_rounded,
+                              'زراعة',
+                              DateFormat('dd/MM').format(crop.plantingDate),
+                              statusColor,
+                              isDarkMode,
+                            ),
+                            SizedBox(height: 16),
+                            _buildDaysRemainingColumn(
+                              isReady ? '0' : '${crop.daysUntilHarvest}',
+                              statusColor,
+                              isDarkMode,
+                            ),
+                            SizedBox(height: 16),
+                            _buildDateColumn(
+                              Icons.event_available,
+                              'حصاد',
+                              DateFormat('dd/MM').format(crop.calculatedHarvestDate),
+                              statusColor,
+                              isDarkMode,
+                            ),
+                          ],
+                        );
+                      }
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: _buildDateColumn(
+                              Icons.event_rounded,
+                              'زراعة',
+                              DateFormat('dd/MM').format(crop.plantingDate),
+                              statusColor,
+                              isDarkMode,
+                            ),
+                          ),
+                          Container(
+                            width: 1,
+                            height: 60,
+                            color: statusColor.withOpacity(0.3),
+                          ),
+                          Expanded(
+                            child: _buildDaysRemainingColumn(
+                              isReady ? '0' : '${crop.daysUntilHarvest}',
+                              statusColor,
+                              isDarkMode,
+                            ),
+                          ),
+                          Container(
+                            width: 1,
+                            height: 60,
+                            color: statusColor.withOpacity(0.3),
+                          ),
+                          Expanded(
+                            child: _buildDateColumn(
+                              Icons.event_available,
+                              'حصاد',
+                              DateFormat('dd/MM').format(crop.calculatedHarvestDate),
+                              statusColor,
+                              isDarkMode,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  // Helper widget for date column
+  Widget _buildDateColumn(
+    IconData icon,
+    String label,
+    String date,
+    Color color,
+    bool isDarkMode,
+  ) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(
+          child: Icon(
+            icon,
+            color: color,
+            size: 32,
+          ),
+        ),
+        SizedBox(height: 8),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: isDarkMode ? Colors.grey.shade400 : Colors.grey.shade600,
+            fontWeight: FontWeight.w600,
+            height: 1.2,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 4),
+        Text(
+          date,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: isDarkMode ? Colors.white : Colors.black87,
+            height: 1.2,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  // Helper widget for days remaining column
+  Widget _buildDaysRemainingColumn(
+    String days,
+    Color color,
+    bool isDarkMode,
+  ) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          days,
+          style: TextStyle(
+            fontSize: 56,
+            fontWeight: FontWeight.w900,
+            color: color,
+            letterSpacing: -2,
+            height: 1.0,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 4),
+        Text(
+          'يوم متبقي',
+          style: TextStyle(
+            fontSize: 16,
+            color: isDarkMode ? Colors.grey.shade400 : Colors.grey.shade600,
+            fontWeight: FontWeight.w700,
+            height: 1.2,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

@@ -49,7 +49,7 @@ class _JournalScreenState extends State<JournalScreen> {
               TextField(controller: activityController, decoration: InputDecoration(labelText: l10n.activity)),
               const SizedBox(height: 8),
               ListTile(
-                leading: const Icon(Icons.calendar_today),
+                leading: const Icon(Icons.event_rounded),
                 title: Text(DateFormat.yMMMd().format(date)),
                 onTap: () async {
                   final d = await showDatePicker(context: ctx, initialDate: date, firstDate: DateTime(2000), lastDate: DateTime(2100));

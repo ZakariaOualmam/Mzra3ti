@@ -102,7 +102,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                       ],
                     ),
                     child: Icon(
-                      Icons.agriculture,
+                      Icons.agriculture_rounded,
                       size: 60,
                       color: Colors.white,
                     ),

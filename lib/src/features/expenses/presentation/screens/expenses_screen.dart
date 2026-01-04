@@ -126,7 +126,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(color: Colors.grey.shade300),
                             ),
-                            leading: Icon(Icons.calendar_today, color: AppStyles.primaryGreen),
+                            leading: Icon(Icons.event_rounded, color: AppStyles.primaryGreen),
                             title: Text(l10n.expenseDate),
                             subtitle: Text(DateFormat('yyyy-MM-dd').format(date)),
                             onTap: () async {
@@ -424,7 +424,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                                               SizedBox(height: 4),
                                               Row(
                                                 children: [
-                                                  Icon(Icons.calendar_today, size: 14, color: Colors.grey.shade500),
+                                                  Icon(Icons.event_rounded, size: 14, color: Colors.grey.shade500),
                                                   SizedBox(width: 4),
                                                   Text(
                                                     DateFormat('yyyy-MM-dd').format(e.date),

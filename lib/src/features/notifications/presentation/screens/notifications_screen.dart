@@ -48,7 +48,6 @@ class NotificationsScreen extends StatelessWidget {
           }
 
           final notifications = snapshot.data!;
-
           if (notifications.isEmpty) {
             return Center(
               child: Column(
@@ -68,13 +67,101 @@ class NotificationsScreen extends StatelessWidget {
             );
           }
 
-          return ListView.builder(
+          return ListView(
             padding: EdgeInsets.all(16),
-            itemCount: notifications.length,
-            itemBuilder: (context, i) {
-              final notification = notifications[i];
-              return _buildNotificationCard(context, notification);
-            },
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                margin: EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Color(0xFFF2F8F4),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '29°☀️',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF1F2937),
+                                height: 1.0,
+                              ),
+                            ),
+                            SizedBox(width: 4),
+                            Text(
+                              'الطقس مشمس اليوم',
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF9CA3AF),
+                                height: 1.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 4),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pushNamed('/weather'),
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Color(0xFFD4EDE0),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Icon(
+                              Icons.wb_sunny_rounded,
+                              color: Color(0xFF10B981),
+                              size: 28,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '👋 مرحبا',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF1F2937),
+                                height: 1.0,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'نظرة سريعة على مزرعتك اليوم',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF6B7280),
+                                height: 1.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ...notifications.map((notification) => _buildNotificationCard(context, notification)).toList(),
+            ],
           );
         },
       ),
