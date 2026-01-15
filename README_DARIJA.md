@@ -334,7 +334,7 @@ lib/
 إذا عندك مشكل أو سؤال:
 
 - 📧 البريد الإلكتروني: support@mzra3ti.ma
-- 💬 WhatsApp: +212 6XX XXX XXX
+- 💬 WhatsApp: +212 649667420
 - 🌐 الموقع: www.mzra3ti.ma
 - 📱 Facebook: @Mzra3tiApp
 - 📸 Instagram: @mzra3ti
