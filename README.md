@@ -10,6 +10,13 @@
 
 [Features](#-features) • [Screenshots](#-screenshots) • [Installation](#-installation) • [Usage](#-usage) • [Technical Details](#-technical-details)
 
+---
+
+### 📖 Read in Your Language:
+- 🇲🇦 [العربية الدارجة (Darija)](README_DARIJA.md)
+- 🇫🇷 [Français (French)](README_FRANCAIS.md)
+- 🇬🇧 [English](README_ENGLISH.md)
+
 </div>
 
 ---

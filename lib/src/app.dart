@@ -25,6 +25,7 @@ import 'features/sales/presentation/screens/sales_screen.dart';
 import 'features/equipment/presentation/screens/equipment_screen.dart';
 import 'features/crop_calendar/presentation/screens/crop_calendar_screen.dart';
 import 'features/notifications/presentation/screens/notifications_screen.dart';
+import 'features/land_map/presentation/screens/land_map_screen.dart';
 
 class Mzra3tiApp extends StatelessWidget {
   const Mzra3tiApp({Key? key}) : super(key: key);
@@ -85,6 +86,7 @@ class Mzra3tiApp extends StatelessWidget {
               '/equipment': (ctx) => const EquipmentScreen(),
               '/crop-calendar': (ctx) => const CropCalendarScreen(),
               '/notifications': (ctx) => const NotificationsScreen(),
+              '/land-map': (ctx) => const LandMapScreen(),
             },
           );
         },

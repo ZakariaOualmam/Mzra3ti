@@ -100,7 +100,7 @@ class NotificationsScreen extends StatelessWidget {
                             Text(
                               'الطقس مشمس اليوم',
                               style: TextStyle(
-                                fontSize: 11,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF9CA3AF),
                                 height: 1.0,
@@ -137,7 +137,7 @@ class NotificationsScreen extends StatelessWidget {
                             Text(
                               '👋 مرحبا',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xFF1F2937),
                                 height: 1.0,
@@ -147,7 +147,7 @@ class NotificationsScreen extends StatelessWidget {
                             Text(
                               'نظرة سريعة على مزرعتك اليوم',
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF6B7280),
                                 height: 1.2,

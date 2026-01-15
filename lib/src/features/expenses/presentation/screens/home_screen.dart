@@ -431,6 +431,16 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                       Navigator.of(context).pushNamed('/notifications');
                     },
                   ),
+                  _buildDrawerItem(
+                    icon: Icons.agriculture_rounded,
+                    title: 'إعدادات المزرعة',
+                    subtitle: 'معلومات المزرعة والأرض',
+                    iconColor: Colors.teal.shade700,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed('/farm-settings');
+                    },
+                  ),
 
                   Divider(height: 32, thickness: 1),
 
@@ -455,6 +465,16 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pushNamed('/analytics');
+                    },
+                  ),
+                  _buildDrawerItem(
+                    icon: Icons.map,
+                    title: 'خريطة الأراضي',
+                    subtitle: 'شوف الأرض الفلاحية ديالك',
+                    iconColor: Colors.green.shade700,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed('/land-map');
                     },
                   ),
                   _buildDrawerItem(
