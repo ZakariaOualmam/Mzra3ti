@@ -364,7 +364,7 @@ Les contributions sont les bienvenues! Pour contribuer:
 Pour toute question ou problème:
 
 - 📧 Email: support@mzra3ti.ma
-- 💬 WhatsApp: +212 6XX XXX XXX
+- 💬 WhatsApp: +212 649667420
 - 🌐 Site Web: www.mzra3ti.ma
 - 📱 Facebook: @Mzra3tiApp
 - 📸 Instagram: @mzra3ti
