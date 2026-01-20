@@ -500,5 +500,16 @@
   "todayAdvice": "Conseil du jour",
   "adviceSkipWatering": "Pas besoin d'arroser (il va pleuvoir)",
   "adviceWaterToday": "Arrosez aujourd'hui (temps chaud)",
-  "adviceMonitor": "Surveillez les conditions"
+  "adviceMonitor": "Surveillez les conditions",
+  "voiceAssistant": "Assistant vocal",
+  "voiceAssistantEnabled": "Assistant vocal activé",
+  "voiceAssistantDisabled": "Assistant vocal désactivé",
+  "voiceSpeed": "Vitesse de la voix",
+  "voiceVolume": "Volume de la voix",
+  "voicePitch": "Tonalité de la voix",
+  "testVoice": "Tester la voix",
+  "voiceInputPrompt": "Dites quelque chose...",
+  "listening": "Écoute...",
+  "speakNow": "Parlez maintenant",
+  "voiceHelp": "Appui long pour entendre la description"
 }

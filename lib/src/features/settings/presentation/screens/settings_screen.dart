@@ -6,6 +6,8 @@ import '../../../../core/styles.dart';
 import '../../../../core/voice_hints.dart';
 import '../../../../services/theme_service.dart';
 import '../../../../services/user_service.dart';
+import '../../../../services/voice_service.dart';
+import '../../../../shared/widgets/voice_widgets.dart';
 import '../../data/settings_repository.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -184,6 +186,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
               ),
+
+              SizedBox(height: 20),
+
+              // Voice Assistant Section
+              _buildSectionHeader('المساعد الصوتي', Icons.record_voice_over, theme),
+              SizedBox(height: 8),
+              VoiceSettingsWidget(),
 
               SizedBox(height: 20),
 

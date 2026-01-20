@@ -1484,4 +1484,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adviceMonitor => 'شكون لحال: بقا على لمونيتور';
+
+  @override
+  String get voiceAssistant => 'المساعد الصوتي';
+
+  @override
+  String get voiceAssistantEnabled => 'المساعد الصوتي مفعل';
+
+  @override
+  String get voiceAssistantDisabled => 'المساعد الصوتي موقوف';
+
+  @override
+  String get voiceSpeed => 'سرعة الصوت';
+
+  @override
+  String get voiceVolume => 'مستوى الصوت';
+
+  @override
+  String get voicePitch => 'طبقة الصوت';
+
+  @override
+  String get testVoice => 'جرب الصوت';
+
+  @override
+  String get voiceInputPrompt => 'قول ش حاجة...';
+
+  @override
+  String get listening => 'كانسمع...';
+
+  @override
+  String get speakNow => 'هضر دابا';
+
+  @override
+  String get voiceHelp => 'ضغط طويل باش تسمع الوصف بالصوت';
 }

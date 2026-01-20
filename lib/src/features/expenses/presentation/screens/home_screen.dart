@@ -7,8 +7,10 @@ import '../../../../core/voice_hints.dart';
 import '../../../../services/language_service.dart';
 import '../../../../services/theme_service.dart';
 import '../../../../services/user_service.dart';
+import '../../../../services/voice_service.dart';
 import '../../../../shared/widgets/dashboard_card.dart';
 import '../../../../shared/widgets/padded_fab.dart';
+import '../../../../shared/widgets/speakable_widgets.dart';
 import '../../../irrigation/data/irrigation_repository.dart';
 import '../../data/expense_repository.dart';
 import '../../../harvest/data/harvest_repository.dart';
@@ -55,6 +57,12 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
       curve: Curves.easeInOut,
     );
     _animationController.forward();
+    
+    // Announce screen name
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final voiceService = Provider.of<VoiceService>(context, listen: false);
+      voiceService.announceScreen('الرئيسية');
+    });
   }
 
   @override
@@ -1868,39 +1876,50 @@ class _Mzra3tiHomeScreenState extends State<Mzra3tiHomeScreen> with SingleTicker
     required Color color,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-        decoration: BoxDecoration(
-          color: Color(0xFFDEF3E8),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              color: Color(0xFF3F7F57),
-              size: 28,
+    return Builder(
+      builder: (context) {
+        final voiceService = Provider.of<VoiceService>(context, listen: false);
+        
+        return GestureDetector(
+          onTap: () {
+            voiceService.speak(label);
+            Future.delayed(Duration(milliseconds: 500), () {
+              onTap();
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+            decoration: BoxDecoration(
+              color: Color(0xFFDEF3E8),
+              borderRadius: BorderRadius.circular(16),
             ),
-            SizedBox(height: 8),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF2E2E2E),
-              ),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  color: Color(0xFF3F7F57),
+                  size: 28,
+                ),
+                SizedBox(height: 8),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF2E2E2E),
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

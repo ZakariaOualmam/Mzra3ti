@@ -2979,6 +2979,72 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'شكون لحال: بقا على لمونيتور'**
   String get adviceMonitor;
+
+  /// No description provided for @voiceAssistant.
+  ///
+  /// In ar, this message translates to:
+  /// **'المساعد الصوتي'**
+  String get voiceAssistant;
+
+  /// No description provided for @voiceAssistantEnabled.
+  ///
+  /// In ar, this message translates to:
+  /// **'المساعد الصوتي مفعل'**
+  String get voiceAssistantEnabled;
+
+  /// No description provided for @voiceAssistantDisabled.
+  ///
+  /// In ar, this message translates to:
+  /// **'المساعد الصوتي موقوف'**
+  String get voiceAssistantDisabled;
+
+  /// No description provided for @voiceSpeed.
+  ///
+  /// In ar, this message translates to:
+  /// **'سرعة الصوت'**
+  String get voiceSpeed;
+
+  /// No description provided for @voiceVolume.
+  ///
+  /// In ar, this message translates to:
+  /// **'مستوى الصوت'**
+  String get voiceVolume;
+
+  /// No description provided for @voicePitch.
+  ///
+  /// In ar, this message translates to:
+  /// **'طبقة الصوت'**
+  String get voicePitch;
+
+  /// No description provided for @testVoice.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرب الصوت'**
+  String get testVoice;
+
+  /// No description provided for @voiceInputPrompt.
+  ///
+  /// In ar, this message translates to:
+  /// **'قول ش حاجة...'**
+  String get voiceInputPrompt;
+
+  /// No description provided for @listening.
+  ///
+  /// In ar, this message translates to:
+  /// **'كانسمع...'**
+  String get listening;
+
+  /// No description provided for @speakNow.
+  ///
+  /// In ar, this message translates to:
+  /// **'هضر دابا'**
+  String get speakNow;
+
+  /// No description provided for @voiceHelp.
+  ///
+  /// In ar, this message translates to:
+  /// **'ضغط طويل باش تسمع الوصف بالصوت'**
+  String get voiceHelp;
 }
 
 class _AppLocalizationsDelegate

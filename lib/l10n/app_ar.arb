@@ -559,5 +559,16 @@
   "todayAdvice": "نصيحة اليوم",
   "adviceSkipWatering": "مانشوفش لما (غادي تمطل)",
   "adviceWaterToday": "صلي لما ليوم (حاول)",
-  "adviceMonitor": "شكون لحال: بقا على لمونيتور"
+  "adviceMonitor": "شكون لحال: بقا على لمونيتور",
+  "voiceAssistant": "المساعد الصوتي",
+  "voiceAssistantEnabled": "المساعد الصوتي مفعل",
+  "voiceAssistantDisabled": "المساعد الصوتي موقوف",
+  "voiceSpeed": "سرعة الصوت",
+  "voiceVolume": "مستوى الصوت",
+  "voicePitch": "طبقة الصوت",
+  "testVoice": "جرب الصوت",
+  "voiceInputPrompt": "قول ش حاجة...",
+  "listening": "كانسمع...",
+  "speakNow": "هضر دابا",
+  "voiceHelp": "ضغط طويل باش تسمع الوصف بالصوت"
 }

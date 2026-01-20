@@ -500,5 +500,16 @@
   "todayAdvice": "Today's Advice",
   "adviceSkipWatering": "Skip watering (it will rain)",
   "adviceWaterToday": "Water today (hot weather)",
-  "adviceMonitor": "Monitor conditions closely"
+  "adviceMonitor": "Monitor conditions closely",
+  "voiceAssistant": "Voice Assistant",
+  "voiceAssistantEnabled": "Voice assistant enabled",
+  "voiceAssistantDisabled": "Voice assistant disabled",
+  "voiceSpeed": "Voice Speed",
+  "voiceVolume": "Voice Volume",
+  "voicePitch": "Voice Pitch",
+  "testVoice": "Test Voice",
+  "voiceInputPrompt": "Say something...",
+  "listening": "Listening...",
+  "speakNow": "Speak now",
+  "voiceHelp": "Long press to hear description"
 }

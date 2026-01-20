@@ -1510,4 +1510,37 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get adviceMonitor => 'Surveillez les conditions';
+
+  @override
+  String get voiceAssistant => 'Assistant vocal';
+
+  @override
+  String get voiceAssistantEnabled => 'Assistant vocal activé';
+
+  @override
+  String get voiceAssistantDisabled => 'Assistant vocal désactivé';
+
+  @override
+  String get voiceSpeed => 'Vitesse de la voix';
+
+  @override
+  String get voiceVolume => 'Volume de la voix';
+
+  @override
+  String get voicePitch => 'Tonalité de la voix';
+
+  @override
+  String get testVoice => 'Tester la voix';
+
+  @override
+  String get voiceInputPrompt => 'Dites quelque chose...';
+
+  @override
+  String get listening => 'Écoute...';
+
+  @override
+  String get speakNow => 'Parlez maintenant';
+
+  @override
+  String get voiceHelp => 'Appui long pour entendre la description';
 }

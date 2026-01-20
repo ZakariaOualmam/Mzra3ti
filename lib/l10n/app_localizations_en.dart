@@ -1493,4 +1493,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adviceMonitor => 'Monitor conditions closely';
+
+  @override
+  String get voiceAssistant => 'Voice Assistant';
+
+  @override
+  String get voiceAssistantEnabled => 'Voice assistant enabled';
+
+  @override
+  String get voiceAssistantDisabled => 'Voice assistant disabled';
+
+  @override
+  String get voiceSpeed => 'Voice Speed';
+
+  @override
+  String get voiceVolume => 'Voice Volume';
+
+  @override
+  String get voicePitch => 'Voice Pitch';
+
+  @override
+  String get testVoice => 'Test Voice';
+
+  @override
+  String get voiceInputPrompt => 'Say something...';
+
+  @override
+  String get listening => 'Listening...';
+
+  @override
+  String get speakNow => 'Speak now';
+
+  @override
+  String get voiceHelp => 'Long press to hear description';
 }

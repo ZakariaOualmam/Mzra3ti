@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../core/styles.dart';
-
 import '../../core/voice_hints.dart';
+import '../../services/voice_service.dart';
 
 class DashboardCard extends StatelessWidget {
   final IconData icon;
@@ -26,15 +27,29 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final surfaceColor = Theme.of(context).colorScheme.surface;
+    final voiceService = Provider.of<VoiceService>(context, listen: false);
     
     return Material(
       color: surfaceColor,
       borderRadius: BorderRadius.circular(14),
       child: InkWell(
         onTap: () {
-          // voice hint (if enabled)
+          // Speak full card content
+          String speech = '$title. القيمة: $value';
+          if (subtitle.isNotEmpty) {
+            speech += '. $subtitle';
+          }
+          voiceService.speak(speech);
+          
+          // Old voice hint fallback
           if ((voiceHint ?? '').isNotEmpty) VoiceHints.instance.speak(voiceHint!);
-          onTap?.call();
+          
+          // Execute action after speech
+          if (onTap != null) {
+            Future.delayed(Duration(milliseconds: 500), () {
+              onTap!();
+            });
+          }
         },
         borderRadius: BorderRadius.circular(14),
         child: Container(

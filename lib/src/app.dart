@@ -6,6 +6,7 @@ import 'core/constants.dart';
 import 'core/styles.dart';
 import 'services/language_service.dart';
 import 'services/theme_service.dart';
+import 'services/voice_service.dart';
 import 'features/expenses/presentation/screens/splash_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
 import 'features/auth/presentation/screens/login_screen.dart';
@@ -36,6 +37,7 @@ class Mzra3tiApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LanguageService()),
         ChangeNotifierProvider(create: (_) => ThemeService()..initialize()),
+        ChangeNotifierProvider(create: (_) => VoiceService()),
       ],
       child: Consumer2<LanguageService, ThemeService>(
         builder: (context, languageService, themeService, child) {
