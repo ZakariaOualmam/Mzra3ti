@@ -403,5 +403,161 @@
   "expenseBreakdown": "توزيع المصاريف",
   "expensesChart": "المصاريف",
   "broken": "معطل",
-  "purchasedOn": "شراء"
+  "purchasedOn": "شراء",
+  "notifCropReady": "🌾 حصاد {cropName}",
+  "notifCropReadyMessage": "حان موعد حصاد {cropName}! المحصول جاهز الآن.",
+  "notifCropSoon": "📅 تذكير: {cropName}",
+  "notifCropSoonMessage": "موعد حصاد {cropName} خلال {days} أيام.",
+  "notifEquipmentMaintenance": "🔧 صيانة {equipmentName}",
+  "notifEquipmentMaintenanceMessage": "{equipmentName} تحتاج لصيانة! الموعد المحدد: {date}",
+  "notifIrrigationReminder": "💧 تذكير بالسقي",
+  "notifIrrigationReminderMessage": "آخر عملية سقي كانت منذ {days} أيام. هل حان وقت السقي؟",
+  "notifIrrigationFirst": "💧 ابدأ تتبع السقي",
+  "notifIrrigationFirstMessage": "لم تسجل أي عملية سقي بعد. ابدأ بتتبع مواعيد السقي!",
+  "typeAlert": "alert",
+  "typeReminder": "reminder",
+  "typeInfo": "info",
+  "fillAllFields": "الرجاء ملء جميع الحقول",
+  "bankTransfer": "تحويل بنكي",
+  "check": "شيك",
+  "totalSales": "إجمالي",
+  "purchaseOperations": "{count} عمليات شراء",
+  "@purchaseOperations": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "weatherSunnyToday": "الطقس مشمس اليوم",
+  "helloWave": "👋 مرحبا",
+  "quickFarmOverview": "نظرة سريعة على مزرعتك اليوم",
+  "daysAgo": "منذ {days} يوم",
+  "@daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "منذ {hours} ساعة",
+  "@hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "minutesAgo": "منذ {minutes} دقيقة",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "now": "الآن",
+  "hectare": "هكتار",
+  "area": "المساحة",
+  "coordinates": "الإحداثيات",
+  "edit": "تعديل",
+  "delete": "حذف",
+  "editFeatureComingSoon": "ميزة التعديل قريباً",
+  "confirmDelete": "تأكيد الحذف",
+  "areYouSureToDelete": "هل أنت متأكد من حذف {name}؟",
+  "@areYouSureToDelete": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleted": "تم حذف {name}",
+  "@deleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "mustSelect3Points": "يجب تحديد 3 نقاط على الأقل",
+  "addNewLand": "أضف أرض جديدة",
+  "landName": "اسم الأرض",
+  "notesOptional": "ملاحظات (اختياري)",
+  "saved": "تم حفظ {name}",
+  "@saved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "landMap": "خريطة الأراضي",
+  "mapWebApiKeyRequired": "لاستخدام ميزة الخريطة على الويب، يجب إضافة Google Maps API Key",
+  "mapAvailableOnMobile": "هذه الميزة متاحة بالكامل على تطبيق الهاتف (Android/iOS)",
+  "features": "المميزات:",
+  "drawFarmBoundaries": "رسم حدود الأرض الفلاحية",
+  "calculateAreaAuto": "حساب المساحة تلقائياً",
+  "currentLocation": "تحديد الموقع الحالي",
+  "manageMultipleLands": "إدارة عدة أراضي",
+  "comprehensiveAreaSummary": "ملخص شامل للمساحات",
+  "back": "رجوع",
+  "drawBoundaries": "رسم حدود",
+  "tapMapToMark": "انقر على الخريطة لتحديد حدود الأرض ({count} نقاط)",
+  "@tapMapToMark": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noSavedLands": "لا توجد أراضي محفوظة",
+  "tapDrawToAddFirst": "اضغط على أيقونة الرسم لإضافة أول أرض",
+  "summary": "الملخص",
+  "landsSummary": "ملخص الأراضي",
+  "numberOfLands": "عدد الأراضي:",
+  "totalArea": "المساحة الإجمالية:",
+  "lands": "الأراضي:",
+  "loading": "جاري التحميل...",
+  "farmSettings": "إعدادات المزرعة",
+  "farmSettingsSubtitle": "معلومات المزرعة والأرض",
+  "landMapSubtitle": "شوف الأرض الفلاحية ديالك",
+  "reports": "التقارير",
+  "growthDurationDays": "مدة النمو (بالأيام)",
+  "pleaseFillRequiredFields": "الرجاء ملء الحقول المطلوبة",
+  "readyCropsWillAppearHere": "ستظهر هنا المحاصيل التي حان موعد حصادها",
+  "readyToHarvest": "جاهز للحصاد!",
+  "soon": "قريباً",
+  "growing": "في النمو",
+  "cropGrowth": "نمو المحصول",
+  "planting": "زراعة",
+  "harvest": "حصاد",
+  "daysRemaining": "يوم متبقي",
+  "cropTomato": "طماطم",
+  "cropCucumber": "خيار",
+  "cropPotato": "بطاطس",
+  "cropWheat": "قمح",
+  "cropCorn": "ذرة",
+  "cropPepper": "فلفل",
+  "cropOnion": "بصل",
+  "cropCarrot": "جزر",
+  "cropWatermelon": "بطيخ",
+  "cropStrawberry": "فراولة",
+  "soilType": "نوع التربة",
+  "cropTypesList": "أنواع المحاصيل",
+  "emailOptional": "البريد الإلكتروني (اختياري)",
+  "areaInHectares": "المساحة (هكتار)",
+  "locationCity": "الموقع/المدينة",
+  "basicInformation": "المعلومات الأساسية",
+  "agriculturalInformation": "المعلومات الزراعية",
+  "contactInformation": "معلومات الاتصال",
+  "weatherSunny": "مشمس",
+  "weatherCloudy": "غائم",
+  "weatherRainy": "ممطر",
+  "weatherPartly": "غائم جزئياً",
+  "today": "اليوم",
+  "todayAdvice": "نصيحة اليوم",
+  "adviceSkipWatering": "مانشوفش لما (غادي تمطل)",
+  "adviceWaterToday": "صلي لما ليوم (حاول)",
+  "adviceMonitor": "شكون لحال: بقا على لمونيتور"
 }

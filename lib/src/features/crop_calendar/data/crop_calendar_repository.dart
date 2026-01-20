@@ -62,12 +62,7 @@ class CropCalendarRepository {
 
   Future<Map<String, int>> getStatsBySeason() async {
     final all = await list();
-    final Map<String, int> stats = {
-      'الربيع': 0,
-      'الصيف': 0,
-      'الخريف': 0,
-      'الشتاء': 0,
-    };
+    final Map<String, int> stats = {};
     
     for (var entry in all) {
       stats[entry.season] = (stats[entry.season] ?? 0) + 1;

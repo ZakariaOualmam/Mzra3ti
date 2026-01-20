@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../../../../../../l10n/app_localizations.dart';
 
 import '../../../../core/styles.dart';
@@ -12,15 +12,15 @@ class FarmSettingsScreen extends StatefulWidget {
 
 class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
   final _formKey = GlobalKey<FormState>();
-
+  
   // Farm data
-  String _farmName = '';
-  String _farmArea = '';
-  String _location = '';
-  String _soilType = 'Sandy';
-  String _cropTypes = '';
-  String _contactPerson = '';
-  String _phoneNumber = '';
+  String _farmName = 'مزرعتي';
+  String _farmArea = '10';
+  String _location = 'المغرب';
+  String _soilType = 'طينية';
+  String _cropTypes = 'خضروات، فواكه';
+  String _contactPerson = 'أحمد';
+  String _phoneNumber = '0600000000';
   String _email = '';
 
   @override
@@ -37,7 +37,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
         shadowColor: theme.colorScheme.primary.withOpacity(0.3),
         centerTitle: true,
         title: Text(
-          l10n.farmSettings,
+          'معلومات المزرعة',
           style: TextStyle(
             color: AppStyles.brandWhite,
             fontSize: 20,
@@ -111,21 +111,21 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                 SizedBox(height: 32),
 
                 // Basic Information
-                _buildSectionHeader(l10n.basicInformation, Icons.info_outline, theme),
+                _buildSectionHeader('المعلومات الأساسية', Icons.info_outline, theme),
                 SizedBox(height: 12),
                 _buildCard(
                   theme,
                   child: Column(
                     children: [
                       _buildTextField(
-                        label: l10n.farmName,
+                        label: AppLocalizations.of(context)!.farmName,
                         icon: Icons.landscape,
                         initialValue: _farmName,
                         onSaved: (value) => _farmName = value ?? '',
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: l10n.areaInHectares,
+                        label: 'المساحة (هكتار)',
                         icon: Icons.square_foot,
                         initialValue: _farmArea,
                         keyboardType: TextInputType.number,
@@ -133,7 +133,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: l10n.locationCity,
+                        label: 'الموقع/المدينة',
                         icon: Icons.location_on,
                         initialValue: _location,
                         onSaved: (value) => _location = value ?? '',
@@ -145,24 +145,24 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                 SizedBox(height: 20),
 
                 // Agricultural Information
-                _buildSectionHeader(l10n.agriculturalInformation, Icons.grass, theme),
+                _buildSectionHeader('المعلومات الزراعية', Icons.grass, theme),
                 SizedBox(height: 12),
                 _buildCard(
                   theme,
                   child: Column(
                     children: [
                       _buildDropdownField(
-                        label: l10n.soilType,
+                        label: 'نوع التربة',
                         icon: Icons.terrain,
                         value: _soilType,
-                        items: ['Sandy', 'Clay', 'Rocky', 'Fertile', 'Mixed'],
+                        items: ['طينية', 'رملية', 'صخرية', 'خصبة', 'مختلطة'],
                         onChanged: (value) {
-                          setState(() => _soilType = value ?? 'Sandy');
+                          setState(() => _soilType = value ?? 'طينية');
                         },
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: l10n.cropTypesList,
+                        label: 'أنواع المحاصيل',
                         icon: Icons.eco,
                         initialValue: _cropTypes,
                         maxLines: 2,
@@ -175,21 +175,21 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                 SizedBox(height: 20),
 
                 // Contact Information
-                _buildSectionHeader(l10n.contactInformation, Icons.contact_phone, theme),
+                _buildSectionHeader('معلومات الاتصال', Icons.contact_phone, theme),
                 SizedBox(height: 12),
                 _buildCard(
                   theme,
                   child: Column(
                     children: [
                       _buildTextField(
-                        label: l10n.managerName,
+                        label: AppLocalizations.of(context)!.managerName,
                         icon: Icons.person,
                         initialValue: _contactPerson,
                         onSaved: (value) => _contactPerson = value ?? '',
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: l10n.phoneNumber,
+                        label: AppLocalizations.of(context)!.phoneNumber,
                         icon: Icons.phone,
                         initialValue: _phoneNumber,
                         keyboardType: TextInputType.phone,
@@ -197,7 +197,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
                       ),
                       Divider(height: 1),
                       _buildTextField(
-                        label: l10n.emailOptional,
+                        label: 'البريد الإلكتروني (اختياري)',
                         icon: Icons.email,
                         initialValue: _email,
                         keyboardType: TextInputType.emailAddress,
@@ -303,6 +303,7 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
               initialValue: initialValue,
               keyboardType: keyboardType,
               maxLines: maxLines,
+              style: Theme.of(context).textTheme.bodyLarge,
               decoration: InputDecoration(
                 labelText: label,
                 border: InputBorder.none,
@@ -384,3 +385,4 @@ class _FarmSettingsScreenState extends State<FarmSettingsScreen> {
     }
   }
 }
+

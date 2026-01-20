@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../features/crop_calendar/data/crop_calendar_repository.dart';
 import '../features/equipment/data/equipment_repository.dart';
 import '../features/irrigation/data/irrigation_repository.dart';
+import '../../l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 /// Notification Model
 class AppNotification {
@@ -56,19 +58,19 @@ class NotificationService {
   final _equipmentRepo = EquipmentRepository();
   final _irrigationRepo = IrrigationRepository();
 
-  Future<List<AppNotification>> getAllNotifications() async {
+  Future<List<AppNotification>> getAllNotifications(BuildContext context) async {
     final List<AppNotification> notifications = [];
     
     // Crop Harvest Reminders
-    final cropNotifications = await _getCropNotifications();
+    final cropNotifications = await _getCropNotifications(context);
     notifications.addAll(cropNotifications);
     
     // Equipment Maintenance Alerts
-    final equipmentNotifications = await _getEquipmentNotifications();
+    final equipmentNotifications = await _getEquipmentNotifications(context);
     notifications.addAll(equipmentNotifications);
     
     // Irrigation Reminders
-    final irrigationNotifications = await _getIrrigationNotifications();
+    final irrigationNotifications = await _getIrrigationNotifications(context);
     notifications.addAll(irrigationNotifications);
     
     // Sort by timestamp (newest first)
@@ -77,26 +79,27 @@ class NotificationService {
     return notifications;
   }
 
-  Future<List<AppNotification>> _getCropNotifications() async {
+  Future<List<AppNotification>> _getCropNotifications(BuildContext context) async {
     final List<AppNotification> notifications = [];
     final crops = await _cropRepo.list();
+    final l10n = AppLocalizations.of(context)!;
     
     for (var crop in crops) {
       if (crop.isReadyToHarvest) {
         notifications.add(AppNotification(
           id: 'crop_ready_${crop.id}',
-          title: '🌾 حصاد ${crop.cropName}',
-          message: 'حان موعد حصاد ${crop.cropName}! المحصول جاهز الآن.',
-          type: 'alert',
+          title: l10n.notifCropReady(crop.cropName),
+          message: l10n.notifCropReadyMessage(crop.cropName),
+          type: l10n.typeAlert,
           timestamp: crop.calculatedHarvestDate,
           actionRoute: '/crop-calendar',
         ));
       } else if (crop.harvestSoon && crop.reminderEnabled) {
         notifications.add(AppNotification(
           id: 'crop_soon_${crop.id}',
-          title: '📅 تذكير: ${crop.cropName}',
-          message: 'موعد حصاد ${crop.cropName} خلال ${crop.daysUntilHarvest} أيام.',
-          type: 'reminder',
+          title: l10n.notifCropSoon(crop.cropName),
+          message: l10n.notifCropSoonMessage(crop.cropName, crop.daysUntilHarvest),
+          type: l10n.typeReminder,
           timestamp: DateTime.now(),
           actionRoute: '/crop-calendar',
         ));
@@ -106,17 +109,20 @@ class NotificationService {
     return notifications;
   }
 
-  Future<List<AppNotification>> _getEquipmentNotifications() async {
+  Future<List<AppNotification>> _getEquipmentNotifications(BuildContext context) async {
     final List<AppNotification> notifications = [];
     final equipment = await _equipmentRepo.list();
+    final l10n = AppLocalizations.of(context)!;
+    final dateFormat = DateFormat('dd/MM/yyyy');
     
     for (var item in equipment) {
       if (item.needsMaintenance()) {
+        final dateStr = dateFormat.format(item.nextMaintenance!);
         notifications.add(AppNotification(
           id: 'equipment_${item.id}',
-          title: '🔧 صيانة ${item.name}',
-          message: '${item.name} تحتاج لصيانة! الموعد المحدد: ${item.nextMaintenance}',
-          type: 'alert',
+          title: l10n.notifEquipmentMaintenance(item.name),
+          message: l10n.notifEquipmentMaintenanceMessage(item.name, dateStr),
+          type: l10n.typeAlert,
           timestamp: item.nextMaintenance!,
           actionRoute: '/equipment',
         ));
@@ -126,9 +132,10 @@ class NotificationService {
     return notifications;
   }
 
-  Future<List<AppNotification>> _getIrrigationNotifications() async {
+  Future<List<AppNotification>> _getIrrigationNotifications(BuildContext context) async {
     final List<AppNotification> notifications = [];
     final irrigations = await _irrigationRepo.getAll();
+    final l10n = AppLocalizations.of(context)!;
     
     // Check if last irrigation was more than 3 days ago
     if (irrigations.isNotEmpty) {
@@ -139,9 +146,9 @@ class NotificationService {
       if (daysSince >= 3) {
         notifications.add(AppNotification(
           id: 'irrigation_reminder',
-          title: '💧 تذكير بالسقي',
-          message: 'آخر عملية سقي كانت منذ $daysSince أيام. هل حان وقت السقي؟',
-          type: 'reminder',
+          title: l10n.notifIrrigationReminder,
+          message: l10n.notifIrrigationReminderMessage(daysSince),
+          type: l10n.typeReminder,
           timestamp: DateTime.now(),
           actionRoute: '/irrigations',
         ));
@@ -149,9 +156,9 @@ class NotificationService {
     } else {
       notifications.add(AppNotification(
         id: 'irrigation_first',
-        title: '💧 ابدأ تتبع السقي',
-        message: 'لم تسجل أي عملية سقي بعد. ابدأ بتتبع مواعيد السقي!',
-        type: 'info',
+        title: l10n.notifIrrigationFirst,
+        message: l10n.notifIrrigationFirstMessage,
+        type: l10n.typeInfo,
         timestamp: DateTime.now(),
         actionRoute: '/irrigations',
       ));
@@ -160,8 +167,8 @@ class NotificationService {
     return notifications;
   }
 
-  Future<int> getUnreadCount() async {
-    final notifications = await getAllNotifications();
+  Future<int> getUnreadCount(BuildContext context) async {
+    final notifications = await getAllNotifications(context);
     return notifications.where((n) => !n.isRead).length;
   }
 }

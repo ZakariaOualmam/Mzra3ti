@@ -1,0 +1,283 @@
+📄 FICHE DE POSTE
+🌾 Mzra3ti – Application professionnelle de gestion agricole
+Intitulé du poste
+
+Assistante de Direction – Projet Mzra3ti
+
+Rattachement hiérarchique
+
+Directeur du projet Mzra3ti
+(Startup spécialisée dans les solutions digitales agricoles)
+
+Mission principale
+
+L’Assistante de Direction du projet Mzra3ti a pour mission d’assister la direction dans la gestion quotidienne du projet, de coordonner les activités administratives, organisationnelles et de communication, et de contribuer au bon déroulement du développement et du déploiement de l’application de gestion agricole.
+
+Elle joue un rôle clé dans l’organisation interne du projet et dans la communication entre les équipes techniques, marketing et les partenaires agricoles.
+
+Lieu de travail
+
+Hybride / Télétravail
+
+Possibilité de déplacements ponctuels (réunions, événements agricoles, partenaires)
+
+Responsabilités du poste
+🗂️ Gestion administrative
+
+Gérer l’agenda du Directeur du projet (réunions, rendez-vous, deadlines).
+
+Assurer le traitement des appels téléphoniques et des courriels professionnels.
+
+Préparer, organiser et suivre les dossiers administratifs liés au projet Mzra3ti.
+
+Classer et archiver les documents (techniques, financiers, partenariats).
+
+🧭 Coordination des réunions
+
+Planifier et organiser les réunions internes (équipe technique, design, marketing).
+
+Organiser les réunions externes avec partenaires agricoles, coopératives et prestataires.
+
+Préparer les ordres du jour et rédiger les comptes rendus de réunion.
+
+Assurer le suivi des décisions prises et vérifier leur mise en œuvre.
+
+🚜 Support logistique et opérationnel
+
+Organiser les déplacements professionnels liés au projet (salons agricoles, formations, démonstrations).
+
+Participer à l’organisation d’événements liés à l’application (présentations, ateliers, démonstrations terrain).
+
+Aider à la coordination des phases de test utilisateur avec les agriculteurs.
+
+📢 Communication et coordination interne
+
+Assurer la liaison entre la direction, l’équipe de développement (Flutter/Dart) et l’équipe marketing.
+
+Rédiger des courriers, rapports, notes de service et documents internes.
+
+Participer à la gestion de la communication interne du projet.
+
+📊 Suivi de projets
+
+Participer au suivi des différentes fonctionnalités de l’application (dashboard, irrigation, dépenses, rapports, etc.).
+
+Assurer le reporting de l’avancement du projet (planning, livrables, priorités).
+
+Aider à la préparation des documents de présentation du projet (fiches, rapports, supports).
+
+Compétences requises
+🎓 Compétences techniques
+
+Bonne maîtrise des outils bureautiques (Word, Excel, PowerPoint).
+
+À l’aise avec les outils numériques et les applications mobiles.
+
+Notions de gestion de projet (un atout).
+
+🤝 Compétences personnelles
+
+Sens élevé de l’organisation et de la rigueur
+
+Proactivité et esprit d’initiative
+
+Capacité à travailler sous pression et à gérer plusieurs tâches
+
+Flexibilité et adaptabilité
+
+Bon esprit d’équipe
+
+Excellentes compétences en communication
+
+Profil recherché
+
+Formation en assistanat de direction, gestion, administration ou équivalent
+
+Intérêt pour les projets digitaux et/ou le domaine agricole
+
+Sensibilité aux solutions technologiques innovantes
+
+Maîtrise du français (arabe ou anglais est un atout)
+
+Informations complémentaires
+
+Le projet Mzra3ti vise à moderniser la gestion agricole à travers une solution digitale simple, accessible et adaptée aux réalités des agriculteurs.
+
+🌐 Plus d’informations : www.mzra3ti.ma
+
+🎨 Palette ديال الألوان (ديرهم فـ Canva)
+🌞 Light Mode (نهاري)
+
+Primary (أخضر المزرعة): #2E7D32
+
+Secondary (أخضر فاتح): #81C784
+
+Background: #F5F5F5
+
+Cards / Boxes: #FFFFFF
+
+Text Primary: #212121
+
+Text Secondary: #616161
+
+Accent (أيقونات / أزرار): #4CAF50
+
+🌙 Dark Mode (إلى بغيت)
+
+Background: #1C1C1E
+
+Primary: #81C784
+
+Cards: #2A2A2D
+
+Text: #FFFFFF
+
+Muted Text: #B0B0B0
+
+📌 فـ Canva:
+Styles → Colors → Create new palette ودخل هاد الأكواد.
+
+✍️ Fonts لي كيشبهو Flutter / Material 3
+🔤 العناوين (Titles)
+
+Cairo Bold ✅ (أفضل اختيار)
+
+بديل: Tajawal Bold
+
+بديل 2: Montserrat SemiBold (إلى بغيت ستايل عصري)
+
+📝 النصوص (Body)
+
+Cairo Regular
+
+أو Tajawal Regular
+
+أو Roboto (Material Design)
+
+📌 الإعداد:
+
+Title: 36 – 48
+
+Subtitle: 20 – 24
+
+Body: 14 – 16
+
+🧩 Layout ديال Poster (احترافي)
+🔝 Header
+
+Background: #2E7D32
+
+Title أبيض
+
+🌾 Mzra3ti – تدبير ذكي للمزارع
+
+Subtitle: أخضر فاتح #C8E6C9
+
+🟩 Section 1 – شنو هو التطبيق؟
+
+Card أبيض
+
+أيقونة 🌾 خضراء
+
+Text غامق
+
+🟩 Section 2 – المميزات (Grid)
+
+دير 3 × 2 Cards
+
+كل Card:
+
+Background: أبيض
+
+Shadow خفيف
+
+Icon أخضر
+
+Title Bold
+
+Description Regular
+
+🟩 Section 3 – Screens / Mockup
+
+دير Smartphone Frame
+
+Screenshot (حتى Fake UI)
+
+Background رمادي فاتح
+
+🔻 Footer
+
+Background: #2E7D32
+
+Text أبيض
+
+Icons Social خضر فاتحين
+
+📊 Layout ديال PowerPoint (Slides)
+🟢 Slide 1 – Cover
+
+Background أخضر
+
+Logo / Icon 🌾
+
+Title أبيض كبير
+
+🟢 Slide 2 – Problem
+
+Left: Text
+
+Right: Icon / Illustration
+
+Background فاتح
+
+🟢 Slide 3 – Solution (Mzra3ti)
+
+Cards خضر
+
+Icons بيض
+
+🟢 Slide 4 – Features
+
+Grid Cards
+
+Animations خفيفة (Fade / Slide)
+
+🟢 Slide 5 – Tech Stack
+
+Flutter – Dart – Maps – PDF
+
+Icons فقط (Minimal)
+
+🟢 Slide 6 – Future
+
+Checklist خضر
+
+Background Light
+
+🧠 Canva Keywords (باش تلقى Templates مناسبين)
+
+قلب فـ Canva على:
+
+Agriculture App
+
+Green Mobile App
+
+Dashboard App
+
+Startup Pitch Deck
+
+Mobile UI Presentation
+
+ومن بعد بدل الألوان بـ Palette ديالك.
+
+✅ إلى بغيت نقدر:
+
+✔️ نصايب لك Poster Canva Template
+
+✔️ ولا PowerPoint (Pitch Deck)
+
+✔️ ولا حتى Cover GitHub + Slides
+
+قولي غير:
+👉 Poster ولا PowerPoint؟
+👉 بالعربية، دارجة، ولا English؟

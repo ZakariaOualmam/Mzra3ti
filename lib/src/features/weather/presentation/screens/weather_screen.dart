@@ -3,6 +3,7 @@ import '../../../../../../../l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/styles.dart';
 import '../../../../core/app_icons.dart';
+import '../../data/weather_service.dart';
 
 class DayForecast {
   final DateTime date;
@@ -22,38 +23,52 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   final DateTime _today = DateTime.now();
+  final WeatherService _weatherService = WeatherService();
 
-  // Mock 7-day forecast for now; we can replace with real API later
+  // Weather forecast data
   late List<DayForecast> _week;
+  bool _isLoading = true;
+  String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
-    _week = _mockWeek(_today);
+    _loadWeather();
   }
 
-  List<DayForecast> _mockWeek(DateTime start) {
-    final rnd = start.day % 3; // simple variation
-    return List.generate(7, (i) {
-      final d = start.add(Duration(days: i));
-      final cond = (i + rnd) % 4 == 0 ? 'sunny' : (i + rnd) % 4 == 1 ? 'cloudy' : (i + rnd) % 4 == 2 ? 'rainy' : 'partly';
-      final high = 20 + ((i + rnd) % 5) + (i.isEven ? 0 : 1);
-      final low = high - (2 + (i % 2));
-      return DayForecast(date: d, tempHigh: high.toDouble(), tempLow: low.toDouble(), condition: cond);
+  Future<void> _loadWeather() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
     });
+
+    try {
+      final forecast = await _weatherService.getWeatherForecast();
+      setState(() {
+        _week = forecast;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString();
+        _isLoading = false;
+        _week = [];
+      });
+    }
   }
 
-  String _conditionLabel(String cond) {
+  String _conditionLabel(String cond, BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     switch (cond) {
       case 'sunny':
-        return 'Shms';
+        return l10n.weatherSunny;
       case 'cloudy':
-        return 'Mghyem';
+        return l10n.weatherCloudy;
       case 'rainy':
-        return 'Mtlj';
+        return l10n.weatherRainy;
       case 'partly':
       default:
-        return 'M3odhl';
+        return l10n.weatherPartly;
     }
   }
 
@@ -85,17 +100,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
     }
   }
 
-  String _irrigationAdvice(DayForecast f) {
+  String _irrigationAdvice(DayForecast f, BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     // Simple rule: if rainy -> skip, if high temp and no rain -> water
-    if (f.condition == 'rainy') return 'Manshuffsh lma (ghadi tmtl)';
+    if (f.condition == 'rainy') return l10n.adviceSkipWatering;
     final avg = (f.tempHigh + f.tempLow) / 2.0;
-    if (avg >= 25) return 'Salli lma lyoum (7awel)';
-    return 'Chkoun l-7al: b9a 3la lmonitor';
+    if (avg >= 25) return l10n.adviceWaterToday;
+    return l10n.adviceMonitor;
   }
 
-  Color _getAdviceColor(String advice) {
-    if (advice.contains('Manshuffsh')) return AppStyles.statusGood; // Green - skip watering
-    if (advice.contains('Salli')) return AppStyles.statusWarning; // Yellow - water today
+  Color _getAdviceColor(String advice, BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    if (advice == l10n.adviceSkipWatering) return AppStyles.statusGood; // Green - skip watering
+    if (advice == l10n.adviceWaterToday) return AppStyles.statusWarning; // Yellow - water today
     return AppStyles.blueGradient[1]; // Blue - monitor
   }
 
@@ -103,8 +120,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final today = _week[0];
-    final avgTemp = (today.tempHigh + today.tempLow) / 2.0;
 
     return Scaffold(
       backgroundColor: isDarkMode ? Color(0xFF1C1C1E) : Color(0xFFF0FDF4),
@@ -151,6 +166,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh, color: Colors.white),
+            onPressed: _loadWeather,
+            tooltip: 'Refresh',
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -163,13 +185,70 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
         ),
         child: SafeArea(
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
+          child: _isLoading
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(AppStyles.blueGradient[1]),
+                      ),
+                      SizedBox(height: 16),
+                      Text(
+                        'Loading weather data...',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: isDarkMode ? Colors.white70 : Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : _errorMessage != null
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.error_outline, size: 64, color: Colors.red),
+                          SizedBox(height: 16),
+                          Text(
+                            'Error loading weather',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 8),
+                          ElevatedButton.icon(
+                            onPressed: _loadWeather,
+                            icon: Icon(Icons.refresh),
+                            label: Text('Retry'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppStyles.blueGradient[1],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      padding: EdgeInsets.all(20),
+                      child: _buildWeatherContent(context, l10n, isDarkMode),
+                    ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWeatherContent(BuildContext context, AppLocalizations l10n, bool isDarkMode) {
+    if (_week.isEmpty) {
+      return Center(child: Text('No weather data available'));
+    }
+
+    final today = _week[0];
+    final avgTemp = (today.tempHigh + today.tempLow) / 2.0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
                 // Large Current Temperature Card
                 Container(
                   padding: EdgeInsets.all(32),
@@ -228,7 +307,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       // Condition Label
                       Center(
                         child: Text(
-                          _conditionLabel(today.condition),
+                          _conditionLabel(today.condition, context),
                           style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
@@ -266,15 +345,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        _getAdviceColor(_irrigationAdvice(today)).withOpacity(0.15),
-                        _getAdviceColor(_irrigationAdvice(today)).withOpacity(0.08),
+                        _getAdviceColor(_irrigationAdvice(today, context), context).withOpacity(0.15),
+                        _getAdviceColor(_irrigationAdvice(today, context), context).withOpacity(0.08),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     borderRadius: BorderRadius.circular(24),
                     border: Border.all(
-                      color: _getAdviceColor(_irrigationAdvice(today)).withOpacity(0.3),
+                      color: _getAdviceColor(_irrigationAdvice(today, context), context).withOpacity(0.3),
                       width: 2,
                     ),
                     boxShadow: AppStyles.premiumCardShadow,
@@ -286,13 +365,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       Container(
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _getAdviceColor(_irrigationAdvice(today)).withOpacity(0.2),
+                          color: _getAdviceColor(_irrigationAdvice(today, context), context).withOpacity(0.2),
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(
                           child: Icon(
                             Icons.lightbulb_outline,
-                            color: _getAdviceColor(_irrigationAdvice(today)),
+                            color: _getAdviceColor(_irrigationAdvice(today, context), context),
                             size: 40,
                           ),
                         ),
@@ -304,7 +383,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'نصيحة اليوم',
+                              l10n.todayAdvice,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
@@ -316,7 +395,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              _irrigationAdvice(today),
+                              _irrigationAdvice(today, context),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: isDarkMode ? Colors.grey.shade300 : Colors.grey.shade700,
@@ -352,8 +431,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   final day = entry.value;
                   final isToday = index == 0;
                   final dayLabel = isToday
-                      ? 'اليوم'
-                      : DateFormat.E('ar').format(day.date).substring(0, 3);
+                      ? l10n.today
+                      : DateFormat.E(Localizations.localeOf(context).languageCode).format(day.date);
 
                   return Container(
                     margin: EdgeInsets.only(bottom: 16),
@@ -448,7 +527,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               ),
                               SizedBox(height: 8),
                               Text(
-                                _conditionLabel(day.condition),
+                                _conditionLabel(day.condition, context),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: isDarkMode ? Colors.grey.shade400 : Colors.grey.shade600,
@@ -499,10 +578,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   );
                 }).toList(),
               ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

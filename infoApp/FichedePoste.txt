@@ -1,0 +1,94 @@
+📄 FICHE DE POSTE
+🌾 Mzra3ti – Application professionnelle de gestion agricole
+
+Intitulé du poste :
+Assistante de Direction – Projet Mzra3ti
+
+Rattachement hiérarchique :
+Direction du projet Mzra3ti
+
+Mission principale :
+Assister la direction dans la gestion quotidienne du projet Mzra3ti, coordonner les activités administratives, organisationnelles et de communication, et contribuer au bon déroulement du développement et du déploiement de l’application.
+
+Lieu de travail :
+Hybride (Télétravail + déplacements ponctuels)
+
+🗂️ Responsabilités principales
+
+Gestion administrative :
+
+Gestion de l’agenda de la direction
+
+Traitement des appels et courriels
+
+Organisation et classement des documents administratifs
+
+Coordination des réunions :
+
+Planification des réunions internes et externes
+
+Préparation des ordres du jour et comptes rendus
+
+Suivi des décisions prises
+
+Support logistique :
+
+Organisation des déplacements professionnels
+
+Préparation des événements (réunions, présentations, démonstrations)
+
+Communication :
+
+Liaison entre la direction et les équipes
+
+Rédaction de rapports, notes et documents internes
+
+Gestion de projets :
+
+Suivi de l’avancement du projet Mzra3ti
+
+Reporting régulier à la direction
+
+🎯 Compétences et qualités requises
+
+Sens de l’organisation et rigueur
+
+Proactivité et esprit d’initiative
+
+Capacité à travailler sous pression
+
+Bon relationnel et esprit d’équipe
+
+Maîtrise des outils bureautiques
+
+Intérêt pour les projets digitaux et agricoles
+
+🌱 À propos du projet Mzra3ti
+
+Mzra3ti est une application professionnelle de gestion agricole destinée à accompagner les agriculteurs dans la digitalisation de leurs activités : suivi des cultures, gestion financière, météo, équipements et planification.
+
+🎨 اقتراح تنسيق Canva (باش يطلع زوين)
+
+الألوان :
+
+Vert principal : #2E7D32
+
+Vert clair : #81C784
+
+Gris clair : #F5F5F5
+
+Texte : Noir / Gris foncé
+
+Fonts (Canva) :
+
+Titre : Poppins / Montserrat
+
+Texte : Open Sans / Lato
+
+Layout :
+
+Header فيه logo + اسم Mzra3ti
+
+Sections بكارطات خضر
+
+أيقونات بسيطة (briefcase – calendar – leaf)

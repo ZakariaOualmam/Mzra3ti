@@ -41,7 +41,7 @@ class NotificationsScreen extends StatelessWidget {
         ),
       ),
       body: FutureBuilder<List<AppNotification>>(
-        future: NotificationService().getAllNotifications(),
+        future: NotificationService().getAllNotifications(context),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator(color: green));
@@ -98,7 +98,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 4),
                             Text(
-                              'الطقس مشمس اليوم',
+                              AppLocalizations.of(context)!.weatherSunnyToday,
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
@@ -135,7 +135,7 @@ class NotificationsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '👋 مرحبا',
+                              AppLocalizations.of(context)!.helloWave,
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w700,
@@ -145,7 +145,7 @@ class NotificationsScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 4),
                             Text(
-                              'نظرة سريعة على مزرعتك اليوم',
+                              AppLocalizations.of(context)!.quickFarmOverview,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -216,7 +216,7 @@ class NotificationsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      _getTimeAgo(notification.timestamp),
+                      _getTimeAgo(context, notification.timestamp),
                       style: TextStyle(
                         fontSize: 11,
                         color: Colors.grey.shade500,
@@ -234,18 +234,19 @@ class NotificationsScreen extends StatelessWidget {
     );
   }
 
-  String _getTimeAgo(DateTime timestamp) {
+  String _getTimeAgo(BuildContext context, DateTime timestamp) {
     final now = DateTime.now();
     final difference = now.difference(timestamp);
+    final l10n = AppLocalizations.of(context)!;
 
     if (difference.inDays > 0) {
-      return 'منذ ${difference.inDays} يوم';
+      return l10n.daysAgo(difference.inDays);
     } else if (difference.inHours > 0) {
-      return 'منذ ${difference.inHours} ساعة';
+      return l10n.hoursAgo(difference.inHours);
     } else if (difference.inMinutes > 0) {
-      return 'منذ ${difference.inMinutes} دقيقة';
+      return l10n.minutesAgo(difference.inMinutes);
     } else {
-      return 'الآن';
+      return l10n.now;
     }
   }
 }

@@ -167,7 +167,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      '${DateFormat('yyyy-MM-dd').format(selectedDate)} في ${selectedTime.format(context)}',
+                                      '${DateFormat('yyyy-MM-dd').format(selectedDate)} ${selectedTime.format(context)}',
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
@@ -277,7 +277,7 @@ class _IrrigationScreenState extends State<IrrigationScreen> {
                 children: [
                   CircularProgressIndicator(color: green),
                   SizedBox(height: 16),
-                  Text('جاري التحميل...', style: TextStyle(color: Colors.grey)),
+                  Text(l10n.loading, style: TextStyle(color: Colors.grey)),
                 ],
               ),
             );

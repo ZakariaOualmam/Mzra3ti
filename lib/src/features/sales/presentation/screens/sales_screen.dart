@@ -339,7 +339,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                             quantityController.text.isEmpty ||
                             priceController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('الرجاء ملء جميع الحقول')),
+                            SnackBar(content: Text(l10n.fillAllFields)),
                           );
                           return;
                         }
@@ -401,13 +401,14 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
   }
 
   String _getPaymentText(String method) {
+    final l10n = AppLocalizations.of(context)!;
     switch (method) {
       case 'Cash':
-        return AppLocalizations.of(context)!.cash;
+        return l10n.cash;
       case 'Bank Transfer':
-        return 'تحويل بنكي';
+        return l10n.bankTransfer;
       case 'Check':
-        return 'شيك';
+        return l10n.check;
       default:
         return method;
     }
@@ -514,6 +515,8 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
   }
 
   Widget _buildSalesList() {
+    final l10n = AppLocalizations.of(context)!;
+    
     return FutureBuilder<List<Sale>>(
       future: _repo.list(),
       builder: (context, snapshot) {
@@ -563,9 +566,9 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildStatItem('إجمالي', '${stats['totalSales'].toStringAsFixed(0)} DH', Icons.attach_money),
-                      _buildStatItem(AppLocalizations.of(context)!.paid, '${stats['paidAmount'].toStringAsFixed(0)} DH', Icons.check_circle),
-                      _buildStatItem(AppLocalizations.of(context)!.pending, '${stats['pendingAmount'].toStringAsFixed(0)} DH', Icons.pending),
+                      _buildStatItem(l10n.totalSales, '${stats['totalSales'].toStringAsFixed(0)} DH', Icons.attach_money),
+                      _buildStatItem(l10n.paid, '${stats['paidAmount'].toStringAsFixed(0)} DH', Icons.check_circle),
+                      _buildStatItem(l10n.pending, '${stats['pendingAmount'].toStringAsFixed(0)} DH', Icons.pending),
                     ],
                   ),
                 );
@@ -728,7 +731,7 @@ class _SalesScreenState extends State<SalesScreen> with SingleTickerProviderStat
                     Text(customer.phone),
                     SizedBox(height: 2),
                     Text(
-                      '${customer.purchaseCount} عمليات شراء',
+                      AppLocalizations.of(context)!.purchaseOperations(customer.purchaseCount),
                       style: TextStyle(fontSize: 11, color: Colors.grey),
                     ),
                   ],

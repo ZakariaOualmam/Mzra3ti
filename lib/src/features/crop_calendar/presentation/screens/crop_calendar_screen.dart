@@ -116,7 +116,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                                   onTap: () {
                                     setDialogState(() {
                                       selectedTemplate = template;
-                                      nameController.text = template.name;
+                                      nameController.text = _getCropName(context, template);
                                       cropType = template.type;
                                       daysController.text = template.typicalGrowthDays.toString();
                                     });
@@ -131,7 +131,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                                         width: isSelected ? 2 : 1,
                                       ),
                                     ),
-                                    child: Text('${template.icon} ${template.name}', style: TextStyle(fontSize: 13)),
+                                    child: Text('${template.icon} ${_getCropName(context, template)}', style: TextStyle(fontSize: 13)),
                                   ),
                                 );
                               }).toList(),
@@ -201,7 +201,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                           TextField(
                             controller: daysController,
                             decoration: InputDecoration(
-                              labelText: 'مدة النمو (بالأيام)',
+                              labelText: AppLocalizations.of(context)!.growthDurationDays,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               prefixIcon: Icon(Icons.timelapse),
                               helperText: AppLocalizations.of(context)!.averageDaysToHarvest,
@@ -300,7 +300,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                       onPressed: () async {
                         if (nameController.text.isEmpty || daysController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('الرجاء ملء الحقول المطلوبة')),
+                            SnackBar(content: Text(AppLocalizations.of(context)!.pleaseFillRequiredFields)),
                           );
                           return;
                         }
@@ -361,6 +361,23 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
     if (season == AppLocalizations.of(context)!.autumn) return Colors.brown;
     if (season == AppLocalizations.of(context)!.winter) return Colors.blue;
     return Colors.grey;
+  }
+
+  String _getCropName(BuildContext context, CropTemplate template) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (template.nameKey) {
+      case 'cropTomato': return l10n.cropTomato;
+      case 'cropCucumber': return l10n.cropCucumber;
+      case 'cropPotato': return l10n.cropPotato;
+      case 'cropWheat': return l10n.cropWheat;
+      case 'cropCorn': return l10n.cropCorn;
+      case 'cropPepper': return l10n.cropPepper;
+      case 'cropOnion': return l10n.cropOnion;
+      case 'cropCarrot': return l10n.cropCarrot;
+      case 'cropWatermelon': return l10n.cropWatermelon;
+      case 'cropStrawberry': return l10n.cropStrawberry;
+      default: return template.name;
+    }
   }
 
   @override
@@ -475,7 +492,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                 SizedBox(height: 16),
                 Text(AppLocalizations.of(context)!.noReadyCrops, style: TextStyle(color: Colors.grey)),
                 SizedBox(height: 8),
-                Text('ستظهر هنا المحاصيل التي حان موعد حصادها', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                Text(AppLocalizations.of(context)!.readyCropsWillAppearHere, style: TextStyle(color: Colors.grey, fontSize: 12)),
               ],
             ),
           );
@@ -508,13 +525,13 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
     String statusText;
     if (isReady) {
       statusColor = AppStyles.statusGood;
-      statusText = 'جاهز للحصاد!';
+      statusText = AppLocalizations.of(context)!.readyToHarvest;
     } else if (harvestSoon) {
       statusColor = AppStyles.statusWarning;
-      statusText = 'قريباً';
+      statusText = AppLocalizations.of(context)!.soon;
     } else {
       statusColor = AppStyles.blueGradient[1];
-      statusText = 'في النمو';
+      statusText = AppLocalizations.of(context)!.growing;
     }
     
     // Get crop emoji from template if available
@@ -690,7 +707,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                       children: [
                         Flexible(
                           child: Text(
-                            'نمو المحصول',
+                            AppLocalizations.of(context)!.cropGrowth,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -775,7 +792,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                           children: [
                             _buildDateColumn(
                               Icons.event_rounded,
-                              'زراعة',
+                              AppLocalizations.of(context)!.planting,
                               DateFormat('dd/MM').format(crop.plantingDate),
                               statusColor,
                               isDarkMode,
@@ -789,7 +806,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                             SizedBox(height: 16),
                             _buildDateColumn(
                               Icons.event_available,
-                              'حصاد',
+                              AppLocalizations.of(context)!.harvest,
                               DateFormat('dd/MM').format(crop.calculatedHarvestDate),
                               statusColor,
                               isDarkMode,
@@ -804,7 +821,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                           Expanded(
                             child: _buildDateColumn(
                               Icons.event_rounded,
-                              'زراعة',
+                              AppLocalizations.of(context)!.planting,
                               DateFormat('dd/MM').format(crop.plantingDate),
                               statusColor,
                               isDarkMode,
@@ -830,7 +847,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
                           Expanded(
                             child: _buildDateColumn(
                               Icons.event_available,
-                              'حصاد',
+                              AppLocalizations.of(context)!.harvest,
                               DateFormat('dd/MM').format(crop.calculatedHarvestDate),
                               statusColor,
                               isDarkMode,
@@ -925,7 +942,7 @@ class _CropCalendarScreenState extends State<CropCalendarScreen> with SingleTick
         ),
         SizedBox(height: 4),
         Text(
-          'يوم متبقي',
+          AppLocalizations.of(context)!.daysRemaining,
           style: TextStyle(
             fontSize: 16,
             color: isDarkMode ? Colors.grey.shade400 : Colors.grey.shade600,

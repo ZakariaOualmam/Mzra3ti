@@ -189,7 +189,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get cropType => 'Type de culture';
 
   @override
-  String get area => 'Surface';
+  String get area => 'Superficie';
 
   @override
   String get notes => 'Notes';
@@ -472,221 +472,225 @@ class AppLocalizationsFr extends AppLocalizations {
   String get copyrightText => '© 2025 Tous droits réservés';
 
   @override
-  String get pushNotifications => 'الإشعارات الفورية';
+  String get pushNotifications => 'Notifications push';
 
   @override
-  String get pushNotificationsSubtitle => 'استقبل تنبيهات للأحداث المهمة';
+  String get pushNotificationsSubtitle =>
+      'Recevoir des alertes pour les événements importants';
 
   @override
-  String get irrigationReminders => 'تذكيرات السقي';
+  String get irrigationReminders => 'Rappels d\'irrigation';
 
   @override
-  String get irrigationRemindersSubtitle => 'تنبهك ملي يجي وقت السقي';
+  String get irrigationRemindersSubtitle =>
+      'Vous alerter quand il est temps d\'arroser';
 
   @override
-  String get harvestAlerts => 'تنبيهات الحصاد';
+  String get harvestAlerts => 'Alertes de récolte';
 
   @override
-  String get harvestAlertsSubtitle => 'خليك على اطلاع بوقت الحصاد';
+  String get harvestAlertsSubtitle => 'Rester informé du temps de récolte';
 
   @override
-  String get syncData => 'مزامنة البيانات';
+  String get syncData => 'Synchroniser les données';
 
   @override
-  String get lastSynced => 'آخر مزامنة: اليوم في 10:30 صباحاً';
+  String get lastSynced => 'Dernière synchronisation: Aujourd\'hui à 10:30';
 
   @override
-  String get profileSettings => 'إعدادات الملف الشخصي';
+  String get profileSettings => 'Paramètres du profil';
 
   @override
-  String get profileSettingsSubtitle => 'دبّر معلوماتك الشخصية';
+  String get profileSettingsSubtitle => 'Gérer vos informations personnelles';
 
   @override
-  String get privacySecurity => 'الخصوصية والأمان';
+  String get privacySecurity => 'Confidentialité et sécurité';
 
   @override
-  String get privacySecuritySubtitle => 'تحكم في البيانات والخصوصية ديالك';
+  String get privacySecuritySubtitle =>
+      'Contrôler vos données et confidentialité';
 
   @override
-  String get languageSubtitle => 'العربية';
+  String get languageSubtitle => 'Français';
 
   @override
-  String get account => 'الحساب';
+  String get account => 'Compte';
 
   @override
-  String get about => 'عن التطبيق';
+  String get about => 'À propos';
 
   @override
-  String get helpSubtitle => 'احصل على الدعم والدروس';
+  String get helpSubtitle => 'Obtenir de l\'aide et des tutoriels';
 
   @override
-  String get aboutAppSubtitle => 'الإصدار 1.0.0';
+  String get aboutAppSubtitle => 'Version 1.0.0';
 
   @override
-  String get logoutTitle => 'تسجيل الخروج';
+  String get logoutTitle => 'Déconnexion';
 
   @override
-  String get logoutSubtitle => 'اخرج من حسابك';
+  String get logoutSubtitle => 'Se déconnecter de votre compte';
 
   @override
-  String get logoutConfirm => 'واش متأكد بغيتي تخرج؟';
+  String get logoutConfirm => 'Êtes-vous sûr de vouloir vous déconnecter?';
 
   @override
-  String get logoutButton => 'خروج';
+  String get logoutButton => 'Déconnexion';
 
   @override
-  String get email => 'البريد الإلكتروني';
+  String get email => 'Email';
 
   @override
-  String get phone => 'رقم الهاتف';
+  String get phone => 'Numéro de téléphone';
 
   @override
-  String get emailOrPhone => 'البريد أو الهاتف';
+  String get emailOrPhone => 'Email ou téléphone';
 
   @override
-  String get password => 'كلمة السر';
+  String get password => 'Mot de passe';
 
   @override
-  String get confirmPassword => 'تأكيد كلمة السر';
+  String get confirmPassword => 'Confirmer le mot de passe';
 
   @override
-  String get fullName => 'الاسم الكامل';
+  String get fullName => 'Nom complet';
 
   @override
-  String get loginButton => 'دخول';
+  String get loginButton => 'Connexion';
 
   @override
-  String get registerButton => 'تسجيل';
+  String get registerButton => 'S\'inscrire';
 
   @override
-  String get forgotPassword => 'نسيتي كلمة السر؟';
+  String get forgotPassword => 'Mot de passe oublié?';
 
   @override
-  String get alreadyHaveAccount => 'عندك حساب؟';
+  String get alreadyHaveAccount => 'Vous avez déjà un compte?';
 
   @override
-  String get dontHaveAccount => 'ما عندكش حساب؟';
+  String get dontHaveAccount => 'Vous n\'avez pas de compte?';
 
   @override
-  String get signUp => 'سجل';
+  String get signUp => 'S\'inscrire';
 
   @override
-  String get signIn => 'دخل';
+  String get signIn => 'Se connecter';
 
   @override
-  String get emailRequired => 'البريد ضروري';
+  String get emailRequired => 'L\'email est requis';
 
   @override
-  String get emailInvalid => 'البريح مشي صالح';
+  String get emailInvalid => 'Veuillez entrer un email valide';
 
   @override
-  String get phoneInvalid => 'الرقم خاطئ';
+  String get phoneInvalid => 'Veuillez entrer un numéro de téléphone valide';
 
   @override
-  String get passwordRequired => 'كلمة السر ضرورية';
+  String get passwordRequired => 'Le mot de passe est requis';
 
   @override
-  String get passwordTooShort => 'كلمة السر يجب أن تكون 6 أحرف على الأقل';
+  String get passwordTooShort =>
+      'Le mot de passe doit contenir au moins 6 caractères';
 
   @override
-  String get passwordsDontMatch => 'كلمات السر مشي متطابقة';
+  String get passwordsDontMatch => 'Les mots de passe ne correspondent pas';
 
   @override
-  String get nameRequired => 'الاسم ضروري';
+  String get nameRequired => 'Le nom est requis';
 
   @override
-  String get registrationSuccess => 'تم إنشاء الحساب بنجاح!';
+  String get registrationSuccess => 'Compte créé avec succès!';
 
   @override
-  String get loginSuccess => 'مرحبا بعودتك!';
+  String get loginSuccess => 'Bienvenue!';
 
   @override
-  String get loginError => 'بيانات خاطئة';
+  String get loginError => 'Identifiants invalides';
 
   @override
-  String get welcome => 'مرحبا';
+  String get welcome => 'Bienvenue';
 
   @override
-  String get createAccount => 'إنشاء حساب';
+  String get createAccount => 'Créer un compte';
 
   @override
-  String get enterYourDetails => 'دخل بياناتك باش تبدا';
+  String get enterYourDetails => 'Entrez vos coordonnées pour commencer';
 
   @override
-  String get orContinueWith => 'أو كمل بـ';
+  String get orContinueWith => 'Ou continuer avec';
 
   @override
-  String get guest => 'ضيف';
+  String get guest => 'Invité';
 
   @override
-  String get profileTitle => 'الملف الشخصي';
+  String get profileTitle => 'Profil';
 
   @override
-  String get editProfile => 'تعديل الملف الشخصي';
+  String get editProfile => 'Modifier le profil';
 
   @override
-  String get personalInformation => 'المعلومات الشخصية';
+  String get personalInformation => 'Informations personnelles';
 
   @override
-  String get profilePicture => 'صورة الملف الشخصي';
+  String get profilePicture => 'Photo de profil';
 
   @override
-  String get changePicture => 'تغيير الصورة';
+  String get changePicture => 'Changer la photo';
 
   @override
-  String get chooseFromGallery => 'اختر من المعرض';
+  String get chooseFromGallery => 'Choisir de la galerie';
 
   @override
-  String get takePhoto => 'التقط صورة';
+  String get takePhoto => 'Prendre une photo';
 
   @override
-  String get removePhoto => 'إزالة الصورة';
+  String get removePhoto => 'Supprimer la photo';
 
   @override
-  String get username => 'اسم المستخدم';
+  String get username => 'Nom d\'utilisateur';
 
   @override
-  String get editUsername => 'تعديل اسم المستخدم';
+  String get editUsername => 'Modifier le nom d\'utilisateur';
 
   @override
-  String get enterNewUsername => 'أدخل اسم المستخدم الجديد';
+  String get enterNewUsername => 'Entrer un nouveau nom d\'utilisateur';
 
   @override
   String get phoneNumber => 'Numéro de téléphone';
 
   @override
-  String get editPhone => 'تعديل رقم الهاتف';
+  String get editPhone => 'Modifier le numéro de téléphone';
 
   @override
-  String get accountSettings => 'إعدادات الحساب';
+  String get accountSettings => 'Paramètres du compte';
 
   @override
-  String get changePassword => 'تغيير كلمة المرور';
+  String get changePassword => 'Changer le mot de passe';
 
   @override
-  String get deleteAccount => 'حذف الحساب';
+  String get deleteAccount => 'Supprimer le compte';
 
   @override
   String get deleteAccountWarning =>
-      'لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع بياناتك نهائياً.';
+      'Cette action est irréversible. Toutes vos données seront définitivement supprimées.';
 
   @override
-  String get cancel => 'إلغاء';
+  String get cancel => 'Annuler';
 
   @override
-  String get delete => 'حذف';
+  String get delete => 'Supprimer';
 
   @override
-  String get update => 'تحديث';
+  String get update => 'Mettre à jour';
 
   @override
-  String get updateSuccess => 'تم التحديث بنجاح';
+  String get updateSuccess => 'Mise à jour réussie';
 
   @override
-  String get updateError => 'فشل التحديث';
+  String get updateError => 'Échec de la mise à jour';
 
   @override
-  String get backToDashboard => 'العودة إلى لوحة التحكم';
+  String get backToDashboard => 'Retour au tableau de bord';
 
   @override
   String get equipmentManagement => 'Gestion de l\'équipement';
@@ -1203,4 +1207,307 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get purchasedOn => 'Acheté';
+
+  @override
+  String notifCropReady(Object cropName) {
+    return '🌾 Récolte $cropName';
+  }
+
+  @override
+  String notifCropReadyMessage(Object cropName) {
+    return 'Il est temps de récolter $cropName! La culture est prête maintenant.';
+  }
+
+  @override
+  String notifCropSoon(Object cropName) {
+    return '📅 Rappel: $cropName';
+  }
+
+  @override
+  String notifCropSoonMessage(Object cropName, Object days) {
+    return 'Récolte de $cropName dans $days jours.';
+  }
+
+  @override
+  String notifEquipmentMaintenance(Object equipmentName) {
+    return '🔧 Maintenance $equipmentName';
+  }
+
+  @override
+  String notifEquipmentMaintenanceMessage(Object date, Object equipmentName) {
+    return '$equipmentName nécessite une maintenance! Date prévue: $date';
+  }
+
+  @override
+  String get notifIrrigationReminder => '💧 Rappel d\'irrigation';
+
+  @override
+  String notifIrrigationReminderMessage(Object days) {
+    return 'Dernière irrigation il y a $days jours. Temps d\'arroser?';
+  }
+
+  @override
+  String get notifIrrigationFirst => '💧 Commencer le suivi de l\'irrigation';
+
+  @override
+  String get notifIrrigationFirstMessage =>
+      'Aucune irrigation enregistrée. Commencez à suivre votre calendrier d\'irrigation!';
+
+  @override
+  String get typeAlert => 'alert';
+
+  @override
+  String get typeReminder => 'reminder';
+
+  @override
+  String get typeInfo => 'info';
+
+  @override
+  String get fillAllFields => 'Veuillez remplir tous les champs';
+
+  @override
+  String get bankTransfer => 'Virement bancaire';
+
+  @override
+  String get check => 'Chèque';
+
+  @override
+  String get totalSales => 'Total';
+
+  @override
+  String purchaseOperations(int count) {
+    return '$count achats';
+  }
+
+  @override
+  String get weatherSunnyToday => 'Temps ensoleillé aujourd\'hui';
+
+  @override
+  String get helloWave => '👋 Bonjour';
+
+  @override
+  String get quickFarmOverview => 'Aperçu rapide de votre ferme aujourd\'hui';
+
+  @override
+  String daysAgo(int days) {
+    return 'Il y a $days jours';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return 'Il y a $hours heures';
+  }
+
+  @override
+  String minutesAgo(int minutes) {
+    return 'Il y a $minutes minutes';
+  }
+
+  @override
+  String get now => 'Maintenant';
+
+  @override
+  String get hectare => 'hectare';
+
+  @override
+  String get coordinates => 'Coordonnées';
+
+  @override
+  String get editFeatureComingSoon =>
+      'Fonction de modification bientôt disponible';
+
+  @override
+  String get confirmDelete => 'Confirmer la suppression';
+
+  @override
+  String areYouSureToDelete(String name) {
+    return 'Êtes-vous sûr de supprimer $name?';
+  }
+
+  @override
+  String deleted(String name) {
+    return '$name supprimé';
+  }
+
+  @override
+  String get mustSelect3Points => 'Doit sélectionner au moins 3 points';
+
+  @override
+  String get addNewLand => 'Ajouter une nouvelle terre';
+
+  @override
+  String get landName => 'Nom de la terre';
+
+  @override
+  String get notesOptional => 'Notes (optionnel)';
+
+  @override
+  String saved(String name) {
+    return '$name enregistré';
+  }
+
+  @override
+  String get landMap => 'Carte des terres';
+
+  @override
+  String get mapWebApiKeyRequired =>
+      'Pour utiliser la carte sur le web, vous devez ajouter une clé API Google Maps';
+
+  @override
+  String get mapAvailableOnMobile =>
+      'Cette fonctionnalité est entièrement disponible sur l\'application mobile (Android/iOS)';
+
+  @override
+  String get features => 'Fonctionnalités:';
+
+  @override
+  String get drawFarmBoundaries => 'Dessiner les limites des terres agricoles';
+
+  @override
+  String get calculateAreaAuto => 'Calculer la superficie automatiquement';
+
+  @override
+  String get currentLocation => 'Détection de la position actuelle';
+
+  @override
+  String get manageMultipleLands => 'Gérer plusieurs terres';
+
+  @override
+  String get comprehensiveAreaSummary => 'Résumé complet des superficies';
+
+  @override
+  String get back => 'Retour';
+
+  @override
+  String get drawBoundaries => 'Dessiner les limites';
+
+  @override
+  String tapMapToMark(int count) {
+    return 'Appuyez sur la carte pour marquer les limites ($count points)';
+  }
+
+  @override
+  String get noSavedLands => 'Aucune terre enregistrée';
+
+  @override
+  String get tapDrawToAddFirst =>
+      'Appuyez sur l\'icône de dessin pour ajouter votre première terre';
+
+  @override
+  String get summary => 'Résumé';
+
+  @override
+  String get landsSummary => 'Résumé des terres';
+
+  @override
+  String get numberOfLands => 'Nombre de terres:';
+
+  @override
+  String get totalArea => 'Superficie totale:';
+
+  @override
+  String get lands => 'Terres:';
+
+  @override
+  String get loading => 'Chargement...';
+
+  @override
+  String get farmSettings => 'Paramètres de la ferme';
+
+  @override
+  String get farmSettingsSubtitle => 'Informations sur la ferme et les terres';
+
+  @override
+  String get landMapSubtitle => 'Voir vos terres agricoles';
+
+  @override
+  String get reports => 'Rapports';
+
+  @override
+  String get growthDurationDays => 'Durée de croissance (jours)';
+
+  @override
+  String get pleaseFillRequiredFields => 'Veuillez remplir les champs requis';
+
+  @override
+  String get readyCropsWillAppearHere =>
+      'Les cultures prêtes à récolter apparaîtront ici';
+
+  @override
+  String get readyToHarvest => 'Prêt à récolter !';
+
+  @override
+  String get soon => 'Bientôt';
+
+  @override
+  String get growing => 'En croissance';
+
+  @override
+  String get cropGrowth => 'Croissance de la culture';
+
+  @override
+  String get planting => 'Plantation';
+
+  @override
+  String get harvest => 'Récolte';
+
+  @override
+  String get daysRemaining => 'jours restants';
+
+  @override
+  String get cropTomato => 'Tomate';
+
+  @override
+  String get cropPotato => 'Pomme de terre';
+
+  @override
+  String get soilType => 'Type de sol';
+
+  @override
+  String get cropTypesList => 'Types de cultures';
+
+  @override
+  String get emailOptional => 'Email (optionnel)';
+
+  @override
+  String get areaInHectares => 'Superficie (hectares)';
+
+  @override
+  String get locationCity => 'Emplacement/Ville';
+
+  @override
+  String get basicInformation => 'Informations de base';
+
+  @override
+  String get agriculturalInformation => 'Informations agricoles';
+
+  @override
+  String get contactInformation => 'Informations de contact';
+
+  @override
+  String get weatherSunny => 'Ensoleillé';
+
+  @override
+  String get weatherCloudy => 'Nuageux';
+
+  @override
+  String get weatherRainy => 'Pluvieux';
+
+  @override
+  String get weatherPartly => 'Partiellement nuageux';
+
+  @override
+  String get today => 'Aujourd\'hui';
+
+  @override
+  String get todayAdvice => 'Conseil du jour';
+
+  @override
+  String get adviceSkipWatering => 'Pas besoin d\'arroser (il va pleuvoir)';
+
+  @override
+  String get adviceWaterToday => 'Arrosez aujourd\'hui (temps chaud)';
+
+  @override
+  String get adviceMonitor => 'Surveillez les conditions';
 }

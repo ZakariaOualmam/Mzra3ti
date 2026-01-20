@@ -2445,6 +2445,540 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'شراء'**
   String get purchasedOn;
+
+  /// No description provided for @notifCropReady.
+  ///
+  /// In ar, this message translates to:
+  /// **'🌾 حصاد {cropName}'**
+  String notifCropReady(Object cropName);
+
+  /// No description provided for @notifCropReadyMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'حان موعد حصاد {cropName}! المحصول جاهز الآن.'**
+  String notifCropReadyMessage(Object cropName);
+
+  /// No description provided for @notifCropSoon.
+  ///
+  /// In ar, this message translates to:
+  /// **'📅 تذكير: {cropName}'**
+  String notifCropSoon(Object cropName);
+
+  /// No description provided for @notifCropSoonMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'موعد حصاد {cropName} خلال {days} أيام.'**
+  String notifCropSoonMessage(Object cropName, Object days);
+
+  /// No description provided for @notifEquipmentMaintenance.
+  ///
+  /// In ar, this message translates to:
+  /// **'🔧 صيانة {equipmentName}'**
+  String notifEquipmentMaintenance(Object equipmentName);
+
+  /// No description provided for @notifEquipmentMaintenanceMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'{equipmentName} تحتاج لصيانة! الموعد المحدد: {date}'**
+  String notifEquipmentMaintenanceMessage(Object date, Object equipmentName);
+
+  /// No description provided for @notifIrrigationReminder.
+  ///
+  /// In ar, this message translates to:
+  /// **'💧 تذكير بالسقي'**
+  String get notifIrrigationReminder;
+
+  /// No description provided for @notifIrrigationReminderMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر عملية سقي كانت منذ {days} أيام. هل حان وقت السقي؟'**
+  String notifIrrigationReminderMessage(Object days);
+
+  /// No description provided for @notifIrrigationFirst.
+  ///
+  /// In ar, this message translates to:
+  /// **'💧 ابدأ تتبع السقي'**
+  String get notifIrrigationFirst;
+
+  /// No description provided for @notifIrrigationFirstMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم تسجل أي عملية سقي بعد. ابدأ بتتبع مواعيد السقي!'**
+  String get notifIrrigationFirstMessage;
+
+  /// No description provided for @typeAlert.
+  ///
+  /// In ar, this message translates to:
+  /// **'alert'**
+  String get typeAlert;
+
+  /// No description provided for @typeReminder.
+  ///
+  /// In ar, this message translates to:
+  /// **'reminder'**
+  String get typeReminder;
+
+  /// No description provided for @typeInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'info'**
+  String get typeInfo;
+
+  /// No description provided for @fillAllFields.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرجاء ملء جميع الحقول'**
+  String get fillAllFields;
+
+  /// No description provided for @bankTransfer.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحويل بنكي'**
+  String get bankTransfer;
+
+  /// No description provided for @check.
+  ///
+  /// In ar, this message translates to:
+  /// **'شيك'**
+  String get check;
+
+  /// No description provided for @totalSales.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجمالي'**
+  String get totalSales;
+
+  /// No description provided for @purchaseOperations.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count} عمليات شراء'**
+  String purchaseOperations(int count);
+
+  /// No description provided for @weatherSunnyToday.
+  ///
+  /// In ar, this message translates to:
+  /// **'الطقس مشمس اليوم'**
+  String get weatherSunnyToday;
+
+  /// No description provided for @helloWave.
+  ///
+  /// In ar, this message translates to:
+  /// **'👋 مرحبا'**
+  String get helloWave;
+
+  /// No description provided for @quickFarmOverview.
+  ///
+  /// In ar, this message translates to:
+  /// **'نظرة سريعة على مزرعتك اليوم'**
+  String get quickFarmOverview;
+
+  /// No description provided for @daysAgo.
+  ///
+  /// In ar, this message translates to:
+  /// **'منذ {days} يوم'**
+  String daysAgo(int days);
+
+  /// No description provided for @hoursAgo.
+  ///
+  /// In ar, this message translates to:
+  /// **'منذ {hours} ساعة'**
+  String hoursAgo(int hours);
+
+  /// No description provided for @minutesAgo.
+  ///
+  /// In ar, this message translates to:
+  /// **'منذ {minutes} دقيقة'**
+  String minutesAgo(int minutes);
+
+  /// No description provided for @now.
+  ///
+  /// In ar, this message translates to:
+  /// **'الآن'**
+  String get now;
+
+  /// No description provided for @hectare.
+  ///
+  /// In ar, this message translates to:
+  /// **'هكتار'**
+  String get hectare;
+
+  /// No description provided for @coordinates.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإحداثيات'**
+  String get coordinates;
+
+  /// No description provided for @editFeatureComingSoon.
+  ///
+  /// In ar, this message translates to:
+  /// **'ميزة التعديل قريباً'**
+  String get editFeatureComingSoon;
+
+  /// No description provided for @confirmDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد الحذف'**
+  String get confirmDelete;
+
+  /// No description provided for @areYouSureToDelete.
+  ///
+  /// In ar, this message translates to:
+  /// **'هل أنت متأكد من حذف {name}؟'**
+  String areYouSureToDelete(String name);
+
+  /// No description provided for @deleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حذف {name}'**
+  String deleted(String name);
+
+  /// No description provided for @mustSelect3Points.
+  ///
+  /// In ar, this message translates to:
+  /// **'يجب تحديد 3 نقاط على الأقل'**
+  String get mustSelect3Points;
+
+  /// No description provided for @addNewLand.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف أرض جديدة'**
+  String get addNewLand;
+
+  /// No description provided for @landName.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم الأرض'**
+  String get landName;
+
+  /// No description provided for @notesOptional.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظات (اختياري)'**
+  String get notesOptional;
+
+  /// No description provided for @saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حفظ {name}'**
+  String saved(String name);
+
+  /// No description provided for @landMap.
+  ///
+  /// In ar, this message translates to:
+  /// **'خريطة الأراضي'**
+  String get landMap;
+
+  /// No description provided for @mapWebApiKeyRequired.
+  ///
+  /// In ar, this message translates to:
+  /// **'لاستخدام ميزة الخريطة على الويب، يجب إضافة Google Maps API Key'**
+  String get mapWebApiKeyRequired;
+
+  /// No description provided for @mapAvailableOnMobile.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذه الميزة متاحة بالكامل على تطبيق الهاتف (Android/iOS)'**
+  String get mapAvailableOnMobile;
+
+  /// No description provided for @features.
+  ///
+  /// In ar, this message translates to:
+  /// **'المميزات:'**
+  String get features;
+
+  /// No description provided for @drawFarmBoundaries.
+  ///
+  /// In ar, this message translates to:
+  /// **'رسم حدود الأرض الفلاحية'**
+  String get drawFarmBoundaries;
+
+  /// No description provided for @calculateAreaAuto.
+  ///
+  /// In ar, this message translates to:
+  /// **'حساب المساحة تلقائياً'**
+  String get calculateAreaAuto;
+
+  /// No description provided for @currentLocation.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديد الموقع الحالي'**
+  String get currentLocation;
+
+  /// No description provided for @manageMultipleLands.
+  ///
+  /// In ar, this message translates to:
+  /// **'إدارة عدة أراضي'**
+  String get manageMultipleLands;
+
+  /// No description provided for @comprehensiveAreaSummary.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص شامل للمساحات'**
+  String get comprehensiveAreaSummary;
+
+  /// No description provided for @back.
+  ///
+  /// In ar, this message translates to:
+  /// **'رجوع'**
+  String get back;
+
+  /// No description provided for @drawBoundaries.
+  ///
+  /// In ar, this message translates to:
+  /// **'رسم حدود'**
+  String get drawBoundaries;
+
+  /// No description provided for @tapMapToMark.
+  ///
+  /// In ar, this message translates to:
+  /// **'انقر على الخريطة لتحديد حدود الأرض ({count} نقاط)'**
+  String tapMapToMark(int count);
+
+  /// No description provided for @noSavedLands.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد أراضي محفوظة'**
+  String get noSavedLands;
+
+  /// No description provided for @tapDrawToAddFirst.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط على أيقونة الرسم لإضافة أول أرض'**
+  String get tapDrawToAddFirst;
+
+  /// No description provided for @summary.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملخص'**
+  String get summary;
+
+  /// No description provided for @landsSummary.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص الأراضي'**
+  String get landsSummary;
+
+  /// No description provided for @numberOfLands.
+  ///
+  /// In ar, this message translates to:
+  /// **'عدد الأراضي:'**
+  String get numberOfLands;
+
+  /// No description provided for @totalArea.
+  ///
+  /// In ar, this message translates to:
+  /// **'المساحة الإجمالية:'**
+  String get totalArea;
+
+  /// No description provided for @lands.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأراضي:'**
+  String get lands;
+
+  /// No description provided for @loading.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاري التحميل...'**
+  String get loading;
+
+  /// No description provided for @farmSettings.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعدادات المزرعة'**
+  String get farmSettings;
+
+  /// No description provided for @farmSettingsSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات المزرعة والأرض'**
+  String get farmSettingsSubtitle;
+
+  /// No description provided for @landMapSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'شوف الأرض الفلاحية ديالك'**
+  String get landMapSubtitle;
+
+  /// No description provided for @reports.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقارير'**
+  String get reports;
+
+  /// No description provided for @growthDurationDays.
+  ///
+  /// In ar, this message translates to:
+  /// **'مدة النمو (بالأيام)'**
+  String get growthDurationDays;
+
+  /// No description provided for @pleaseFillRequiredFields.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرجاء ملء الحقول المطلوبة'**
+  String get pleaseFillRequiredFields;
+
+  /// No description provided for @readyCropsWillAppearHere.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستظهر هنا المحاصيل التي حان موعد حصادها'**
+  String get readyCropsWillAppearHere;
+
+  /// No description provided for @readyToHarvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'جاهز للحصاد!'**
+  String get readyToHarvest;
+
+  /// No description provided for @soon.
+  ///
+  /// In ar, this message translates to:
+  /// **'قريباً'**
+  String get soon;
+
+  /// No description provided for @growing.
+  ///
+  /// In ar, this message translates to:
+  /// **'في النمو'**
+  String get growing;
+
+  /// No description provided for @cropGrowth.
+  ///
+  /// In ar, this message translates to:
+  /// **'نمو المحصول'**
+  String get cropGrowth;
+
+  /// No description provided for @planting.
+  ///
+  /// In ar, this message translates to:
+  /// **'زراعة'**
+  String get planting;
+
+  /// No description provided for @harvest.
+  ///
+  /// In ar, this message translates to:
+  /// **'حصاد'**
+  String get harvest;
+
+  /// No description provided for @daysRemaining.
+  ///
+  /// In ar, this message translates to:
+  /// **'يوم متبقي'**
+  String get daysRemaining;
+
+  /// No description provided for @cropTomato.
+  ///
+  /// In ar, this message translates to:
+  /// **'طماطم'**
+  String get cropTomato;
+
+  /// No description provided for @cropPotato.
+  ///
+  /// In ar, this message translates to:
+  /// **'بطاطس'**
+  String get cropPotato;
+
+  /// No description provided for @soilType.
+  ///
+  /// In ar, this message translates to:
+  /// **'نوع التربة'**
+  String get soilType;
+
+  /// No description provided for @cropTypesList.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنواع المحاصيل'**
+  String get cropTypesList;
+
+  /// No description provided for @emailOptional.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني (اختياري)'**
+  String get emailOptional;
+
+  /// No description provided for @areaInHectares.
+  ///
+  /// In ar, this message translates to:
+  /// **'المساحة (هكتار)'**
+  String get areaInHectares;
+
+  /// No description provided for @locationCity.
+  ///
+  /// In ar, this message translates to:
+  /// **'الموقع/المدينة'**
+  String get locationCity;
+
+  /// No description provided for @basicInformation.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعلومات الأساسية'**
+  String get basicInformation;
+
+  /// No description provided for @agriculturalInformation.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعلومات الزراعية'**
+  String get agriculturalInformation;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In ar, this message translates to:
+  /// **'معلومات الاتصال'**
+  String get contactInformation;
+
+  /// No description provided for @weatherSunny.
+  ///
+  /// In ar, this message translates to:
+  /// **'مشمس'**
+  String get weatherSunny;
+
+  /// No description provided for @weatherCloudy.
+  ///
+  /// In ar, this message translates to:
+  /// **'غائم'**
+  String get weatherCloudy;
+
+  /// No description provided for @weatherRainy.
+  ///
+  /// In ar, this message translates to:
+  /// **'ممطر'**
+  String get weatherRainy;
+
+  /// No description provided for @weatherPartly.
+  ///
+  /// In ar, this message translates to:
+  /// **'غائم جزئياً'**
+  String get weatherPartly;
+
+  /// No description provided for @today.
+  ///
+  /// In ar, this message translates to:
+  /// **'اليوم'**
+  String get today;
+
+  /// No description provided for @todayAdvice.
+  ///
+  /// In ar, this message translates to:
+  /// **'نصيحة اليوم'**
+  String get todayAdvice;
+
+  /// No description provided for @adviceSkipWatering.
+  ///
+  /// In ar, this message translates to:
+  /// **'مانشوفش لما (غادي تمطل)'**
+  String get adviceSkipWatering;
+
+  /// No description provided for @adviceWaterToday.
+  ///
+  /// In ar, this message translates to:
+  /// **'صلي لما ليوم (حاول)'**
+  String get adviceWaterToday;
+
+  /// No description provided for @adviceMonitor.
+  ///
+  /// In ar, this message translates to:
+  /// **'شكون لحال: بقا على لمونيتور'**
+  String get adviceMonitor;
 }
 
 class _AppLocalizationsDelegate

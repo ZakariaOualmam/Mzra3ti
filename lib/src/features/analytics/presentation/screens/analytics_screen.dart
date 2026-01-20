@@ -257,7 +257,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                         SizedBox(height: 5),
                         // Date Label
                         Text(
-                          DateFormat('E', 'ar').format(data.date),
+                          DateFormat('E', Localizations.localeOf(context).languageCode).format(data.date),
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.grey.shade600,

@@ -1191,5 +1191,306 @@ class AppLocalizationsEn extends AppLocalizations {
   String get broken => 'Broken';
 
   @override
-  String get purchasedOn => 'Purchased';
+  String get purchasedOn => 'Purchased on';
+
+  @override
+  String notifCropReady(Object cropName) {
+    return '🌾 Harvest $cropName';
+  }
+
+  @override
+  String notifCropReadyMessage(Object cropName) {
+    return 'It\'s time to harvest $cropName! The crop is ready now.';
+  }
+
+  @override
+  String notifCropSoon(Object cropName) {
+    return '📅 Reminder: $cropName';
+  }
+
+  @override
+  String notifCropSoonMessage(Object cropName, Object days) {
+    return '$cropName harvest in $days days.';
+  }
+
+  @override
+  String notifEquipmentMaintenance(Object equipmentName) {
+    return '🔧 Maintenance $equipmentName';
+  }
+
+  @override
+  String notifEquipmentMaintenanceMessage(Object date, Object equipmentName) {
+    return '$equipmentName needs maintenance! Scheduled date: $date';
+  }
+
+  @override
+  String get notifIrrigationReminder => '💧 Irrigation Reminder';
+
+  @override
+  String notifIrrigationReminderMessage(Object days) {
+    return 'Last irrigation was $days days ago. Time to irrigate?';
+  }
+
+  @override
+  String get notifIrrigationFirst => '💧 Start Tracking Irrigation';
+
+  @override
+  String get notifIrrigationFirstMessage =>
+      'No irrigation recorded yet. Start tracking your irrigation schedule!';
+
+  @override
+  String get typeAlert => 'alert';
+
+  @override
+  String get typeReminder => 'reminder';
+
+  @override
+  String get typeInfo => 'info';
+
+  @override
+  String get fillAllFields => 'Please fill all fields';
+
+  @override
+  String get bankTransfer => 'Bank Transfer';
+
+  @override
+  String get check => 'Check';
+
+  @override
+  String get totalSales => 'Total';
+
+  @override
+  String purchaseOperations(int count) {
+    return '$count purchases';
+  }
+
+  @override
+  String get weatherSunnyToday => 'Sunny weather today';
+
+  @override
+  String get helloWave => '👋 Hello';
+
+  @override
+  String get quickFarmOverview => 'Quick overview of your farm today';
+
+  @override
+  String daysAgo(int days) {
+    return '$days days ago';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return '$hours hours ago';
+  }
+
+  @override
+  String minutesAgo(int minutes) {
+    return '$minutes minutes ago';
+  }
+
+  @override
+  String get now => 'Now';
+
+  @override
+  String get hectare => 'hectare';
+
+  @override
+  String get coordinates => 'Coordinates';
+
+  @override
+  String get editFeatureComingSoon => 'Edit feature coming soon';
+
+  @override
+  String get confirmDelete => 'Confirm Delete';
+
+  @override
+  String areYouSureToDelete(String name) {
+    return 'Are you sure to delete $name?';
+  }
+
+  @override
+  String deleted(String name) {
+    return '$name deleted';
+  }
+
+  @override
+  String get mustSelect3Points => 'Must select at least 3 points';
+
+  @override
+  String get addNewLand => 'Add New Land';
+
+  @override
+  String get landName => 'Land Name';
+
+  @override
+  String get notesOptional => 'Notes (optional)';
+
+  @override
+  String saved(String name) {
+    return '$name saved';
+  }
+
+  @override
+  String get landMap => 'Land Map';
+
+  @override
+  String get mapWebApiKeyRequired =>
+      'To use the map feature on web, you must add Google Maps API Key';
+
+  @override
+  String get mapAvailableOnMobile =>
+      'This feature is fully available on mobile app (Android/iOS)';
+
+  @override
+  String get features => 'Features:';
+
+  @override
+  String get drawFarmBoundaries => 'Draw farm land boundaries';
+
+  @override
+  String get calculateAreaAuto => 'Calculate area automatically';
+
+  @override
+  String get currentLocation => 'Current location detection';
+
+  @override
+  String get manageMultipleLands => 'Manage multiple lands';
+
+  @override
+  String get comprehensiveAreaSummary => 'Comprehensive area summary';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get drawBoundaries => 'Draw Boundaries';
+
+  @override
+  String tapMapToMark(int count) {
+    return 'Tap on the map to mark land boundaries ($count points)';
+  }
+
+  @override
+  String get noSavedLands => 'No saved lands';
+
+  @override
+  String get tapDrawToAddFirst => 'Tap the draw icon to add your first land';
+
+  @override
+  String get summary => 'Summary';
+
+  @override
+  String get landsSummary => 'Lands Summary';
+
+  @override
+  String get numberOfLands => 'Number of lands:';
+
+  @override
+  String get totalArea => 'Total area:';
+
+  @override
+  String get lands => 'Lands:';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get farmSettings => 'Farm Settings';
+
+  @override
+  String get farmSettingsSubtitle => 'Farm and land information';
+
+  @override
+  String get landMapSubtitle => 'View your farmland';
+
+  @override
+  String get reports => 'Reports';
+
+  @override
+  String get growthDurationDays => 'Growth Duration (days)';
+
+  @override
+  String get pleaseFillRequiredFields => 'Please fill in the required fields';
+
+  @override
+  String get readyCropsWillAppearHere =>
+      'Crops ready for harvest will appear here';
+
+  @override
+  String get readyToHarvest => 'Ready to harvest!';
+
+  @override
+  String get soon => 'Soon';
+
+  @override
+  String get growing => 'Growing';
+
+  @override
+  String get cropGrowth => 'Crop Growth';
+
+  @override
+  String get planting => 'Planting';
+
+  @override
+  String get harvest => 'Harvest';
+
+  @override
+  String get daysRemaining => 'days remaining';
+
+  @override
+  String get cropTomato => 'Tomato';
+
+  @override
+  String get cropPotato => 'Potato';
+
+  @override
+  String get soilType => 'Soil Type';
+
+  @override
+  String get cropTypesList => 'Crop Types';
+
+  @override
+  String get emailOptional => 'Email (optional)';
+
+  @override
+  String get areaInHectares => 'Area (hectares)';
+
+  @override
+  String get locationCity => 'Location/City';
+
+  @override
+  String get basicInformation => 'Basic Information';
+
+  @override
+  String get agriculturalInformation => 'Agricultural Information';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get weatherSunny => 'Sunny';
+
+  @override
+  String get weatherCloudy => 'Cloudy';
+
+  @override
+  String get weatherRainy => 'Rainy';
+
+  @override
+  String get weatherPartly => 'Partly Cloudy';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get todayAdvice => 'Today\'s Advice';
+
+  @override
+  String get adviceSkipWatering => 'Skip watering (it will rain)';
+
+  @override
+  String get adviceWaterToday => 'Water today (hot weather)';
+
+  @override
+  String get adviceMonitor => 'Monitor conditions closely';
 }

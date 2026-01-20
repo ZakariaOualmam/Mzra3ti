@@ -1183,4 +1183,305 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get purchasedOn => 'شراء';
+
+  @override
+  String notifCropReady(Object cropName) {
+    return '🌾 حصاد $cropName';
+  }
+
+  @override
+  String notifCropReadyMessage(Object cropName) {
+    return 'حان موعد حصاد $cropName! المحصول جاهز الآن.';
+  }
+
+  @override
+  String notifCropSoon(Object cropName) {
+    return '📅 تذكير: $cropName';
+  }
+
+  @override
+  String notifCropSoonMessage(Object cropName, Object days) {
+    return 'موعد حصاد $cropName خلال $days أيام.';
+  }
+
+  @override
+  String notifEquipmentMaintenance(Object equipmentName) {
+    return '🔧 صيانة $equipmentName';
+  }
+
+  @override
+  String notifEquipmentMaintenanceMessage(Object date, Object equipmentName) {
+    return '$equipmentName تحتاج لصيانة! الموعد المحدد: $date';
+  }
+
+  @override
+  String get notifIrrigationReminder => '💧 تذكير بالسقي';
+
+  @override
+  String notifIrrigationReminderMessage(Object days) {
+    return 'آخر عملية سقي كانت منذ $days أيام. هل حان وقت السقي؟';
+  }
+
+  @override
+  String get notifIrrigationFirst => '💧 ابدأ تتبع السقي';
+
+  @override
+  String get notifIrrigationFirstMessage =>
+      'لم تسجل أي عملية سقي بعد. ابدأ بتتبع مواعيد السقي!';
+
+  @override
+  String get typeAlert => 'alert';
+
+  @override
+  String get typeReminder => 'reminder';
+
+  @override
+  String get typeInfo => 'info';
+
+  @override
+  String get fillAllFields => 'الرجاء ملء جميع الحقول';
+
+  @override
+  String get bankTransfer => 'تحويل بنكي';
+
+  @override
+  String get check => 'شيك';
+
+  @override
+  String get totalSales => 'إجمالي';
+
+  @override
+  String purchaseOperations(int count) {
+    return '$count عمليات شراء';
+  }
+
+  @override
+  String get weatherSunnyToday => 'الطقس مشمس اليوم';
+
+  @override
+  String get helloWave => '👋 مرحبا';
+
+  @override
+  String get quickFarmOverview => 'نظرة سريعة على مزرعتك اليوم';
+
+  @override
+  String daysAgo(int days) {
+    return 'منذ $days يوم';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return 'منذ $hours ساعة';
+  }
+
+  @override
+  String minutesAgo(int minutes) {
+    return 'منذ $minutes دقيقة';
+  }
+
+  @override
+  String get now => 'الآن';
+
+  @override
+  String get hectare => 'هكتار';
+
+  @override
+  String get coordinates => 'الإحداثيات';
+
+  @override
+  String get editFeatureComingSoon => 'ميزة التعديل قريباً';
+
+  @override
+  String get confirmDelete => 'تأكيد الحذف';
+
+  @override
+  String areYouSureToDelete(String name) {
+    return 'هل أنت متأكد من حذف $name؟';
+  }
+
+  @override
+  String deleted(String name) {
+    return 'تم حذف $name';
+  }
+
+  @override
+  String get mustSelect3Points => 'يجب تحديد 3 نقاط على الأقل';
+
+  @override
+  String get addNewLand => 'أضف أرض جديدة';
+
+  @override
+  String get landName => 'اسم الأرض';
+
+  @override
+  String get notesOptional => 'ملاحظات (اختياري)';
+
+  @override
+  String saved(String name) {
+    return 'تم حفظ $name';
+  }
+
+  @override
+  String get landMap => 'خريطة الأراضي';
+
+  @override
+  String get mapWebApiKeyRequired =>
+      'لاستخدام ميزة الخريطة على الويب، يجب إضافة Google Maps API Key';
+
+  @override
+  String get mapAvailableOnMobile =>
+      'هذه الميزة متاحة بالكامل على تطبيق الهاتف (Android/iOS)';
+
+  @override
+  String get features => 'المميزات:';
+
+  @override
+  String get drawFarmBoundaries => 'رسم حدود الأرض الفلاحية';
+
+  @override
+  String get calculateAreaAuto => 'حساب المساحة تلقائياً';
+
+  @override
+  String get currentLocation => 'تحديد الموقع الحالي';
+
+  @override
+  String get manageMultipleLands => 'إدارة عدة أراضي';
+
+  @override
+  String get comprehensiveAreaSummary => 'ملخص شامل للمساحات';
+
+  @override
+  String get back => 'رجوع';
+
+  @override
+  String get drawBoundaries => 'رسم حدود';
+
+  @override
+  String tapMapToMark(int count) {
+    return 'انقر على الخريطة لتحديد حدود الأرض ($count نقاط)';
+  }
+
+  @override
+  String get noSavedLands => 'لا توجد أراضي محفوظة';
+
+  @override
+  String get tapDrawToAddFirst => 'اضغط على أيقونة الرسم لإضافة أول أرض';
+
+  @override
+  String get summary => 'الملخص';
+
+  @override
+  String get landsSummary => 'ملخص الأراضي';
+
+  @override
+  String get numberOfLands => 'عدد الأراضي:';
+
+  @override
+  String get totalArea => 'المساحة الإجمالية:';
+
+  @override
+  String get lands => 'الأراضي:';
+
+  @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get farmSettings => 'إعدادات المزرعة';
+
+  @override
+  String get farmSettingsSubtitle => 'معلومات المزرعة والأرض';
+
+  @override
+  String get landMapSubtitle => 'شوف الأرض الفلاحية ديالك';
+
+  @override
+  String get reports => 'التقارير';
+
+  @override
+  String get growthDurationDays => 'مدة النمو (بالأيام)';
+
+  @override
+  String get pleaseFillRequiredFields => 'الرجاء ملء الحقول المطلوبة';
+
+  @override
+  String get readyCropsWillAppearHere =>
+      'ستظهر هنا المحاصيل التي حان موعد حصادها';
+
+  @override
+  String get readyToHarvest => 'جاهز للحصاد!';
+
+  @override
+  String get soon => 'قريباً';
+
+  @override
+  String get growing => 'في النمو';
+
+  @override
+  String get cropGrowth => 'نمو المحصول';
+
+  @override
+  String get planting => 'زراعة';
+
+  @override
+  String get harvest => 'حصاد';
+
+  @override
+  String get daysRemaining => 'يوم متبقي';
+
+  @override
+  String get cropTomato => 'طماطم';
+
+  @override
+  String get cropPotato => 'بطاطس';
+
+  @override
+  String get soilType => 'نوع التربة';
+
+  @override
+  String get cropTypesList => 'أنواع المحاصيل';
+
+  @override
+  String get emailOptional => 'البريد الإلكتروني (اختياري)';
+
+  @override
+  String get areaInHectares => 'المساحة (هكتار)';
+
+  @override
+  String get locationCity => 'الموقع/المدينة';
+
+  @override
+  String get basicInformation => 'المعلومات الأساسية';
+
+  @override
+  String get agriculturalInformation => 'المعلومات الزراعية';
+
+  @override
+  String get contactInformation => 'معلومات الاتصال';
+
+  @override
+  String get weatherSunny => 'مشمس';
+
+  @override
+  String get weatherCloudy => 'غائم';
+
+  @override
+  String get weatherRainy => 'ممطر';
+
+  @override
+  String get weatherPartly => 'غائم جزئياً';
+
+  @override
+  String get today => 'اليوم';
+
+  @override
+  String get todayAdvice => 'نصيحة اليوم';
+
+  @override
+  String get adviceSkipWatering => 'مانشوفش لما (غادي تمطل)';
+
+  @override
+  String get adviceWaterToday => 'صلي لما ليوم (حاول)';
+
+  @override
+  String get adviceMonitor => 'شكون لحال: بقا على لمونيتور';
 }

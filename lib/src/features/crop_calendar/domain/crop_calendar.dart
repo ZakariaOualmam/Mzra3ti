@@ -63,13 +63,15 @@ class CropCalendarEntry {
 
 /// Crop Information Template
 class CropTemplate {
-  final String name;
+  final String nameKey; // Translation key
+  final String name; // Fallback/default name
   final String type;
   final int typicalGrowthDays;
   final List<String> bestSeasons;
   final String icon;
 
   CropTemplate({
+    required this.nameKey,
     required this.name,
     required this.type,
     required this.typicalGrowthDays,
@@ -81,15 +83,15 @@ class CropTemplate {
 /// Predefined crop templates
 class CropTemplates {
   static final List<CropTemplate> templates = [
-    CropTemplate(name: 'طماطم', type: 'خضروات', typicalGrowthDays: 75, bestSeasons: ['الربيع', 'الصيف'], icon: '🍅'),
-    CropTemplate(name: 'خيار', type: 'خضروات', typicalGrowthDays: 60, bestSeasons: ['الربيع', 'الصيف'], icon: '🥒'),
-    CropTemplate(name: 'بطاطس', type: 'خضروات', typicalGrowthDays: 90, bestSeasons: ['الربيع', 'الخريف'], icon: '🥔'),
-    CropTemplate(name: 'قمح', type: 'حبوب', typicalGrowthDays: 120, bestSeasons: ['الشتاء', 'الربيع'], icon: '🌾'),
-    CropTemplate(name: 'ذرة', type: 'حبوب', typicalGrowthDays: 85, bestSeasons: ['الصيف'], icon: '🌽'),
-    CropTemplate(name: 'فلفل', type: 'خضروات', typicalGrowthDays: 70, bestSeasons: ['الربيع', 'الصيف'], icon: '🌶️'),
-    CropTemplate(name: 'بصل', type: 'خضروات', typicalGrowthDays: 100, bestSeasons: ['الخريف', 'الشتاء'], icon: '🧅'),
-    CropTemplate(name: 'جزر', type: 'خضروات', typicalGrowthDays: 70, bestSeasons: ['الربيع', 'الخريف'], icon: '🥕'),
-    CropTemplate(name: 'بطيخ', type: 'فواكه', typicalGrowthDays: 90, bestSeasons: ['الصيف'], icon: '🍉'),
-    CropTemplate(name: 'فراولة', type: 'فواكه', typicalGrowthDays: 60, bestSeasons: ['الربيع'], icon: '🍓'),
+    CropTemplate(nameKey: 'cropTomato', name: 'طماطم', type: 'خضروات', typicalGrowthDays: 75, bestSeasons: ['الربيع', 'الصيف'], icon: '🍅'),
+    CropTemplate(nameKey: 'cropCucumber', name: 'خيار', type: 'خضروات', typicalGrowthDays: 60, bestSeasons: ['الربيع', 'الصيف'], icon: '🥒'),
+    CropTemplate(nameKey: 'cropPotato', name: 'بطاطس', type: 'خضروات', typicalGrowthDays: 90, bestSeasons: ['الربيع', 'الخريف'], icon: '🥔'),
+    CropTemplate(nameKey: 'cropWheat', name: 'قمح', type: 'حبوب', typicalGrowthDays: 120, bestSeasons: ['الشتاء', 'الربيع'], icon: '🌾'),
+    CropTemplate(nameKey: 'cropCorn', name: 'ذرة', type: 'حبوب', typicalGrowthDays: 85, bestSeasons: ['الصيف'], icon: '🌽'),
+    CropTemplate(nameKey: 'cropPepper', name: 'فلفل', type: 'خضروات', typicalGrowthDays: 70, bestSeasons: ['الربيع', 'الصيف'], icon: '🌶️'),
+    CropTemplate(nameKey: 'cropOnion', name: 'بصل', type: 'خضروات', typicalGrowthDays: 100, bestSeasons: ['الخريف', 'الشتاء'], icon: '🧅'),
+    CropTemplate(nameKey: 'cropCarrot', name: 'جزر', type: 'خضروات', typicalGrowthDays: 70, bestSeasons: ['الربيع', 'الخريف'], icon: '🥕'),
+    CropTemplate(nameKey: 'cropWatermelon', name: 'بطيخ', type: 'فواكه', typicalGrowthDays: 90, bestSeasons: ['الصيف'], icon: '🍉'),
+    CropTemplate(nameKey: 'cropStrawberry', name: 'فراولة', type: 'فواكه', typicalGrowthDays: 60, bestSeasons: ['الربيع'], icon: '🍓'),
   ];
 }
