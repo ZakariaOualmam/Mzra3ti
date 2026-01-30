@@ -75,17 +75,17 @@ class _LandMapScreenState extends State<LandMapScreen> {
     final lands = await _repository.getAllLands();
     setState(() {
       _lands = lands;
-      _updateMapOverlays();
     });
+    _updateMapOverlays();
   }
 
   void _updateMapOverlays() {
-    _polygons.clear();
-    _markers.clear();
+    final Set<Polygon> newPolygons = {};
+    final Set<Marker> newMarkers = {};
 
     for (var land in _lands) {
       // Add polygon
-      _polygons.add(
+      newPolygons.add(
         Polygon(
           polygonId: PolygonId(land.id),
           points: land.coordinates,
@@ -97,7 +97,7 @@ class _LandMapScreenState extends State<LandMapScreen> {
       );
 
       // Add marker at center
-      _markers.add(
+      newMarkers.add(
         Marker(
           markerId: MarkerId(land.id),
           position: land.center,
@@ -110,6 +110,11 @@ class _LandMapScreenState extends State<LandMapScreen> {
         ),
       );
     }
+
+    setState(() {
+      _polygons = newPolygons;
+      _markers = newMarkers;
+    });
   }
 
   void _showLandDetails(LandBoundary land) {
